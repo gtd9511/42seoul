@@ -1,0 +1,25 @@
+MINITALK = MINITALK
+
+SERVER = server
+CLIENT = client
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = server.c client.c
+OBJS = $(SRCS:.c=.o)
+
+all: $(MINITALK)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $?
+
+$(SERVER): server.o libft
+	$(CC) -o $@ $< -Llibft -lft
+
+$(CLIENT): client.o libft
+	$(CC) -o $S $< -Llibft -lft
+
+$(MINITALK): $(SERVER) $(CLIENT)
+
+bonus:

@@ -1,0 +1,9 @@
+{
+"makefile.extensionOutputFolder": "./.vscode",
+"files.associations": {
+	"iterator": "cpp",
+	"minitalk.h": "c",
+	"stdlib.h": "c",
+	"stdio.h": "c"
+}
+}
