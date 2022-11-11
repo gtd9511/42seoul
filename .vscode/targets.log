@@ -10,16 +10,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Nov  3 17:35:23 2022
+# Make data base, printed on Fri Nov 11 01:07:33 2022
 
 # Variables
 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
 # environment
-VSCODE_LOG_NATIVE = false
+NVM_INC = /Users/han/.nvm/versions/node/v18.1.0/include/node
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -27,59 +28,72 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/sanghan/han/cursus
+CURDIR := /Users/han/42Seoul/cursus
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"6eb1e43add40af3ffb323dfa86580dd8.ko","_translationsConfigFile":"/Users/han/Library/Application Support/Code/clp/6eb1e43add40af3ffb323dfa86580dd8.ko/tcf.json","_cacheRoot":"/Users/han/Library/Application Support/Code/clp/6eb1e43add40af3ffb323dfa86580dd8.ko","_resolvedLanguagePackCoreLocation":"/Users/han/Library/Application Support/Code/clp/6eb1e43add40af3ffb323dfa86580dd8.ko/6261075646f055b99068d3688932416f2346dd3b","_corruptedFile":"/Users/han/Library/Application Support/Code/clp/6eb1e43add40af3ffb323dfa86580dd8.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
 MAKEFILE_LIST := 
 # environment
-VSCODE_VERBOSE_LOGGING = true
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cp6h0035jm/T/vscode-ipc-284d5faf-1209-4fe5-9fb5-252042e3b540.sock
+INFOPATH = /opt/homebrew/share/info:
+# environment
+P9K_SSH = 0
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /Users/han/miniforge3/bin:/Users/han/miniforge3/condabin:/Users/han/.nvm/versions/node/v18.1.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-VSCODE_LOG_STACK = false
+NVM_BIN = /Users/han/.nvm/versions/node/v18.1.0/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Y5Yo6KyYK2/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.KcZvtDYHh5/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_PIPE_LOGGING = true
+CONDA_EXE = /Users/han/miniforge3/bin/conda
 # environment
-PWD = /Users/sanghan/han/cursus
+PWD = /Users/han/42Seoul/cursus
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
+MANPATH = /Users/han/.nvm/versions/node/v18.1.0/share/man:/opt/homebrew/share/man::
+# environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /Users/sanghan
+HOME = /Users/han
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/sanghan/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/han/Library/Application Support/Code/CachedData/6261075646f055b99068d3688932416f2346dd3b
 # environment
-LOGNAME = sanghan
+LOGNAME = han
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-ZSH = /Users/sanghan/.oh-my-zsh
+CONDA_PROMPT_MODIFIER = (base) 
+# environment
+NVM_CD_FLAGS = -q
+# environment
+ZSH = /Users/han/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
+# environment
+ 
+CONDA_DEFAULT_ENV = base
 # environment
 XPC_FLAGS = 0x0
 # default
@@ -91,23 +105,27 @@ SHLVL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
-USER = sanghan
+USER = han
 # makefile
 .DEFAULT_GOAL := 
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# environment
+CONDA_SHLVL = 1
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cp6h0035jm/T/
+TMPDIR = /var/folders/4r/lt69nb1j6tng8g7dnxswgk_h0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/sanghan/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/han/Library/Application Support/Code/1.73.1-main.sock
+# environment
+MallocNanoZone = 0
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -115,13 +133,21 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2104
+NVM_DIR = /Users/han/.nvm
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.6980533.6980539
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x19634:0x3:0x33
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -130,20 +156,26 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+CONDA_PYTHON_EXE = /Users/han/miniforge3/bin/python
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
+# environment
+_CE_M = 
 # environment
 MAKELEVEL := 0
 # environment
-LANG = C
+CONDA_PREFIX = /Users/han/miniforge3
 # environment
-VSCODE_PID = 39879
+VSCODE_PID = 23709
+# environment
+_CE_CONDA = 
+# environment
+LANG = C
 # variable set hash-table stats:
-# Load=64/1024=6%, Rehash=0, Collisions=1/85=1%
+# Load=79/1024=8%, Rehash=0, Collisions=2/99=2%
 
 # Pattern-specific Variable Values
 
@@ -151,9 +183,10 @@ VSCODE_PID = 39879
 
 # Directories
 
-# . (device 16777225, inode 861679): 13 files, no impossibilities.
+# . (device 16777233, inode 5345342): 12 files, no impossibilities.
+ 
 
-# 13 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -164,7 +197,6 @@ VSCODE_PID = 39879
 # Not a target:
 all:
 #  Command-line target.
- 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
@@ -226,6 +258,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Nov  3 17:35:23 2022
+# Finished Make data base on Fri Nov 11 01:07:33 2022
 
  
