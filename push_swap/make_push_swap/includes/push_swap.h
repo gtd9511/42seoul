@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 01:06:57 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/12 18:28:08 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/12 18:48:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,13 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
+
+typedef struct s_stack
+{
+	t_node	*top;
+	t_node	*bot;
+	int		size;
+	int		idx;
+}	t_stack;
 
 #endif
