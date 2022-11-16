@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/11/11 13:40:51 by sanghan          ###   ########.fr        #
+#    Updated: 2022/11/16 15:57:29 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = push_swap.c
+SRCS = push_swap.c get_input.c make_array.c stack.c stack_utils.c \
+		cmd_sp.c cmd_r.c set_point.c sort.c sort_utils.c
 OBJS_NAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 

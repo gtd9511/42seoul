@@ -4,6 +4,8 @@
 	"iterator": "cpp",
 	"minitalk.h": "c",
 	"stdlib.h": "c",
-	"stdio.h": "c"
+	"stdio.h": "c",
+	"ex": "c",
+	"push_swap.h": "c"
 }
 }

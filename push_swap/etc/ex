@@ -1,0 +1,28 @@
+
+
+int	main(int argc, char *argv[])
+{
+	t_stack	a;
+	t_stack	b;
+	t_info	info;
+	int		arr_size;
+	int		*arr;
+
+	if (argc < 2)
+		print_error(-1);
+	arr_size = 0;
+	init_stack(&a);
+	init_stack(&b);
+	info.a = &a;
+	info.b = &b;
+	arr_size = get_input_size(argc, argv);
+	arr = make_array(argc, argv, arr_size);
+	info.array = arr;
+	arr_to_stack(&info, arr, arr_size);
+	check_dup(&info, arr_size);
+	check_sort(arr, arr_size, 0);
+	sort_elem(&info);
+	free(info.array);
+	free_stack(info.a);
+	free_stack(info.b);
+}

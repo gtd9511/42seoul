@@ -7,10 +7,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Sat Nov 12 15:06:30 2022
+# Make data base, printed on Wed Nov 16 15:57:42 2022
 
 # Variables
 
@@ -19,12 +17,14 @@ make: *** No rule to make target `all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
- 
 NVM_INC = /Users/han/.nvm/versions/node/v18.1.0/include/node
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
+ 
+make: *** No rule to make target `all'.  Stop.
+
 # automatic
 @F = $(notdir $@)
 # makefile
@@ -52,13 +52,13 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 NVM_BIN = /Users/han/.nvm/versions/node/v18.1.0/bin
 # environment
-LaunchInstanceID = 94FD18F4-2E16-4878-8E45-F3E34E9E6F1A
+LaunchInstanceID = DF2123B0-7F29-4082-A7D6-E0137E2D7FC2
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.VfOJfw1F3k/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.hgdPKPSHOq/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -147,7 +147,6 @@ HOMEBREW_PREFIX = /opt/homebrew
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
- 
 # environment
 COMMAND_MODE = unix2003
 # default
@@ -161,7 +160,7 @@ LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /Users/han/miniforge3/bin/python
 # environment
-SECURITYSESSIONID = 186b3
+SECURITYSESSIONID = 186b0
 # automatic
 ^F = $(notdir $^)
 # default
@@ -173,7 +172,7 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /Users/han/miniforge3
 # environment
-VSCODE_PID = 573
+VSCODE_PID = 522
 # environment
 _CE_CONDA = 
 # environment
@@ -187,7 +186,7 @@ LANG = C
 
 # Directories
 
-# . (device 16777233, inode 5345342): 12 files, no impossibilities.
+# . (device 16777234, inode 5345342): 12 files, no impossibilities.
 
 # 12 files, no impossibilities in 1 directories.
 
@@ -261,6 +260,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sat Nov 12 15:06:30 2022
+# Finished Make data base on Wed Nov 16 15:57:42 2022
 
  
