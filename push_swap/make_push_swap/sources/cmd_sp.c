@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:32:33 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 16:46:17 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:15:04 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,22 @@ void	cmd_ss(t_info *info)
 
 void	cmd_pab(t_info *info, int flag)
 {
-	t_stack	*stack;
 	int		elem;
 
 	if (flag == PA)
 	{
-		stack = info->a;
+		if (is_empty(info->b))
+			return ;
+		elem = pop(info->b);
+		push(info->a, elem);
 		write(1, "pa\n", 3);
 	}
 	else
 	{
-		stack = info->b;
+		if (is_empty(info->a))
+			return ;
+		elem = pop(info->a);
+		push(info->b, elem);
 		write(1, "pb\n", 3);
 	}
-
-	if (is_empty(stack))
-		return ;
-	elem = pop(stack);
-	push(stack, elem);
 }
