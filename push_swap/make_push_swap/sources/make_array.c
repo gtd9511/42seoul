@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:14:24 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 14:45:06 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:18:28 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_atoil(const char *str, int i)
 		i++;
 	if (str[i] == '-')
 		sign = -1;
-	if (str[i] == '+' || str[i]== '-')
+	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (ft_isdigit(str[i]))
 	{

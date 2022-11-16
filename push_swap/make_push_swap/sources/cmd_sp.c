@@ -6,12 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:32:33 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 17:15:04 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:19:00 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 void	cmd_sab(t_info *info, int flag)
 {
@@ -31,7 +30,6 @@ void	cmd_sab(t_info *info, int flag)
 		if (flag == SB)
 			write(1, "sb\n", 3);
 	}
-
 	if (stack->size < 2)
 		return ;
 	elem1 = pop(stack);

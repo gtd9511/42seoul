@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:29:49 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 17:12:27 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:17:31 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	sort_all(t_info *info)
 		cmd_pab(info, PB);
 	if (info->a->size == 2)
 	{
-		write(1, "a\n", 2);
 		if (info->a->top->prev->data > info->a->bot->next->data)
 			cmd_sab(info, SA);
 	}

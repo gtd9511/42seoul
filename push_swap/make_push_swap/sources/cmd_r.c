@@ -6,12 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:32:28 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 16:46:01 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:32:06 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 void	cmd_rab(t_info *info, int flag)
 {
@@ -52,13 +51,13 @@ void	cmd_rrab(t_info *info, int flag)
 	{
 		stack = info->a;
 		if (flag == RRA)
-			write(1, "rra\n", 3);
+			write(1, "rra\n", 4);
 	}
 	else
 	{
 		stack = info->b;
 		if (flag == RRB)
-			write(1, "rrb\n", 3);
+			write(1, "rrb\n", 4);
 	}
 	if (stack->size < 2)
 		return ;
@@ -70,5 +69,5 @@ void	cmd_rrr(t_info *info)
 {
 	cmd_rrab(info, RRRRA);
 	cmd_rrab(info, RRRRB);
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 }
