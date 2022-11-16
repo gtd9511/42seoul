@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 06:41:05 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 15:52:47 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 19:27:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_one(t_info *info, int idx, int flag)
 {
 	while (idx > 0)
 	{
-		if (flag)
+		if (flag == RA)
 			cmd_rab(info, RA);
 		else
 			cmd_rab(info, RB);
@@ -40,7 +40,7 @@ void	rotate_one(t_info *info, int idx, int flag)
 	}
 	while (idx < 0)
 	{
-		if (flag)
+		if (flag == RA)
 			cmd_rrab(info, RRA);
 		else
 			cmd_rrab(info, RRB);
