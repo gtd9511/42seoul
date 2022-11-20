@@ -26,3 +26,38 @@ int	main(int argc, char *argv[])
 	free_stack(info.a);
 	free_stack(info.b);
 }
+
+
+void	set_pivot_divide(t_info *info)
+{
+	int	idx;
+	int	piv1;
+	int	piv2;
+
+
+	piv1 = get_pivot(info, info->a->size / 3);
+	piv2 = get_pivot(info, info->a->size * 2 / 3);
+	idx1 = info->a->size;
+	while (idx1)
+	{
+		divide_triple(info, piv1, piv2);
+		idx1--;
+	}
+}
+
+
+int	get_min(t_stack *stack, int size)
+{
+	int	i;
+	int	min;
+
+	i = 0;
+	min = 2147483647;
+	while (i < size)
+	{
+		if (min > arr[i])
+			min = arr[i];
+		i++;
+	}
+	return (min);
+}

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 06:41:05 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 20:27:29 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/17 05:46:30 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,17 @@ void	divide_triple(t_info *info, int piv1, int piv2)
 	if (info->a->top->prev->data < piv1)
 	{
 		cmd_pab(info, PB);
-		cmd_rab(info, RA);
+		cmd_rab(info, RB);
 	}
 	else if (info->a->top->prev->data < piv2)
 		cmd_pab(info, PB);
 	else
 		cmd_rab(info, RA);
+}
+
+int	get_pivot(int *sorted_array, int size)
+{
+	return (sorted_array[size]);
 }
 
 void	get_min_rtcnt(t_info *info, int *a, int *b)

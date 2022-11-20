@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:43:21 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 20:31:40 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/17 05:30:24 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,32 @@ void	check_dup(t_info *info, int arr_size)
 	}
 }
 
+int	*sort_array(int *arr, int arr_size)
+{
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	while (i < arr_size)
+	{
+		j = i;
+		while (++j < arr_size)
+		{
+			if (arr[i] > arr[j])
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+			if (arr[i] == arr[j])
+				error_exit(1);
+		}
+		i++;
+	}
+	return (arr);
+}
+
 int	main(int argc, char **argv)
 {
 	int		*arr;
@@ -84,7 +110,8 @@ int	main(int argc, char **argv)
 	arr_to_stack(&info, arr, arr_size);
 	check_dup(&info, arr_size);
 	check_sort(arr, arr_size, 0);
-	sort_elem(&info);
+	arr = sort_array(arr, arr_size);
+	sort_elem(&info, arr);
 	free(info.array);
 	free_stack(info.a);
 	free_stack(info.b);

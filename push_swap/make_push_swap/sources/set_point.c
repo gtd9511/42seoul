@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:51 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 20:27:10 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/17 05:41:30 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,14 @@ int	set_max(t_info *info)
 	return (elem);
 }
 
-void	set_pivot_divide(t_info *info)
+void	set_pivot_divide(t_info *info, int *sorted_array)
 {
 	int	idx;
 	int	piv1;
 	int	piv2;
 
-	idx = info->a->size / 3;
-	piv1 = info->array[idx];
-	idx = info->a->size * 2 / 3;
-	piv2 = info->array[idx];
+	piv1 = get_pivot(sorted_array, info->a->size / 3);
+	piv2 = get_pivot(sorted_array, info->a->size * 2 / 3);
 	idx = info->a->size;
 	while (idx)
 	{

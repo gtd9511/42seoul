@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:29:49 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 20:33:56 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/17 05:25:12 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	check_sort(int *array, int size, int idx)
 		error_exit(-1);
 }
 
-void	sort_all(t_info *info)
+void	sort_all(t_info *info, int *sorted_array)
 {
 	int	a;
 	int	b;
 
-	set_pivot_divide(info);
+	set_pivot_divide(info, sorted_array);
 	while (info->a->size > 3)
 		cmd_pab(info, PB);
 	if (info->a->size == 2)
@@ -67,7 +67,7 @@ void	sort_all(t_info *info)
 	last_sort(info);
 }
 
-void	sort_elem(t_info *info)
+void	sort_elem(t_info *info, int *sorted_array)
 {
 	if (info->a->size == 2)
 	{
@@ -77,7 +77,7 @@ void	sort_elem(t_info *info)
 	else if (info->a->size == 3)
 		sort_triple(info);
 	else
-		sort_all(info);
+		sort_all(info, sorted_array);
 }
 
 void	last_sort(t_info *info)

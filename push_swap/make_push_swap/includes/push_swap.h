@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 01:06:57 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 19:34:52 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/17 06:08:15 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_info
 int		error_exit(int type);
 int		make_pos(int a, int b, int a_idx, int b_idx);
 void	check_dup(t_info *info, int arr_size);
+int		*sort_array(int *arr, int arr_size);
 int		ft_isspace(char c);
 int		split_size(char **parsed_str);
 void	free_split(char **parsed_str);
@@ -79,15 +80,16 @@ int		get_a_idx(int num, t_info *info);
 int		set_min(t_info *info);
 int		set_mid(int num, t_info *info);
 int		set_max(t_info *info);
-void	set_pivot_divide(t_info *info);
+void	set_pivot_divide(t_info *info, int *sorted_array);
 void	check_sort(int *array, int size, int idx);
-void	sort_all(t_info *info);
-void	sort_elem(t_info *info);
+void	sort_all(t_info *info, int *sorted_array);
+void	sort_elem(t_info *info, int *arr);
 void	last_sort(t_info *info);
 void	sort_triple(t_info *info);
 void	rotate_many(t_info *info, int *a, int *b);
 void	rotate_one(t_info *info, int idx, int flag);
 void	divide_triple(t_info *info, int piv1, int piv2);
+int		get_pivot(int *sorted_array, int size);
 void	get_min_rtcnt(t_info *info, int *a, int *b);
 void	cmd_sab(t_info *info, int flag);
 void	cmd_ss(t_info *info);

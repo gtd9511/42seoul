@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:14:24 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/16 17:18:28 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/11/16 21:41:32 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@ int	ft_atoil(const char *str, int i)
 	long	result;
 
 	sign = 1;
-	result = 0 ;
+	result = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == '-')
-		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (ft_isdigit(str[i]))
+	{
+		if (str[i++] == '-')
+			sign = -1;
+		if (str[i] == '\0')
+			error_exit(1);
+	}
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	result *= (long long)sign;
-	if (str[i] != '\0' || \
-	result > 2147483647 || result < -2147483648)
+	result *= (long)sign;
+	if (str[i] != '\0' || result > 2147483647 || result < -2147483648)
 		error_exit(1);
-	return ((int)result);
+	return ((int)(result));
 }
 
 void	set_str_array(int *array, int *arr_idx, char **str)

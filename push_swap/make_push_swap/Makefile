@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/11/16 15:57:29 by sanghan          ###   ########.fr        #
+#    Updated: 2022/11/17 06:05:15 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ fclean: clean
 	make -C $(LIB_PATH) fclean
 	$(RM) $(NAME)
 
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY: all bonus clean fclean re
