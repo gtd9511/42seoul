@@ -6,6 +6,7 @@
 	"stdlib.h": "c",
 	"stdio.h": "c",
 	"ex": "c",
-	"push_swap.h": "c"
+	"push_swap.h": "c",
+	"string.h": "c"
 }
 }
