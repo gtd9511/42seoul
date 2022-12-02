@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:30 by sanghan           #+#    #+#             */
-/*   Updated: 2022/11/30 14:45:24 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/02 11:53:18 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct s_philo
+typedef struct s_info
 {
 	int				num_philo;
 	int				ready;
@@ -33,9 +33,9 @@ typedef struct s_philo
 	long long		start;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	*forks;
-}	t_philo;
+}	t_info;
 
-typedef struct s_thread
+typedef struct s_philo
 {
 	int				p_id;
 	int				is_die;
@@ -45,6 +45,6 @@ typedef struct s_thread
 	pthread_t		thread;
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
-	t_philo			*philo;
-}	t_thread;
+	t_info			*info;
+}	t_philo;
 #endif
