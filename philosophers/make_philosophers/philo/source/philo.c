@@ -6,25 +6,22 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:50 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/02 11:58:37 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:15:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	philo_start(t_info *info)
+void	print_state(t_philo *philo, char *str)
 {
-	t_philo	*philo;
-
-	philo = malloc(sizeof(t_philo) * info->num_philo);
-	if (!philo)
-		return (1);
-	init_philo(info, philo);
-	if (init_thread(info, philo))
-		return (1);
-	check_thread(info, philo);
-	thread_end(info, philo);
-	return (0);
+	pthread_mutex_lock(philo->info->death);
+	if (philo->info->over)
+	{
+		pthread_mutex_unlock(philo->info->death);
+		return ;
+	}
+	printf("%lldms %d %s\n", get_time() - philo->t_start, philo->p_id, str);
+	pthread_mutex_unlock(philo->info->death);
 }
 
 int	main(int argc, char *argv[])

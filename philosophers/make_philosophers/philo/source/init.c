@@ -6,11 +6,26 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:13 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/02 11:57:43 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:11:01 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int	philo_start(t_info *info)
+{
+	t_philo	*philo;
+
+	philo = malloc(sizeof(t_philo) * info->num_philo);
+	if (!philo)
+		return (1);
+	init_philo(info, philo);
+	if (init_thread(info, philo))
+		return (1);
+	check_thread(info, philo);
+	thread_end(info, philo);
+	return (0);
+}
 
 int	init_thread(t_info *info, t_philo *philo)
 {
