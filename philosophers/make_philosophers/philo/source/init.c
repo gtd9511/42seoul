@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:13 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 15:11:34 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/10 15:12:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	init_thread(t_info *info, t_philo *philo)
 
 void	init_philo(t_info *info, t_philo *philo)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < info->num_philo)

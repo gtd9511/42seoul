@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:30 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/02 11:53:18 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/10 15:13:15 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,7 @@ typedef struct s_philo
 	pthread_mutex_t	*right;
 	t_info			*info;
 }	t_philo;
+
+void	*philo_loop(void *job);
+
 #endif
