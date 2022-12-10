@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:30 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 16:23:31 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:52:14 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,17 @@ typedef struct s_philo
 	t_info			*info;
 }	t_philo;
 
+void			print_state(t_philo *philo, char *str);
 void			*philo_loop(void *job);
-unsigned long	get_time(void);
 int				ft_usleep(int time);
-int				philo_start(t_info *info);
-int				init_input(t_info *info, int argc, char *argv[]);
+unsigned long	get_time(void);
 int				ft_atoi(const char *str);
 int				error_free(char *str, t_info *info, t_philo *philo, int cnt);
-void			init_philo(t_info *info, t_philo *philo);
+int				philo_start(t_info *info);
 int				init_thread(t_info *info, t_philo *philo);
+void			init_philo(t_info *info, t_philo *philo);
+int				init_input(t_info *info, int argc, char *argv[]);
 void			check_thread(t_info *info, t_philo *philo);
 void			thread_end(t_info *info, t_philo *philo);
-void			print_state(t_philo *philo, char *str);
+
 #endif
