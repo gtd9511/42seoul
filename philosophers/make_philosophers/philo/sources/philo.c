@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:50 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 15:00:14 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/10 20:39:26 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_state(t_philo *philo, char *str)
 		pthread_mutex_unlock(philo->info->death);
 		return ;
 	}
-	printf("%lldms %d %s\n", get_time() - philo->t_start, philo->p_id, str);
+	printf("%lld %d %s\n", get_time() - philo->t_start, philo->p_id, str);
 	pthread_mutex_unlock(philo->info->death);
 }
 
