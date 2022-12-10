@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/11/25 18:49:37 by sanghan          ###   ########.fr        #
+#    Updated: 2022/12/10 16:41:11 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = philo.c
+SRCS = philo.c init.c philo_utils.c thread.c
 OBJS_NAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
@@ -29,17 +29,14 @@ $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	make -C $(LIB_PATH) all
-	$(CC) $(CFLAGS) -L$(LIB_PATH) -lft $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 all: $(NAME)
 
 clean:
-	make -C $(LIB_PATH) clean
 	$(RM) $(OBJS_PATH)
 
 fclean: clean
-	make -C $(LIB_PATH) fclean
 	$(RM) $(NAME)
 
 re:

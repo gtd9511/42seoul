@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:08:26 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/07 16:51:01 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:22:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_usleep(int time)
 {
-	long long	start_time;
+	unsigned long	start_time;
 
 	start_time = get_time();
-	while ((get_time() - start_time) < time)
+	while ((int)(get_time() - start_time) < time)
 		usleep(150);
 	return (1);
 }
@@ -32,7 +32,7 @@ unsigned long	get_time(void)
 
 void	error_exit(int type)
 {
-	pirntf("Error\n");
+	printf("Error\n");
 	exit(type);
 }
 
