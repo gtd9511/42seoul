@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:08:26 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/07 16:04:21 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:51:01 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	ft_usleep(int time)
 
 unsigned long	get_time(void)
 {
-	struct timeval	now;
+	struct timeval	current;
 
-	gettimeofday(&now, NULL);
-	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
+	gettimeofday(&current, NULL);
+	return ((current.tv_sec * 1000) + (current.tv_usec / 1000));
 }
 
 void	error_exit(int type)
