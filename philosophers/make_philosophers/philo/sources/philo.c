@@ -6,17 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:50 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/12 17:53:54 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/12 18:52:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-void	check_leak(void)
-{
-	system("leaks philo");
-}
-
 
 void	print_state(t_philo *philo, char *str)
 {
@@ -82,6 +76,5 @@ int	main(int argc, char *argv[])
 	}
 	if (philo_start(&info))
 		return (1);
-	atexit(check_leak);
 	return (0);
 }

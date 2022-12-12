@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/12/12 17:55:49 by sanghan          ###   ########.fr        #
+#    Updated: 2022/12/12 18:51:13 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ -g -fsanitize=thread
+	$(CC) $(CFLAGS) $^ -o $@
 
 all: $(NAME)
 
