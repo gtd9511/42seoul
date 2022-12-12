@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:32:34 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/14 16:04:44 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:26:28 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@ int	check_ready_guard(t_info *info)
 		return (0);
 	}
 	pthread_mutex_unlock(info->ready_guard);
-	return (1);
-}
-
-int	check_cnt_guard(t_philo *philo)
-{
-	int	cnt_checker;
-
-	cnt_checker = philo->eat_cnt;
-	pthread_mutex_lock(philo->info->cnt_guard);
-	if (philo->info->ready == cnt_checker)
-	{
-		pthread_mutex_unlock(philo->info->cnt_guard);
-		return (0);
-	}
-	pthread_mutex_unlock(philo->info->cnt_guard);
 	return (1);
 }
 
