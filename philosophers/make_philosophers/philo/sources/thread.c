@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:08:40 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/12 21:55:44 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:07:29 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	philo_die(t_philo *philo)
 {
 	print_state(philo, "is died");
-	pthread_mutex_lock(philo->info->over_guard);
+	pthread_mutex_lock(&philo->info->over_guard);
 	philo->info->over = 1;
-	pthread_mutex_unlock(philo->info->over_guard);
+	pthread_mutex_unlock(&philo->info->over_guard);
 	philo->is_die = 1;
 	pthread_mutex_unlock(philo->left);
 	pthread_mutex_unlock(philo->right);
@@ -28,22 +28,27 @@ int	check_death(t_philo *philo)
 {
 	long long	now;
 
-	pthread_mutex_lock(philo->info->death);
+	pthread_mutex_lock(&philo->info->death);
 	now = get_time() - philo->meal;
 	if (now >= philo->info->time_die)
 	{
-		pthread_mutex_unlock(philo->info->death);
+		pthread_mutex_unlock(&philo->info->death);
 		return (philo_die(philo));
 	}
-	pthread_mutex_unlock(philo->info->death);
+	pthread_mutex_unlock(&philo->info->death);
 	return (0);
 }
 
 int	check_meal(t_philo philo, int idx)
 {
+	pthread_mutex_lock(&philo.info->cnt_guard);
 	if (philo.info->chk_meal && idx == philo.info->num_philo - 1 && \
 	philo.eat_cnt == philo.info->must_eat)
+	{
+		pthread_mutex_unlock(&philo.info->cnt_guard);
 		return (ft_usleep(300));
+	}
+	pthread_mutex_unlock(&philo.info->cnt_guard);
 	return (0);
 }
 
@@ -60,18 +65,20 @@ void	check_thread(t_info *info, t_philo *philo)
 		{
 			if (check_death(&philo[i]) || check_meal(philo[i], i))
 			{
-				pthread_mutex_lock(philo->info->over_guard);
+				pthread_mutex_lock(&philo->info->over_guard);
 				info->over = 1;
-				pthread_mutex_unlock(philo->info->over_guard);
+				pthread_mutex_unlock(&philo->info->over_guard);
 			}
 			i++;
 		}
 	}
+	pthread_mutex_lock(&philo->info->cnt_guard);
 	if (info->chk_meal && philo[info->num_philo - 1].eat_cnt == info->must_eat)
 	{
 		ft_usleep(5 * info->num_philo);
 		printf("eating %d times\n", info->must_eat);
 	}
+	pthread_mutex_unlock(&philo->info->cnt_guard);
 }
 
 void	thread_end(t_info *info, t_philo *philo)
@@ -84,12 +91,10 @@ void	thread_end(t_info *info, t_philo *philo)
 		pthread_join(philo[i].thread, (void *)&philo[i]);
 		i++;
 	}
-	pthread_mutex_destroy(info->death);
-	pthread_mutex_destroy(info->over_guard);
-	pthread_mutex_destroy(info->ready_guard);
-	free(info->death);
-	free(info->over_guard);
-	free(info->ready_guard);
+	pthread_mutex_destroy(&info->death);
+	pthread_mutex_destroy(&info->over_guard);
+	pthread_mutex_destroy(&info->ready_guard);
+	pthread_mutex_destroy(&info->cnt_guard);
 	i = 0;
 	while (i < info->num_philo)
 	{

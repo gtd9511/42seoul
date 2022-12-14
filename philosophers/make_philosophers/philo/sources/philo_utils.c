@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:08:26 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 22:17:22 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:05:44 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,8 @@ int	error_free(char *str, t_info *info, t_philo *philo, int cnt)
 	int	i;
 
 	i = 0;
-	if (info->num_philo > 0 && info->death)
-	{
-		pthread_mutex_destroy(info->death);
-		free(info->death);
-	}
+	if (info->num_philo > 0)
+		pthread_mutex_destroy(&info->death);
 	if (info->num_philo > 0 && info->forks)
 	{
 		while (i < cnt)

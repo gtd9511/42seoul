@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:50 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/14 17:26:29 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:50:04 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	eating(t_philo *philo)
 	pthread_mutex_unlock(philo->info->death);
 	print_state(philo, "is eating");
 	ft_usleep(philo->info->time_eat);
+	pthread_mutex_lock(philo->eat_cnt);
 	philo->eat_cnt++;
+	pthread_mutex_unlock(philo->eat_cnt);
 	pthread_mutex_unlock(philo->left);
 	pthread_mutex_unlock(philo->right);
 }

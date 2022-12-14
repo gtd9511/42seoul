@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:13 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/12 20:40:05 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:49:19 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ void	init_philo(t_info *info, t_philo *philo)
 		philo[i].right = 0;
 		i++;
 	}
+}
+
+int init_mutex2(t_philo *philo)
+{
+	philo->eat_cnt = malloc(sizeof(pthread_mutex_t));
+	if (!philo->eat_cnt)
+		return (error_free("Error\n", philo->info, 0, 0));
+	if(pthread_mutex_init(philo->eat_cnt, NULL) == -1)
+		return (error_free("Error\n", philo->info, 0, 0));
+	return (0);
 }
 
 int	init_mutexes(t_info *info)

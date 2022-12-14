@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:30 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/14 17:26:21 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:57:16 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_info
 	int				chk_meal;
 	int				over;
 	long long		start;
-	pthread_mutex_t	*over_guard;
-	pthread_mutex_t	*ready_guard;
-	pthread_mutex_t	*cnt_guard;
-	pthread_mutex_t	*death;
+	pthread_mutex_t	over_guard;
+	pthread_mutex_t	ready_guard;
+	pthread_mutex_t	cnt_guard;
+	pthread_mutex_t	death;
 	pthread_mutex_t	*forks;
 }	t_info;
 
