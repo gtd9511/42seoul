@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:50 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/14 17:50:04 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:12:22 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	print_state(t_philo *philo, char *str)
 {
-	pthread_mutex_lock(philo->info->death);
+	pthread_mutex_lock(&philo->info->death);
 	if (check_over_guard(philo->info))
 	{
-		pthread_mutex_unlock(philo->info->death);
+		pthread_mutex_unlock(&philo->info->death);
 		return ;
 	}
 	printf("%lld %d %s\n", get_time() - philo->t_start, philo->p_id, str);
-	pthread_mutex_unlock(philo->info->death);
+	pthread_mutex_unlock(&philo->info->death);
 }
 
 void	sleeping(t_philo *philo)
@@ -41,14 +41,14 @@ void	eating(t_philo *philo)
 	print_state(philo, "has taken a fork");
 	pthread_mutex_lock(philo->right);
 	print_state(philo, "has taken a fork");
-	pthread_mutex_lock(philo->info->death);
+	pthread_mutex_lock(&philo->info->death);
 	philo->meal = get_time();
-	pthread_mutex_unlock(philo->info->death);
+	pthread_mutex_unlock(&philo->info->death);
 	print_state(philo, "is eating");
 	ft_usleep(philo->info->time_eat);
-	pthread_mutex_lock(philo->eat_cnt);
+	pthread_mutex_lock(&philo->info->cnt_guard);
 	philo->eat_cnt++;
-	pthread_mutex_unlock(philo->eat_cnt);
+	pthread_mutex_unlock(&philo->info->cnt_guard);
 	pthread_mutex_unlock(philo->left);
 	pthread_mutex_unlock(philo->right);
 }
@@ -65,11 +65,14 @@ void	*philo_loop(void *job)
 	while (!(check_over_guard(philo->info)))
 	{
 		eating(philo);
+		pthread_mutex_lock(&philo->info->cnt_guard);
 		if (philo->eat_cnt == philo->info->must_eat)
 		{
+			pthread_mutex_unlock(&philo->info->cnt_guard);
 			sleeping(philo);
 			return (NULL);
 		}
+		pthread_mutex_unlock(&philo->info->cnt_guard);
 		sleeping(philo);
 		thinking(philo);
 	}

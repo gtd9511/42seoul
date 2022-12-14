@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:13 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/14 17:49:19 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:56:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	init_thread(t_info *info, t_philo *philo)
 		philo[i].t_start = info->start;
 		philo[i].meal = info->start;
 	}
-	pthread_mutex_lock(info->ready_guard);
+	pthread_mutex_lock(&info->ready_guard);
 	info->ready = 1;
-	pthread_mutex_unlock(info->ready_guard);
+	pthread_mutex_unlock(&info->ready_guard);
 	return (0);
 }
 
@@ -71,36 +71,18 @@ void	init_philo(t_info *info, t_philo *philo)
 	}
 }
 
-int init_mutex2(t_philo *philo)
-{
-	philo->eat_cnt = malloc(sizeof(pthread_mutex_t));
-	if (!philo->eat_cnt)
-		return (error_free("Error\n", philo->info, 0, 0));
-	if(pthread_mutex_init(philo->eat_cnt, NULL) == -1)
-		return (error_free("Error\n", philo->info, 0, 0));
-	return (0);
-}
-
 int	init_mutexes(t_info *info)
 {
 	int	i;
 
 	i = -1;
-	info->over_guard = malloc(sizeof(pthread_mutex_t));
-	if (!info->over_guard)
-		return (error_free("Error\n", info, 0, 0));
-	info->ready_guard = malloc(sizeof(pthread_mutex_t));
-	if (!info->ready_guard)
-		return (error_free("Error\n", info, 0, 0));
-	info->death = malloc(sizeof(pthread_mutex_t));
-	if (!info->death)
-		return (error_free("Error\n", info, 0, 0));
 	info->forks = malloc(sizeof(pthread_mutex_t) * info->num_philo);
 	if (!info->forks)
 		return (error_free("Error\n", info, 0, 0));
-	if (pthread_mutex_init(info->over_guard, NULL) == -1 \
-		|| pthread_mutex_init(info->ready_guard, NULL) == -1 \
-		|| pthread_mutex_init(info->death, NULL) == -1)
+	if (pthread_mutex_init(&info->over_guard, NULL) == -1 \
+		|| pthread_mutex_init(&info->ready_guard, NULL) == -1 \
+		|| pthread_mutex_init(&info->cnt_guard, NULL) == -1 \
+		|| pthread_mutex_init(&info->death, NULL) == -1)
 		return (error_free("Error\n", info, 0, 0));
 	while (++i < info->num_philo)
 	{

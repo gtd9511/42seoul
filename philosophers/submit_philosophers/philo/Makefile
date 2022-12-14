@@ -6,13 +6,13 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/12/14 17:29:03 by sanghan          ###   ########.fr        #
+#    Updated: 2022/12/14 18:10:32 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CC = cc
+CC = cc -g3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
