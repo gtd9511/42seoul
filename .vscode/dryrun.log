@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 make --dry-run --always-make --keep-going --print-directory
+=======
+make --dry-run --keep-going --print-directory
+>>>>>>> 05cd25c... 221216 m00
 make: Entering directory `/Users/han/42Seoul/cursus'
 make: Leaving directory `/Users/han/42Seoul/cursus'
  
