@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:08:40 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 22:17:03 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/12 20:59:19 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	philo_die(t_philo *philo)
 {
 	print_state(philo, "is died");
+	pthread_mutex_lock(philo->info->over_guard);
 	philo->info->over = 1;
+	pthread_mutex_unlock(philo->info->over_guard);
 	philo->is_die = 1;
 	pthread_mutex_unlock(philo->left);
 	pthread_mutex_unlock(philo->right);
@@ -49,15 +51,19 @@ void	check_thread(t_info *info, t_philo *philo)
 {
 	int	i;
 
-	while (!info->ready)
+	while (!(check_ready_guard(info)))
 		continue ;
-	while (!info->over)
+	while (!(check_over_guard(info)))
 	{
 		i = 0;
 		while (i < info->num_philo)
 		{
 			if (check_death(&philo[i]) || check_meal(philo[i], i))
+			{
+				pthread_mutex_lock(philo->info->over_guard);
 				info->over = 1;
+				pthread_mutex_unlock(philo->info->over_guard);
+			}
 			i++;
 		}
 	}
@@ -79,6 +85,7 @@ void	thread_end(t_info *info, t_philo *philo)
 		i++;
 	}
 	pthread_mutex_destroy(info->death);
+	pthread_mutex_destroy(info->over_guard);
 	free(info->death);
 	i = 0;
 	while (i < info->num_philo)

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:43:30 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/10 18:25:00 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/12 20:45:50 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_info
 	int				chk_meal;
 	int				over;
 	long long		start;
+	pthread_mutex_t	*over_guard;
+	pthread_mutex_t	*ready_guard;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	*forks;
 }	t_info;
@@ -60,5 +62,7 @@ void			init_philo(t_info *info, t_philo *philo);
 int				init_input(t_info *info, int argc, char *argv[]);
 void			check_thread(t_info *info, t_philo *philo);
 void			thread_end(t_info *info, t_philo *philo);
+int				check_over_guard(t_info *info);
+int				check_ready_guard(t_info *info);
 
 #endif

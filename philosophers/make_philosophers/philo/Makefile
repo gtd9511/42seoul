@@ -6,13 +6,13 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2022/12/12 18:51:13 by sanghan          ###   ########.fr        #
+#    Updated: 2022/12/12 20:33:15 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CC = cc
+CC = cc -g -fsanitize=thread
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -20,7 +20,7 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = philo.c init.c philo_utils.c thread.c
+SRCS = philo.c init.c philo_utils.c thread.c guard.c
 OBJS_NAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
