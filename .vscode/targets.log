@@ -10,8 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Fri Dec 16 15:40:18 2022
- 
+# Make data base, printed on Mon Dec 19 19:30:37 2022
 
 # Variables
 
@@ -22,6 +21,7 @@ make: *** No rule to make target `all'.  Stop.
 # environment
 NVM_INC = /Users/han/.nvm/versions/node/v18.1.0/include/node
 # automatic
+ 
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -99,7 +99,6 @@ CONDA_DEFAULT_ENV = base
 XPC_FLAGS = 0x0
 # default
 MAKE = $(MAKE_COMMAND)
- 
 # default
 MAKECMDGOALS := all
 # environment
@@ -146,6 +145,7 @@ HOMEBREW_PREFIX = /opt/homebrew
 +F = $(notdir $+)
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
+ 
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
 # environment
@@ -179,7 +179,6 @@ _CE_CONDA =
 # environment
 LANG = C
 # variable set hash-table stats:
- 
 # Load=81/1024=8%, Rehash=0, Collisions=2/101=2%
 
 # Pattern-specific Variable Values
@@ -262,6 +261,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Fri Dec 16 15:40:18 2022
+# Finished Make data base on Mon Dec 19 19:30:37 2022
 
  

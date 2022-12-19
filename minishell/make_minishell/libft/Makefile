@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 15:40:54 by sanghan           #+#    #+#              #
-#    Updated: 2022/05/20 09:34:18 by sanghan          ###   ########.fr        #
+#    Updated: 2022/10/28 19:13:05 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ FILES = ft_memset \
 		ft_putstr_fd \
 		ft_putendl_fd \
 		ft_putnbr_fd \
+		get_next_line \
+		get_next_line_utils
 
 FILES_B = 	ft_lstnew \
 	  		ft_lstadd_front \

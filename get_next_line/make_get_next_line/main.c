@@ -12,7 +12,7 @@ int	main(void)
 	int				fd;
 	int				i;
 
-	fd = open("check.txt", O_RDONLY);
+	fd = open("shanghai.txt", O_RDONLY);
 	if (!fd)
 		return (1);
 	i = 0;
