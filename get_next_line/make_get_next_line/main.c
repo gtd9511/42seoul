@@ -25,6 +25,6 @@ int	main(void)
 		free(line);
 	}
 	close(fd);
-	system("leaks a.out");
+	//system("leaks a.out");
 	return (0);
 }

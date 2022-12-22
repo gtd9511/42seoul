@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:51:04 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/19 18:53:36 by sanghan          ###   ########.fr       */
+/*   Updated: 2022/12/22 19:12:21 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <term.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <../libft/libft.h>
+# include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 
 # define MAXSIZE		1024
@@ -44,6 +44,7 @@
 
 # define COLOR_BR_BLUE	"\033[34;1m"
 # define COLOR_WHITE	"\033[37m"
+# define COLOR_YELLOW	"\033[33m"
 # define COLOR_CYAN		"\033[36m"
 # define END_COLOR		"\033[0m"
 
