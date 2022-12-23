@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #    Updated: 2022/12/22 15:12:58 by sanghan          ###   ########.fr        #
 =======
 #    Updated: 2022/12/22 16:25:20 by sanghan          ###   ########.fr        #
@@ -19,6 +20,9 @@
 =======
 #    Updated: 2022/12/22 19:01:11 by sanghan          ###   ########.fr        #
 >>>>>>> 358d049... 221222 c03
+=======
+#    Updated: 2022/12/26 13:20:58 by sanghan          ###   ########.fr        #
+>>>>>>> b3d42fe... 230104 00
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +41,10 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-#LDFLAGS = -L/opt/homebrew/opt/readline/lib
-#CPPFLAGS = -I/opt/homebrew/opt/readline/include
-LDFLAGS = -L/goinfre/sanghan/.brew/opt/readline/lib
-CPPFLAGS = -I/goinfre/sanghan/.brew/opt/readline/include
+LDFLAGS = -L/opt/homebrew/opt/readline/lib
+CPPFLAGS = -I/opt/homebrew/opt/readline/include
+#LDFLAGS = -L/goinfre/sanghan/.brew/opt/readline/lib
+#CPPFLAGS = -I/goinfre/sanghan/.brew/opt/readline/include
 READ_LIB = -lreadline
 
 <<<<<<< HEAD

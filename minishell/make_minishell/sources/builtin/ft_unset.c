@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 18:38:57 by sanghan           #+#    #+#             */
-/*   Updated: 2023/01/04 14:48:20 by sanghan          ###   ########.fr       */
+/*   Created: 2022/12/23 13:05:38 by sanghan           #+#    #+#             */
+/*   Updated: 2023/01/04 15:09:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_pwd(t_parser_token *parser_token)
+int	ft_unset(t_parser_token *parser_token, t_env *env_list)
 {
-	char	*path;
+	int	i;
 
-	if (parser_token->cmd == NULL)
+	if (parser_token->cmd->next->content == NULL)
 		return (0);
-	path = getcwd(NULL, 0);
-	if (!path)
+	i = 1;
+	while (parser_token->cmd->next->content)
 	{
-		ft_putstr_fd("Error Path\n", STDERR_FILENO);
-		return (1);
+		if 
 	}
-	ft_putstr_fd(path, STDOUT_FILENO);
-	ft_putstr_fd("\n", STDOUT_FILENO);
-	free(path);
-	return (0);
 }

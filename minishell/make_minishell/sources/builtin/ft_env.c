@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 18:38:57 by sanghan           #+#    #+#             */
-/*   Updated: 2023/01/04 14:48:20 by sanghan          ###   ########.fr       */
+/*   Created: 2022/12/23 13:05:26 by sanghan           #+#    #+#             */
+/*   Updated: 2023/01/04 16:36:50 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_pwd(t_parser_token *parser_token)
+void	print_env_list(t_env *env_list)
 {
-	char	*path;
+	t_env	*temp;
 
-	if (parser_token->cmd == NULL)
-		return (0);
-	path = getcwd(NULL, 0);
-	if (!path)
+	temp = env_list;
+	while (temp)
 	{
-		ft_putstr_fd("Error Path\n", STDERR_FILENO);
-		return (1);
+		printf("%s=%s\n", temp->key, temp->value);
+		temp = temp->next;
 	}
-	ft_putstr_fd(path, STDOUT_FILENO);
-	ft_putstr_fd("\n", STDOUT_FILENO);
-	free(path);
+}
+
+int	ft_env(char **cmd, t_env *env_list)
+{
+	if (cmd[1] != NULL)
+		return (0);
+	print_env_list(env_list);
 	return (0);
 }

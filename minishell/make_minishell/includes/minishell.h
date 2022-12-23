@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:51:04 by sanghan           #+#    #+#             */
-/*   Updated: 2022/12/22 19:12:21 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:36:06 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,25 @@
 # define COLOR_YELLOW	"\033[33m"
 # define COLOR_CYAN		"\033[36m"
 # define END_COLOR		"\033[0m"
+
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+
+typedef struct s_parser_token
+{
+	t_list	*cmd;
+	t_list	*in;
+	t_list	*out;
+}	t_parser_token;
+
+typedef struct s_exec_token
+{
+	t_parser_token	*parser_token;
+	char			**cmd;
+}	t_exec_token;
 
 #endif

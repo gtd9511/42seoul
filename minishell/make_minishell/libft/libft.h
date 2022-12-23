@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:44:03 by sanghan           #+#    #+#             */
-/*   Updated: 2022/05/20 14:29:10 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/04 13:53:35 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 typedef struct s_list
 {
-	void			*content;
+	char			*content;
+	int				label;
 	struct s_list	*next;
 }		t_list;
 

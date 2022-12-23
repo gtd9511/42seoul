@@ -10,12 +10,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Dec 22 18:52:28 2022
+# Make data base, printed on Mon Dec 26 13:49:17 2022
 
 # Variables
 
- 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
@@ -73,7 +73,6 @@ ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 MANPATH = /Users/han/.nvm/versions/node/v18.1.0/share/man:/opt/homebrew/share/man::
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
- 
 # environment
 HOME = /Users/han
 # default
@@ -150,6 +149,7 @@ HOMEBREW_REPOSITORY = /opt/homebrew
 __CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
 # environment
 COMMAND_MODE = unix2003
+ 
 # default
 MAKEFILES := 
 # automatic
@@ -170,7 +170,6 @@ SUFFIXES :=
 _CE_M = 
 # environment
 MAKELEVEL := 0
- 
 # environment
 CONDA_PREFIX = /Users/han/miniforge3
 # environment
@@ -262,6 +261,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Dec 22 18:52:28 2022
+# Finished Make data base on Mon Dec 26 13:49:17 2022
 
  
