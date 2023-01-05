@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:51:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/01/04 16:36:06 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/05 20:00:04 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@
 # define COLOR_CYAN		"\033[36m"
 # define END_COLOR		"\033[0m"
 
+# define NORMAL_STRING 0
+# define DOUBLE_QUOTE 1
+# define SINGLE_QUOTE 2
+# define BLANK 3
+# define PIPE 4
+# define REDIR_IN 5
+# define REDIR_HEREDOC 6
+# define REDIR_OUT 7
+# define REDIR_DOUBLE_OUT 8
+# define AFTER_HEREDOC 9
+# define AFTER_HEREDOC_DQ 10
+# define AFTER_HEREDOC_SQ 11
 typedef struct s_env
 {
 	char			*key;
@@ -67,5 +79,9 @@ typedef struct s_exec_token
 	t_parser_token	*parser_token;
 	char			**cmd;
 }	t_exec_token;
+
+t_env	*make_env_node(char *key, char *value);
+void	env_list_add_node(t_env **list, t_env *node);
+int	is_key_in_env_list(char *key, t_env *env_list);
 
 #endif

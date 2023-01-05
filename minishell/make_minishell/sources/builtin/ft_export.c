@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:05:35 by sanghan           #+#    #+#             */
-/*   Updated: 2023/01/04 16:42:14 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/05 20:02:16 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,44 @@ int	is_key_in_env_list(char *key, t_env *env_list)
 	temp = env_list;
 	while (temp)
 	{
-		
+		if (ft_strncmp(temp->key, key, ft_strlen(key) + 1) == 0)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
+}
+
+int	is_valid_format_key(char *key)
+{
+	int	i;
+
+	if (!(ft_isalpha(key[0]) || key[0] == '_'))
+		return (0);
+	i = 1;
+	while (key[i])
+	{
+		if (!(ft_isalpha(key[i]) || key[i] == '_'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	update_value(char *key, char *value, t_env **env_list)
+{
+	t_env	*temp;
+
+	if (!key || value)
+		return ;
+	temp = *env_list;
+	while (temp)
+	{
+		if (ft_strncmp(temp->key, key, ft_strlen(key) + 1) == 0)
+		{
+			free(temp->value);
+			temp->value = value;
+		}
+		temp = temp->next;
 	}
 }
 
@@ -29,7 +66,21 @@ void	execute_export(char *key, char *value, t_env *env_list)
 {
 	t_env	*node;
 
-	if (is_key_)
+	if (is_key_in_env_list(key, env_list))
+		update_value(key, value, &env_list);
+	else
+	{
+		if (!(is_valid_format_key(key)))
+		{
+			free(key);
+			free(value);
+			return ;
+		}
+		node = make_env_node(key, value);
+		if (!node)
+			return ;
+		env_list_add_node(&env_list, node);
+	}
 }
 
 int	ft_export(char **cmd, t_env *env_list)
@@ -42,7 +93,7 @@ int	ft_export(char **cmd, t_env *env_list)
 	if (cmd[i] == NULL)
 		print_env_list(env_list);
 	i = 1;
-	while (cmd[i] != NULL)
+	while (cmd[i] != NULL) // export만 입력했을 때 목록 표시
 	{
 		j = 0;
 		while (cmd[i][j] && cmd[i][j] != '=')
