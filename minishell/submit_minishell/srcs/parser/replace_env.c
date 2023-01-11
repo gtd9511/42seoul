@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 09:58:22 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/12 05:13:27 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/12 05:55:52 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*join_env(char *before, char *value, char *after)
 	char	*join;
 
 	if (!value)
-		value = ft_strdup("");
+		value = "";
 	if (!before | !value | !after)
 		return (0);
 	str = (char *)malloc(sizeof(char) * (ft_strlen(before) \
