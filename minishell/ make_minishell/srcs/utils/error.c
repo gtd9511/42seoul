@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 17:28:06 by sanghan           #+#    #+#             */
+/*   Updated: 2023/01/11 23:59:49 by hajeong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
@@ -38,4 +49,19 @@ int	free_init_exec_info(pid_t **pids, int ***fds, int i)
 	if (*fds != NULL)
 		free(*fds);
 	return (1);
+}
+
+void	rm_all_heredoc_file(void)
+{
+	int		i;
+	char	*filename;
+
+	i = 0;
+	while (i < g_info.heredoc_cnt)
+	{
+		filename = ft_join_and_free("/tmp/", ft_itoa(i));
+		unlink(filename);
+		free(filename);
+		i++;
+	}
 }
