@@ -1,5 +1,6 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
+
 
 char	*get_env_value(t_env *env_list, char *key)
 {

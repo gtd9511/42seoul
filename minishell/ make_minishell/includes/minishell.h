@@ -45,9 +45,9 @@ typedef struct s_env
 
 typedef struct s_parser_token
 {
-	t_list *cmd;
-	t_list *in;
-	t_list *out;
+	t_list	*cmd;
+	t_list	*in;
+	t_list	*out;
 }	t_parser_token;
 
 typedef struct s_exec_token
@@ -115,7 +115,7 @@ void	set_echoctl_on(void);
 void	free_2d_array(char **str);
 void	error_exit(char *str, int status);
 int		error_return(char *str);
-int		free_init_exec_info(pid_t **pids, int ***fds, int i);
+int	free_init_exec_info(pid_t **pids, int ***fds, int i);
 
 char	*read_cmd(void);
 
@@ -140,6 +140,12 @@ int		ft_unset(char **cmd, t_env *env_list);
 void	delete_node(char *key, t_env **env_list);
 t_env	*get_node(char *key, t_env *env_list);
 
+// echo
+int		ft_echo(char **cmd);
+
+// cd
+int		ft_cd(char **cmd);
+
 // exec_cmd
 void	exec_cmd(t_exec_token *token, t_env *env_list, int len);
 void	run_execve_cmd(char **cmd_list, t_env *env_list);
@@ -161,13 +167,10 @@ void	heredoc_child_process(char *limiter, t_env *env_list);
 // exec_pipe
 int		init_exec_info(pid_t **pids, int ***fds, int len);
 void	close_all_fds(int **fds, int len);
-void	wait_all_childs(int len);
+void	wait_all_childs(pid_t *pids, int len);
 void	exec_pipe(t_exec_token token, int i, pid_t *pids, int **fds, t_env *env_list, int len);
 void	child_process(int **fds, int i, t_exec_token token, t_env *env_list, int len);
 
-int	ft_exit(char **cmd);
-int	ft_cd(char **cmd);
-int	ft_echo(char **cmd);
-int	ft_pwd(char **cmd);
-
+int		ft_exit(char **cmd);
+int		ft_pwd(char **cmd);
 #endif

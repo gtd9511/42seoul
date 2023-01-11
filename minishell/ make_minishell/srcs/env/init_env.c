@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 t_env	*init_env_list(char **envp)
 {

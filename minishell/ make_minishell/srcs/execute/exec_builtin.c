@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int	is_builtin(t_exec_token *token)
 {

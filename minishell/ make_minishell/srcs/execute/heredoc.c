@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	set_heredoc_input(t_exec_token *token, t_env *env_list, int len)
 {

@@ -1,5 +1,4 @@
-
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_export(char **cmd, t_env *env_list)
 {

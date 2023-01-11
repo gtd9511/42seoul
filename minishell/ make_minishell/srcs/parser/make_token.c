@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   make_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:39:29 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/09 20:08:10 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:44:12 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int make_token(t_exec_token **token, char *cmd, int *len)
 {
 	t_list	*lexer_token;
 	t_parser_token	*parser_token;
 	int code;
-	
+
 	lexer_token = NULL;
 	code = parsing_error_handle(parsing(&lexer_token, cmd, g_info.env_list));
 	if (code != 0)

@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	exec_cmd(t_exec_token *token, t_env *env_list, int len)
 {
@@ -8,7 +8,7 @@ void	exec_cmd(t_exec_token *token, t_env *env_list, int len)
 	int		i;
 
 	if (len == 1 && is_builtin(token))
-		return (exec_builtin(token, env_list));
+		return exec_builtin(token, env_list);
 	set_heredoc_input(token, env_list, len);
 	if (token->parser_token->cmd == NULL)
 		return ;
@@ -20,7 +20,7 @@ void	exec_cmd(t_exec_token *token, t_env *env_list, int len)
 		i++;
 	}
 	close_all_fds(fds, len);
-	wait_all_childs(len);
+	wait_all_childs(pids, len);
 	free_init_exec_info(&pids, &fds, len - 1);
 	unlink(".here_doc_temp");
 	return ;
@@ -43,7 +43,7 @@ void	run_execve_cmd(char **cmd_list, t_env *env_list)
 		path = get_path(cmd, env);
 		free(cmd);
 	}
-	if (!path)
+	if (path)
 	{
 		if (execve(path, cmd_list, env) == -1)
 			error_exit("command not found\n", 127);

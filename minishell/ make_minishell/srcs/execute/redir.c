@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	set_redir(t_parser_token *parser_token, t_env *env_list)
 {
@@ -26,7 +26,7 @@ char	*replace_env_heredoc(char *str, t_env *env_list)
 	char	*key;
 	char	*key_end;
 	char	*temp;
-	
+
 	while (ft_strchr(str, '$'))
 	{
 		key = ft_strchr(str, '$'); // $의 인덱스
@@ -58,7 +58,7 @@ void	set_redir_in(char *redir_sign, char *filename)
 		error_exit("open error\n", 1);
 	}
 	if (dup2(fd, STDIN_FILENO) == -1)
-		error_exit("dup2 error\n", 1);    
+		error_exit("dup2 error\n", 1);
 	close(fd);
 }
 

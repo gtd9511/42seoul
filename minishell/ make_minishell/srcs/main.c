@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:28:40 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/10 19:49:04 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:17 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	show_shanghai(void)
 	int		fd;
 	char	*line;
 
-	fd = open("/Users/han/temp/0109/includes/shanghai.txt", O_RDONLY);
+	fd = open("/Users/han/temp/0111/srcs/utils/shanghai.txt", O_RDONLY);
 //	fd = open("/Users/sanghan/han/cursus/minishell/make_minishell/includes/shanghai.txt", O_RDONLY);
 	if (!fd)
 		return ;
@@ -52,11 +52,14 @@ int	main(int argc, char *argv[], char *envp[])
 	g_info.exit_status = 0;
 	while (1)
 	{
+		//printf("==================exit status : %d\n", g_info.exit_status);
 		cmd = read_cmd();
 		if (ft_strlen(cmd) >= 1)
 			add_history(cmd);
 		if (make_token(&token, cmd, &len) != 0)
 			continue ;
+		// if (token->parser_token->cmd == NULL) // hi
+		// 	continue ;
 		exec_cmd(token, g_info.env_list, len);
 		free_all_token(token, token->parser_token, len);
 		free(cmd);

@@ -1,5 +1,5 @@
+#include "../../includes/minishell.h"
 
-#include "minishell.h"
 
 // return value -> 0 : success, 1 : fail
 int	ft_env(char **cmd, t_env *env_list)
