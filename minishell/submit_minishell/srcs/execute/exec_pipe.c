@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:19:45 by sanghan           #+#    #+#             */
-/*   Updated: 2023/01/11 20:34:30 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/12 07:41:18 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,12 @@ void	wait_all_childs(pid_t *pids, int len)
 			break ;
 		if (WIFEXITED(status))
 			g_info.exit_status = WEXITSTATUS(status);
-		else if (WIFSIGNALED(status))
-			g_info.exit_status = WCOREFLAG | WTERMSIG(status);
 		if (pid != pids[len - 1])
 			continue ;
 	}
 	pid = waitpid(-1, &status, 0);
 	if (WIFEXITED(status))
 		g_info.exit_status = WEXITSTATUS(status);
-	else if (WIFSIGNALED(status))
-		g_info.exit_status = WCOREFLAG | WTERMSIG(status);
 }
 
 void	exec_pipe(t_exec_token *token, pid_t *pids, int **fds, int len)
@@ -112,7 +108,7 @@ void	child_process(int **fds, int i, t_exec_token token, int len)
 		close(fds[i][1]);
 		i++;
 	}
-	set_redir(&token, g_info.env_list);
+	set_redir(&token);
 	if (is_builtin(&token))
 		exec_builtin(&token, g_info.env_list);
 	else
