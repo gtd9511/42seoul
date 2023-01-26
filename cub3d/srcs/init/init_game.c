@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:48:22 by doykim            #+#    #+#             */
-/*   Updated: 2023/01/25 17:19:29 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/01/26 16:28:34 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@ void	init_game(int ac, char *av[], t_game *game)
 	game->so_path = NULL;
 	game->we_path = NULL;
 	game->ea_path = NULL;
-	game->floor.r = 0;
-	game->floor.g = 0;
-	game->floor.b = 0;
-	game->ceil.r = 0;
-	game->ceil.g = 0;
-	game->ceil.b = 0;
+	game->floor = NULL;
+	game->ceil = NULL;
+	game->plane_x = 0;
+	game->plane_y = 0;
 	game->player.x = 0;
 	game->player.y = 0;
-	game->player.dir = 0;
-	check_file(ac, av, game);
+	game->player.dir_x = 0;
+	game->player.dir_y = 0;
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 1920, 1080, "cub3d");
+	check_file(ac, av, game);
+	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3d");
 }
