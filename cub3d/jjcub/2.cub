@@ -1,0 +1,16 @@
+
+
+
+NO ./resource/image/wall0.xpm
+SO ./resource/image/wall1.xpm
+WE ./resource/image/wall2.xpm
+EA ./resource/image/wall3.xpm
+
+F 93,173,236
+C 255,255,230
+
+ 111111
+1S000001
+ 111101
+1    1
+1
