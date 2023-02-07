@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:32:29 by doykim            #+#    #+#             */
-/*   Updated: 2023/02/07 18:37:28 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/02/07 22:05:09 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ typedef struct s_ray
 	int		stepY;
 	int		hit;
 	int		side;
+	double	wall_x;
+	double	texture_x;
+	double	texture_y;
+	double	step;
+	double	texture_pos;
 }	t_ray;
 
 typedef struct s_game
@@ -94,7 +99,7 @@ typedef struct s_game
 	double		movespeed;
 	double		rotspeed;
 	t_player	player;
-//	t_img		*img;
+	t_img		*img;
 	t_ray		*ray;
 	t_img		img_no;
 	t_img		img_so;
@@ -134,5 +139,5 @@ void	error_exit(int n);
 void	free_2d_array(char **str);
 void	print_2d(char **arr);
 
-int		raycasting(t_game *game);
+void	raycasting(t_game *game);
 #endif
