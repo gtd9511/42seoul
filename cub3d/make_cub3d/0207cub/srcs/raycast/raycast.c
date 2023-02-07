@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:43:27 by doykim            #+#    #+#             */
-/*   Updated: 2023/02/07 18:39:48 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/02/07 20:36:12 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,40 @@ void	raycasting(t_game *game)
 			ray.stepX = 1;
 			ray.sideDistX = (ray.mapX + 1.0 - game->player.x) * ray.deltaDistX;
 		}
-		
+		if (ray.ray_dir_y < 0)
+		{
+			ray.stepY = -1;
+			ray.sideDistY = (game->player.y - ray.mapX) * ray.deltaDistY;
+		}
+		else{
+			ray.stepY = 1;
+			ray.sideDistY = (ray.mapY + 1.0 - game->player.y) * ray.deltaDistY;
+		}
 	}
+
+	ray.mapX = game->player.x;
+	ray.mapY = game->player.y;
+	while (ray.hit == 0)
+	{
+		if (ray.sideDistX < ray.sideDistY)
+		{
+			ray.sideDistX += ray.deltaDistX;
+			ray.mapX += ray.stepX;
+			ray.side = 0;
+		}
+		else
+		{
+			ray.sideDistY += ray.deltaDistY;
+			ray.mapY += ray.stepY;
+			ray.side = 1;
+		}
+		if (game->map[ray.mapY][ray.mapX] > '0')
+			ray.hit = 1;
+	}
+
+	if (ray.side == 0)
+		ray.perpWallDist = (ray.mapX - game->player.x + (1 - ray.stepX) / 2) / ray.ray_dir_x;
+	else
+		ray.perpWallDist = (ray.mapY - game->player.y + (1 - ray.stepY) / 2) / ray.ray_dir_y;
 
 }
