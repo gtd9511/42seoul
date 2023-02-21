@@ -6,14 +6,14 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 19:13:56 by sanghan           #+#    #+#              #
-#    Updated: 2023/02/15 19:15:13 by sanghan          ###   ########.fr        #
+#    Updated: 2023/02/20 13:31:28 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM = rm -rf
 
 SRCS_PATH = ./sources
@@ -26,10 +26,10 @@ OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJS_PATH)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CC) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 all: $(NAME)
 
