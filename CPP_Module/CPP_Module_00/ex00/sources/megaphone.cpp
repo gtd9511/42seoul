@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:37:30 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/03 15:12:10 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/06 15:42:39 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	int	j;
+	int j;
 
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
@@ -25,11 +25,10 @@ int	main(int argc, char *argv[])
 			j = 0;
 			while (argv[i][j] != '\0')
 			{
-				std::cout << std::toupper(argv[i][j]);
+				std::cout << static_cast<char>(std::toupper(argv[i][j]));
 				j++;
 			}
 		}
 	}
 	std::cout << std::endl;
-	return (0);
 }

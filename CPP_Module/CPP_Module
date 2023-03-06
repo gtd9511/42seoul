@@ -1,0 +1,139 @@
+​
+# CPP Moduel 00
+> This first module of C++ is designed to help you understand the specifities of the language when compared to C. Time to dive into Object Oriented Programming!
+​
+## 여기서 배워가야 하는 것
+- Namespaces
+- classes
+- Member functions
+- Stdio streams
+- Initialization lists
+- Static
+- Const and some other basic stuff
+​
+Namespace
+- [모두의 코드: 1 - 2. 첫 C++ 프로그램 분석하기](https://modoocode.com/136)
+​
+Classes
+- [모두의 코드: 4 - 1. 이 세상은 객체로 이루어져 있다](https://modoocode.com/172)
+​
+Member functions
+- [](https://modoocode.com/)
+​
+Stdio streams
+- [7 - 1. C++ 에서의 입출력 (istream, ostream)](https://modoocode.com/213)
+- [7 - 2. C++ 파일 입출력 (ifstream, ofstream, stringstream)](https://modoocode.com/215)
+​
+Initialization lists
+- [](https://modoocode.com/)
+​
+Static, Const and some other basic stuff
+- [4 - 4. 스타크래프트를 만들자 ② (const, static)](https://modoocode.com/197)
+​
+# CPP Moduel 01
+> This module is designed to help you understand the memory allocation, reference, pointers to members and the usage of the switch in CPP.
+​
+## 여기서 배워가야 하는 것
+- Memory allocation
+- Pointers to members
+- References
+- Switch statement
+​
+Memory allocation
+- [3. C++ 의 세계로 오신 것을 환영합니다(new, delete)](https://modoocode.com/169)
+​
+Pointers to members
+- [](https://modoocode.com/)
+​
+References
+- [C++ 참조자(레퍼런스)의 도입](https://modoocode.com/141)
+​
+Switch statement
+- [](https://modoocode.com/)
+​
+# CPP Moduel 02
+> This module is designed to help you understand Ad-hoc polymorphism, overloads and orthodox canonical classes in CPP.
+​
+## 여기서 배워가야 하는 것
+- Ad-hoc polymorphism
+- operator overloading and Orthodox Canonical class form
+​
+Ad-hoc polymorphism
+- [](https://modoocode.com/)
+​
+operator overloading and Orthodox Canonical class form
+- [5 - 1. 내가 만든 연산자 - 연산자 오버로딩](https://modoocode.com/202)
+- [5 - 2. 입출력, 첨자, 타입변환, 증감 연산자 오버로딩](https://modoocode.com/203)
+- [5 - 3. 연산자 오버로딩 프로젝트 - N 차원 배열](https://modoocode.com/204)
+​
+# CPP Moduel 03
+> This module is designed to help you understand Inheritance in CPP.
+​
+## 여기서 배워가야 하는 것
+- Inheritance
+​
+Inheritance
+- [6 - 1. C++ 표준 문자열 & 부모의 것을 물려쓰자 - 상속](https://modoocode.com/209)
+​
+# CPP Moduel 04
+> This module is designed to help you understand Subtype polymorphism, abstract classes and interfaces in CPP.
+​
+## 여기서 배워가야 하는 것
+- Subtype polymorphism
+- Abstract classes
+- Interfaces
+​
+Subtype polymorphism
+- [6 - 2. 가상(virtual) 함수와 다형성](https://modoocode.com/210)
+​
+Astract classes
+- [](https://modoocode.com/)
+​
+Interfaces
+- [](https://modoocode.com/)
+​
+​
+# CPP Moduel 05
+> This module is designed to help you understand Try/Catch and Exceptions in CPP.
+​
+## 여기서 배워가야 하는 것
+- Repetition and Exceptions
+​
+Repetition and Exceptions
+- [11. C++ 에서의 예외 처리](https://modoocode.com/230)
+​
+# CPP Moduel 06
+> This module is designed to help you understand the different casts in CPP.
+​
+## 여기서 배워가야 하는 것
+- C++ casts
+​
+C++ casts
+- [5 - 3. 연산자 오버로딩 프로젝트 - N 차원 배열](https://modoocode.com/204)
+​
+# CPP Moduel 07
+> This module is designed to help you understand Templates in CPP.
+​
+## 여기서 배워가야 하는 것
+- C++ templates
+​
+C++ templates
+- [9 - 1. 코드를 찍어내는 틀 - C++ 템플릿(Template)](https://modoocode.com/219)
+- [9 - 2. 가변 길이 템플릿 (Variadic template)](https://modoocode.com/290)
+- [9 - 3. 템플릿 메타 프로그래밍 (Template Meta Programming)](https://modoocode.com/221)
+- [9 - 4. 템플릿 메타 프로그래밍 2 (Template Meta Programming)](https://modoocode.com/222)
+​
+# CPP Moduel 08
+> This module is designed to help you understand templated containers, iterators and algorithms in CPP.
+​
+## 여기서 배워가야 하는 것
+- Templated containers
+- Iterators
+- Algorithms
+​
+Templated containers, Iterators
+- [10 - 1. C++ 의 표준 템플릿 라이브러리 (STL) - 시퀀스 컨테이너](https://modoocode.com/223)
+- [10 - 2. C++ 의 표준 템플릿 라이브러리 (STL) - 연관 컨테이너](https://modoocode.com/224)
+​
+Algorithms
+- [10 - 3. C++ STL - 알고리즘(algorithm)](https://modoocode.com/225)
