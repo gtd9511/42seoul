@@ -6,13 +6,14 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:12:44 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/06 10:12:45 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/07 18:20:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Account.hpp"
 # include <iostream>
 # include <ctime>
+# include <iomanip>
 
 int	Account::_nbAccounts;
 int	Account::_totalAmount;
@@ -88,8 +89,8 @@ void	Account::_displayTimestamp(void)
 
 	now = time(NULL);
 	t = localtime(&now);
-	std::cout << "[" << t->tm_year + 1900 << t->tm_mon + 1 << t->tm_mday << "_"
-		<< t->tm_hour << t->tm_min << t->tm_sec << "]";
+	std::cout << "[" << t->tm_year + 1900 << std::setw(2) << std::setfill('0') << t->tm_mon + 1 << std::setw(2) << t->tm_mday << "_"
+		<< std::setw(2) << t->tm_hour << std::setw(2) << t->tm_min << std::setw(2) << t->tm_sec << "]";
 }
 
 void	Account::makeDeposit(int deposit)

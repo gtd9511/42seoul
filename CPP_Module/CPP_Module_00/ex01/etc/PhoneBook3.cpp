@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook3.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 13:35:24 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/07 16:43:01 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:11:31 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ void	PhoneBook::add(void)
 	std::string input;
 
 	std::cout << "Enter Contact Information" << std::endl
-		<< "	First name     : ";
+		<< " 	First name : ";
 	input = getContact();
-	contact[index % 8].setFirstname(input);
+	contact[index].setFirstname(input);
 
-	std::cout << "	Last name      : ";
+	std::cout << "	Last name : ";
 	input = getContact();
-	contact[index % 8].setLastname(input);
+	contact[index].setLastname(input);
 
-	std::cout << "	Nickname       : ";
+	std::cout << "	Nickname : ";
 	input = getContact();
-	contact[index % 8].setNickname(input);
+	contact[index].setNickname(input);
 
-	std::cout << "	Phone number   : ";
+	std::cout << "	Phone number : ";
 	input = getContact();
-	contact[index % 8].setPhonenumber(input);
+	contact[index].setPhonenumber(input);
 
 	std::cout << "	Darkest secret : ";
 	input = getContact();
-	contact[index % 8].setDarkestsecret(input);
+	contact[index].setDarkestsecret(input);
 
 	this->index++;
 }
@@ -69,7 +69,6 @@ std::string	PhoneBook::getContact(void)
 void	PhoneBook::search(void)
 {
 	std::string input;
-	int			max;
 
 	if (this->index == 0)
 	{
@@ -87,10 +86,7 @@ void	PhoneBook::search(void)
 
 	Drawline();
 
-	max = index;
-	if (this->index > 8)
-		max = 8;
-	for (int i = 0; i < max; i++)
+	for (int i = 0;i < index; i++)
 	{
 		std::cout << "|" << std::setw(10) << i + 1
 			<< "|" << std::setw(10) << checkWidth(contact[i].getFirstname())
@@ -118,13 +114,11 @@ void	PhoneBook::search(void)
 			break;
 	}
 
-	std::cout << std::endl
-		<< "FirstName: " << contact[std::stoi(input) - 1].getFirstname() << std::endl
+	std::cout << "FirstName: " << contact[std::stoi(input) - 1].getFirstname() << std::endl
 		<< "LastName: " << contact[std::stoi(input) - 1].getLastname() << std::endl
 		<< "Nickname: " << contact[std::stoi(input) - 1].getNickname() << std::endl
 		<< "PhoneNumber: " << contact[std::stoi(input) - 1].getPhonenumber() << std::endl
-		<< "DarkestSecret: " << contact[std::stoi(input) - 1].getDarkestsecret() << std::endl
-		<< std::endl;
+		<< "DarkestSecret: " << contact[std::stoi(input) - 1].getDarkestsecret() << std::endl;
 }
 
 std::string	PhoneBook::checkWidth(std::string column)

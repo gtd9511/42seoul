@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 19:13:56 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/06 16:31:43 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/07 16:46:45 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = test.cpp Account.cpp Contact.cpp
+SRCS = test.cpp Account.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
@@ -44,29 +44,3 @@ re:
 	$(MAKE) all
 
 .PHONY: all clean fclean re
-
-
-NAME = account
-
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
-SRCS = Account.cpp tests.cpp
-OBJS = $(SRCS:.cpp=.o)
-
-all : $(NAME)
-
-$(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-clean :
-	rm -rf $(OBJS)
-
-fclean : clean
-	rm -rf $(NAME)
-
-re :
-	make fclean
-	make all
-
-.PHONY : all clean fclean re
