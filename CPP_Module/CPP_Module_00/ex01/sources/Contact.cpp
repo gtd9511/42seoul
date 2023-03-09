@@ -6,11 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:05:37 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/03 15:12:59 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/09 20:14:21 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "../includes/Contact.hpp"
 
 std::string Contact::getFirstname(void)
 {

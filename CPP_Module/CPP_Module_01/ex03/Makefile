@@ -6,30 +6,30 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:04:52 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/08 16:04:53 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/09 20:43:50 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pho
+NAME = weapon
 
-CC = c++
+CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -rf
+RM = rm -f
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = main.cpp
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJS_PATH)
-	$(CC) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CPPFLAGS) $^ -o $@
 
 all: $(NAME)
 

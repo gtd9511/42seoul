@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 19:13:56 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/07 16:46:45 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/09 20:43:50 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = account
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -rf
+RM = rm -f
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects

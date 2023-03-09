@@ -6,11 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:03:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/08 17:48:15 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:34:02 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../includes/Zombie.hpp"
 
 int	main(void)
 {
@@ -18,7 +18,7 @@ int	main(void)
 	Zombie *B = new Zombie("Beckham");
 
 	randomChump("Chalri");
-	
+
 	A.announce();
 	B->announce();
 	delete B;

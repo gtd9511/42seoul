@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:03:32 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/08 20:07:19 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/09 10:39:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Zombie
 {
 private:
-	std::string	name;
+	std::string	name_;
 
 public:
 	Zombie(std::string name);

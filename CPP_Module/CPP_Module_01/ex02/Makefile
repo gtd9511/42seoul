@@ -6,34 +6,26 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:04:33 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/08 20:50:00 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/09 20:45:30 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = brain
 
-CC = c++
+CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -rf
-
-SRCS_PATH = ./sources
-OBJS_PATH = ./objects
+RM = rm -f
 
 SRCS = main.cpp
-OBJS_NAME = $(SRCS:.cpp=.o)
-OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
-
-$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
-	mkdir -p $(OBJS_PATH)
-	$(CC) $(CPPFLAGS) -c $< -o $@
+OBJS = $(SRCS:.cpp=.o)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CPPFLAGS) $^ -o $@
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS_PATH)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

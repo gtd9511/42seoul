@@ -6,15 +6,15 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:08:43 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/08 16:08:44 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/09 20:43:50 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pho
 
-CC = c++
+CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -rf
+RM = rm -f
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects
@@ -26,10 +26,10 @@ OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJS_PATH)
-	$(CC) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CPPFLAGS) $^ -o $@
 
 all: $(NAME)
 

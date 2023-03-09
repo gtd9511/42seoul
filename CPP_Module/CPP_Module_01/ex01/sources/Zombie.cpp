@@ -6,35 +6,35 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:04:23 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/08 20:28:47 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:33:52 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../includes/Zombie.hpp"
 
-Zombie::Zombie(void)
+Zombie::Zombie(void): name_("(default)")
 {
-	this->name = "(default)";
-	std::cout << this->name << " is constructed" << std::endl;
+	//this->name_ = "(default)";
+	std::cout << this->name_ << " is constructed" << std::endl;
 }
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie(std::string name): name_(name)
 {
-	this->name = name;
-	std::cout << this->name << " is constructed" << std::endl;
+	//this->name_ = name;
+	std::cout << this->name_ << " is constructed" << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << this->name << " is deconstructed" << std::endl;
+	std::cout << this->name_ << " is deconstructed" << std::endl;
 }
 
 void	Zombie::announce( void )
 {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name_ << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void	Zombie::setName(std::string name)
 {
-	this->name = name;
+	this->name_ = name;
 }
