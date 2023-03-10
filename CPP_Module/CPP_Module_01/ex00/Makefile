@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:03:19 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/09 20:43:50 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/10 17:03:51 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = zombie
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -f
+RM = rm -rf
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects

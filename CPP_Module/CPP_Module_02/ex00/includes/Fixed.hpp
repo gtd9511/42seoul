@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 16:03:32 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/10 19:33:43 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/10 18:55:58 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/10 19:44:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 #include <iostream>
 
-class Zombie
+class Fixed
 {
 	private:
-		std::string	name_;
 
 	public:
-		Zombie(std::string name);
-		~Zombie(void);
-
-		void	announce( void );
-};
-
-Zombie	*newZombie( std::string name );
-void	randomChump( std::string name );
+		Fixed(void);
+		Fixed(int);
+		Fixed(float);
+		~Fixed(void);
+}
 
 #endif

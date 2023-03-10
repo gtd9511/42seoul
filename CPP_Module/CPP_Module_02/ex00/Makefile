@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/15 19:13:56 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/10 17:03:51 by sanghan          ###   ########.fr        #
+#    Created: 2023/03/10 19:31:23 by sanghan           #+#    #+#              #
+#    Updated: 2023/03/10 19:32:12 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = account
+NAME = fixed
 
-CC = c++
+CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM = rm -rf
 
@@ -20,16 +20,16 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = test.cpp Account.cpp
+SRCS = main.cpp Fixed.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJS_PATH)
-	$(CC) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -I $(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CPPFLAGS) $^ -o $@
 
 all: $(NAME)
 

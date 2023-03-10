@@ -6,21 +6,21 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:08:43 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/09 20:43:50 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/10 18:13:14 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pho
+NAME = harlFilter
 
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-RM = rm -f
+RM = rm -rf
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
