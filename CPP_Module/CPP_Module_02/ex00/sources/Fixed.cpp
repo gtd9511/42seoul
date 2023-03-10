@@ -6,7 +6,8 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:56:01 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/10 18:56:02 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/10 20:16:42 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/Fixed.hpp"

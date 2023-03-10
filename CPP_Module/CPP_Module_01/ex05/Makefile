@@ -6,12 +6,12 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 16:07:32 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/10 17:03:51 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/10 21:29:45 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = harl
-
+g
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM = rm -rf
