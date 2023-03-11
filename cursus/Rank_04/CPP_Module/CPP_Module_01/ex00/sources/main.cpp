@@ -5,24 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 18:56:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/11 14:36:08 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/08 16:03:36 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/09 17:34:02 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Fixed.hpp"
+#include "../includes/Zombie.hpp"
 
-int main( void )
+int	main(void)
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	Zombie A("Alex");
+	Zombie *B = new Zombie("Beckham");
 
-	c = b;
+	randomChump("Chalri");
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-
-	return 0;
+	A.announce();
+	B->announce();
+	delete B;
+	return (0);
 }

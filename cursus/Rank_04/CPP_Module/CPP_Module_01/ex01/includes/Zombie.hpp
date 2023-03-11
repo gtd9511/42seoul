@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 18:56:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/11 14:36:08 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/08 16:04:19 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/10 19:33:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Fixed.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int main( void )
+#include <iostream>
+#include <sstream>
+
+class Zombie
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	private:
+		std::string	name_;
+	
+	public:
+		Zombie(void);
+		Zombie(std::string name);
+		~Zombie(void);
+	
+		void	announce( void );
+		void	setName(std::string name);
+};
 
-	c = b;
+Zombie	*zombieHorde( int N, std::string name );
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-
-	return 0;
-}
+#endif

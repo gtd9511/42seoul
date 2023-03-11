@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 18:56:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/11 14:36:08 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/08 16:06:24 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/10 19:34:43 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Fixed.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int main( void )
+#include "Weapon.hpp"
+
+class HumanB
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	private:
+		std::string	name_;
+		Weapon		*weapon_;
 
-	c = b;
+	public:
+		HumanB(std::string name);
+		~HumanB(void);
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+		void	attack(void);
+		void	setWeapon(Weapon &weapon);
+};
 
-	return 0;
-}
+#endif
