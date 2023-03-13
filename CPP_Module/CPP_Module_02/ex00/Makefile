@@ -6,11 +6,11 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 19:31:23 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/11 18:16:20 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/13 14:19:50 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = a.out
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
