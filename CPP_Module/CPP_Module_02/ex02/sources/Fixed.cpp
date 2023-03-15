@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 09:29:22 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/14 15:47:42 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/15 10:09:02 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ Fixed	Fixed::operator/(Fixed const &ref) const
 {
 	if (ref.getRawBits() == 0)
 	{
-		std::cout << "Can't be divided by zero" << std::endl;
+		std::cout << "ERROR : Can't be divided by zero, Return 0" << std::endl;
 		return (Fixed());
 	}
 	else
