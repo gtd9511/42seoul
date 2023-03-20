@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:17:00 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/16 16:08:19 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/17 14:33:58 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(void)
 {
-	
 	ScavTrap a("A");
 	ScavTrap b("B");
 

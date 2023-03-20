@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 21:05:11 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/17 14:43:52 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/17 11:22:03 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/17 11:22:48 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/DiamondTrap.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int	main(void)
+class Animal
 {
-	DiamondTrap a("A");
-	FragTrap b("B");
-	ClapTrap c("C");
+	protected:
+		
 
-	std::cout << std::endl;
+	public:
+		Animal(/* args*/);
+		~Animal();
+};
 
-	a.attack("B");
-	b.takeDamage(30);
-	a.attack("C");
-	c.takeDamage(30);
-	b.attack("A");
-	a.takeDamage(30);
-	a.beRepaired(10);
-	std::cout << std::endl;
-
-	a.highFivesGuys();
-	a.guardGate();
-	a.whoAmI();
-
-	std::cout << std::endl;
-
-	return (0);
-}
+#endif

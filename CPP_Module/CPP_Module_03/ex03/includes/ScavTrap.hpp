@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:05:07 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/16 21:22:28 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/17 09:15:50 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 	public:
 		ScavTrap(void);
-		~ScavTrap(void);
+		virtual~ScavTrap(void);
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap& obj);
 		ScavTrap& operator=(const ScavTrap& obj);
