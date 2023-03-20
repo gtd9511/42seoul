@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:03:42 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/11 15:30:15 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:01:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie::Zombie(std::string name): name_(name)
 
 Zombie::~Zombie()
 {
-	std::cout << this->name_ << " is deconstructed" << std::endl;
+	std::cout << this->name_ << " is destructed" << std::endl;
 }
 
 void	Zombie::announce( void )

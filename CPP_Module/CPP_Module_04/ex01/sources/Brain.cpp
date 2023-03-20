@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 16:03:42 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 20:02:52 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/20 22:02:21 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/20 22:03:14 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include "../includes/Brain.hpp"
 
-Zombie::Zombie(std::string name): name_(name)
-{
-	std::cout << this->name_ << " is constructed" << std::endl;
-}
+Brain::Brain(void)
+{}
 
-Zombie::~Zombie()
-{
-	std::cout << this->name_ << " is destrcuted" << std::endl;
-}
+Brain::~Brain(void)
+{}
 
-void	Zombie::announce( void )
-{
-	std::cout << this->name_ << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+Brain::Brain(const Brain& obj)
+{}
+
+Brain& Brain::operator=(const Brain& obj)
+{}
+
+std::string	Brain::getIdeas(int n) const
+{}
+
+void	Brain::setIdeas(std::string idea, int n)
+{}
+

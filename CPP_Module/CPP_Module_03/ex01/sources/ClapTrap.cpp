@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:16:51 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/16 21:04:14 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:01:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(void): _name("default"), _hit_point(10), _energy_point(10), _
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap " << this->_name << " is deconstructed" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " is destructed" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hit_point(10), _energy_point(10), _attack_damage(0)

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:05:09 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/17 17:08:43 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:01:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), FragTrap(), ScavTrap()
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "DiamondTrap " << this->_name << " is deconstructed" << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " is destructed" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), _name(name)

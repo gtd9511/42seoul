@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:05:10 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/16 21:05:54 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:02:52 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::FragTrap(void): ClapTrap()
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "FragTrap " << this->_name << " is deconstructed" << std::endl;
+	std::cout << "FragTrap " << this->_name << " is destrcuted" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
