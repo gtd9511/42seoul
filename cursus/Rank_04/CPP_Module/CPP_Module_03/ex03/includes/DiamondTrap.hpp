@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 21:05:05 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/17 13:50:36 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-Animal::Animal(void)
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+class DiamondTrap: public FragTrap, public ScavTrap
 {
-}
+	private:
+		std::string	_name;
+	public:
+		DiamondTrap(void);
+		~DiamondTrap(void);
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap& obj);
+		DiamondTrap& operator=(const DiamondTrap& obj);
 
-Animal::~Animal(void)
-{
-}
+		void	whoAmI(void);
+};
 
-Animal::Animal(const Animal& obj)
-{
-}
-
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
-
-std::string	Animal::getType(void) const
-{
-}
-
-void	Animal::makeSound(void) const
-{
-}
-
+#endif

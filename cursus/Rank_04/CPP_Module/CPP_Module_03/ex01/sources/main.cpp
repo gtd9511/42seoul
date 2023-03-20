@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 14:17:00 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/17 14:33:58 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/ScavTrap.hpp"
 
-Animal::Animal(void)
+int	main(void)
 {
-}
+	ScavTrap a("A");
+	ScavTrap b("B");
 
-Animal::~Animal(void)
-{
-}
+	std::cout << std::endl;
 
-Animal::Animal(const Animal& obj)
-{
-}
+	a.attack("B");
+	b.takeDamage(20);
+	b.beRepaired(10);
+	std::cout << std::endl;
 
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
+	b.attack("A");
+	a.takeDamage(20);
+	a.beRepaired(10);
+	std::cout << std::endl;
 
-std::string	Animal::getType(void) const
-{
-}
+	a.guardGate();
+	std::cout << std::endl;
 
-void	Animal::makeSound(void) const
-{
+	return (0);
 }
-

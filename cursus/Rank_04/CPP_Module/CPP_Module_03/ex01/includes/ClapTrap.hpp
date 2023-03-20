@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 11:22:03 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 13:50:00 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 14:16:38 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/16 14:46:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 #include <iostream>
 #include <string>
 
-class Animal
+class ClapTrap
 {
 	protected:
-		std::string	_type;
+		std::string	_name;
+		unsigned int	_hit_point;
+		unsigned int	_energy_point;
+		unsigned int	_attack_damage;
 
 	public:
-		Animal(void);
-		virtual ~Animal(void);
-		Animal(const Animal& obj);
-		Animal& operator=(const Animal&  obj);
+		ClapTrap(void);
+		virtual ~ClapTrap(void);
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap& obj);
+		ClapTrap& operator=(const ClapTrap& obj);
 
-		std::string	getType(void) const;
-		virtual void	makeSound(void) const;
-
+		virtual void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 };
 
 #endif

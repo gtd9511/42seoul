@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 21:05:06 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/17 09:15:46 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-Animal::Animal(void)
-{
-}
+#include "ClapTrap.hpp"
 
-Animal::~Animal(void)
+class FragTrap: virtual public ClapTrap
 {
-}
+	public:
+		FragTrap(void);
+		virtual~FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(const FragTrap& obj);
+		FragTrap& operator=(const FragTrap& obj);
 
-Animal::Animal(const Animal& obj)
-{
-}
+		void	highFivesGuys(void);
+};
 
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
-
-std::string	Animal::getType(void) const
-{
-}
-
-void	Animal::makeSound(void) const
-{
-}
+#endif
 

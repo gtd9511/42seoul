@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 21:05:11 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/17 14:43:52 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/DiamondTrap.hpp"
 
-Animal::Animal(void)
+int	main(void)
 {
-}
+	DiamondTrap a("A");
+	FragTrap b("B");
+	ClapTrap c("C");
 
-Animal::~Animal(void)
-{
-}
+	std::cout << std::endl;
 
-Animal::Animal(const Animal& obj)
-{
-}
+	a.attack("B");
+	b.takeDamage(30);
+	a.attack("C");
+	c.takeDamage(30);
+	b.attack("A");
+	a.takeDamage(30);
+	a.beRepaired(10);
+	std::cout << std::endl;
 
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
+	a.highFivesGuys();
+	a.guardGate();
+	a.whoAmI();
 
-std::string	Animal::getType(void) const
-{
-}
+	std::cout << std::endl;
 
-void	Animal::makeSound(void) const
-{
+	return (0);
 }
-

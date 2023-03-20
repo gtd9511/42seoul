@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/16 14:16:58 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/16 20:57:35 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-Animal::Animal(void)
+#include "ClapTrap.hpp"
+
+class ScavTrap: public ClapTrap
 {
-}
+	public:
+		ScavTrap(void);
+		~ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& obj);
+		ScavTrap& operator=(const ScavTrap& obj);
 
-Animal::~Animal(void)
-{
-}
+		void	attack(const std::string& target);
+		void	guardGate(void);
+};
 
-Animal::Animal(const Animal& obj)
-{
-}
-
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
-
-std::string	Animal::getType(void) const
-{
-}
-
-void	Animal::makeSound(void) const
-{
-}
-
+#endif

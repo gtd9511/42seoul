@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 14:07:03 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/15 10:27:25 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/16 14:14:16 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/ClapTrap.hpp"
 
-Animal::Animal(void)
+int	main(void)
 {
-}
+	ClapTrap	a("Alpha");
+	ClapTrap	b("Beta");
 
-Animal::~Animal(void)
-{
+	a.attack("Beta");
+	b.takeDamage(5);
+	b.beRepaired(3);
+	b.attack("A");
+	a.takeDamage(10);
+	a.beRepaired(10);
+	return (0);
 }
-
-Animal::Animal(const Animal& obj)
-{
-}
-
-Animal& Animal::operator=(const Animal&  obj)
-{
-}
-
-std::string	Animal::getType(void) const
-{
-}
-
-void	Animal::makeSound(void) const
-{
-}
-
