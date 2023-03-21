@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:35:01 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/21 10:15:41 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/21 18:59:01 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/21 19:01:41 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include <string>
 
-class Cat: public Animal
+class AMateria;
+
+class ICharacter
 {
-	private:
-		Brain	*brain;
 	public:
-		Cat(void);
-		virtual ~Cat(void);
-		Cat(const Cat& obj);
-		Cat& operator=(const Cat& obj);
-
-		virtual void	makeSound(void) const;
-		Brain	*getBrain(void) const;
+		virtual ~ICharacter() {}
+		virtual std::string const & getName() const = 0;
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

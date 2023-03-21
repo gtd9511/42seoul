@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 13:35:24 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/09 20:14:09 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:51:10 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	PhoneBook::search(void)
 	if (this->index == 0)
 	{
 		std::cout << "Contact Is Empty" << std::endl;
-		return;
+		return ;
 	}
 
 	Drawline();

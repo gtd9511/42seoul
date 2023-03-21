@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:35:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 21:35:00 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 09:38:16 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class WrongAnimal
 		WrongAnimal& operator=(const WrongAnimal& obj);
 
 		std::string	getType(void) const;
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 };
 
 #endif

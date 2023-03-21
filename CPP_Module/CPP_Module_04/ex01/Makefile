@@ -6,21 +6,22 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/17 11:11:48 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/20 21:46:25 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/21 14:38:23 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = animal
+NAME = brain
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
+
 RM = rm -rf
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 

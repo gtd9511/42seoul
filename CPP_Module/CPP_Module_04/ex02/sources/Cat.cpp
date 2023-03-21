@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:35:09 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 21:41:24 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:52:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,44 @@
 Cat::Cat(void): Animal()
 {
 	this->_type = "Cat";
-	std::cout << "Cat Class " << this->_type << " Constructor called" << std::endl;
+	std::cout << "[Cat Class] " << this->_type << " Constructor called" << std::endl;
+	this->brain = new Brain();
 }
 
 Cat::~Cat(void)
 {
-	std::cout << "Cat Class " << this->_type << " Destructor called" << std::endl;
+	delete this->brain;
+	std::cout << "[Cat Class] " << this->_type << " Destructor called" << std::endl;
+	this->brain = NULL;
 }
 
-Cat::Cat(const Cat& obj): Animal()
+Cat::Cat(const Cat& obj): Animal(obj)
 {
-	if (this != &obj)
-		this->_type = obj._type;
-	std::cout << "Cat Class " << this->_type << " Copy Constructor called" << std::endl;
+	if (this == &obj)
+		return ;
+	std::cout << "[Cat Class] " << this->_type << " Copy Consturctor called" << std::endl;
+	this->brain = NULL;
+	*this = obj;
 }
 
 Cat& Cat::operator=(const Cat& obj)
 {
 	if (this != &obj)
+	{
 		this->_type = obj._type;
-	std::cout << "Cat Class " << this->_type << " Operator(=) called" << std::endl;
+		if(this->brain)
+			delete this->brain;
+		this->brain = new Brain(*obj.brain);
+	}
 	return (*this);
 }
 
 void	Cat::makeSound(void) const
 {
-	std::cout << "Cat Class " << this->_type << " : Meow~ Meow~" << std::endl;
+	std::cout << "[Cat Class] " << this->_type << " : Meow~ Meow~" << std::endl;
+}
+
+Brain	*Cat::getBrain(void) const
+{
+	return (this->brain);
 }

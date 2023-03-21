@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:35:12 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 21:38:55 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 09:39:39 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 WrongAnimal::WrongAnimal(void): _type("WrongAnimal")
 {
-	std::cout << "WrongAnimal Class " << this->_type << " Constructor called" << std::endl;
+	std::cout << "[WrongAnimal Class] " << this->_type << " Constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "WrongAnimal Class " << this->_type << " Destructor called" << std::endl;
+	std::cout << "[WrongAnimal Class] " << this->_type << " Destructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& obj)
 {
 	if (this != &obj)
 		this->_type = obj._type;
-	std::cout << "WrongAnimal Class " << this->_type << " Copy Constructor called" << std::endl;
+	std::cout << "[WrongAnimal Class] " << this->_type << " Copy Constructor called" << std::endl;
 
 }
 
@@ -34,7 +34,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj)
 {
 	if (this != &obj)
 		this->_type = obj._type;
-	std::cout << "WrongAnimal Class " << this->_type << " Operator(=) called" << std::endl;
+	std::cout << "[WrongAnimal Class] " << this->_type << " Operator(=) called" << std::endl;
 	return (*this);
 }
 
@@ -45,5 +45,5 @@ std::string	WrongAnimal::getType(void) const
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "WrongAnimal Class " << this->_type << " : (makes some noise)" << std::endl;
+	std::cout << "[WrongAnimal Class] " << this->_type << " : (makes some noise)" << std::endl;
 }

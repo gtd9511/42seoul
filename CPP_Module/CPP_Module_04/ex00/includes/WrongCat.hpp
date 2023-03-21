@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:35:06 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 21:40:05 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 09:38:10 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class WrongCat: public WrongAnimal
 		WrongCat(const WrongCat& obj);
 		WrongCat& operator=(const WrongCat& obj);
 
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 };
 
 #endif

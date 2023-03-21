@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 11:11:45 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 21:45:35 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/21 09:59:55 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int main(void)
 	const Animal* i = new Cat();
 	const WrongAnimal* wrong = new WrongCat();
 
-	std::cout << std::endl << j->getType() << " " << std::endl;
+	std::cout << std::endl;
+	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
 	i->makeSound();
