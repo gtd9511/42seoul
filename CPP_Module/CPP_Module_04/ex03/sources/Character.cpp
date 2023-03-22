@@ -1,32 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 18:59:01 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 18:19:30 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/22 11:57:54 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/22 11:57:55 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
-
-#include <iostream>
-#include <string>
-#include "AMateria.hpp"
-
-class AMateria;
-
-class ICharacter
-{
-	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-};
-
-#endif

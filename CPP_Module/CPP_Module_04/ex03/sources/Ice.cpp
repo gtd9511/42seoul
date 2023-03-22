@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 11:07:09 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 15:24:33 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/22 11:57:57 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/22 16:22:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/Ice.hpp"
 #include "../includes/Character.hpp"
 
-int main()
+Ice::Ice(void):AMateria("Ice")
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+}
 
-	ICharacter* me = new Character("me");
+Ice::~Ice(void)
+{
+}
 
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+Ice::Ice(const Ice& obj):AMateria(obj)
+{
+	if (this == &obj)
+		return;
+	*this = obj;
+}
 
-	ICharacter* bob = new Character("bob");
+Ice& Ice::operator=(const Ice& obj)
+{
+	if (this != &obj)
+		this->_type = obj._type;
+	return (*this);
+}
 
-	me->use(0, *bob);
-	me->use(1, *bob);
+AMateria*	Ice::clone() const
+{
+	return (new Ice());
+}
 
-	delete bob;
-	delete me;
-	delete src;
-
-	return 0;
+void	Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
