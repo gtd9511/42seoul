@@ -6,15 +6,13 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:47:45 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 18:19:53 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:23:38 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
 
-#include <iostream>
-#include <string>
 #include "AMateria.hpp"
 
 class AMateria;

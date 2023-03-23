@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:22:12 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 18:20:12 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:30:03 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ std::string const & AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "dskf;lasdkfl;dsakf;lkdsa;flkasd" << std::endl;
-	//(void)target;
+	std::cout << "AMateria used on" << target.getName() << std::endl;
 }

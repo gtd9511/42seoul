@@ -6,14 +6,14 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/17 11:11:48 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/20 21:46:25 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/23 17:56:03 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = animal
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 RM = rm -rf
 
 SRCS_PATH = ./sources

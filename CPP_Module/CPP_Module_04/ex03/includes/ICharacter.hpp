@@ -6,15 +6,13 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:59:01 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 18:19:30 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:23:35 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-#include <iostream>
-#include <string>
 #include "AMateria.hpp"
 
 class AMateria;

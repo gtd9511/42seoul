@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/17 11:11:48 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/22 13:54:16 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/23 17:57:17 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = interface
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
-
 RM = rm -rf
 
 SRCS_PATH = ./sources

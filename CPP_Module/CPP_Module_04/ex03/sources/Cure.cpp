@@ -6,14 +6,14 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:57:56 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 16:22:52 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:29 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cure.hpp"
 #include "../includes/Character.hpp"
 
-Cure::Cure(void):AMateria("Cure")
+Cure::Cure(void):AMateria("cure")
 {
 }
 

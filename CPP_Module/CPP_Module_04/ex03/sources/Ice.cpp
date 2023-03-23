@@ -6,14 +6,14 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:57:57 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 16:22:25 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:25 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Ice.hpp"
 #include "../includes/Character.hpp"
 
-Ice::Ice(void):AMateria("Ice")
+Ice::Ice(void):AMateria("ice")
 {
 }
 

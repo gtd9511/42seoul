@@ -6,31 +6,33 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:58:00 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 19:14:11 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:05:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void):_idx(0)
+MateriaSource::MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
-		this->_skill[i] = NULL;
+		this->_memory[i] = NULL;
 }
 
 MateriaSource::~MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_skill[i])
-			delete this->_skill[i];
+		if (this->_memory[i] != NULL)
+			delete _memory[i];
 	}
 }
 
-MateriaSource::MateriaSource(const MateriaSource& obj): _idx(obj._idx)
+MateriaSource::MateriaSource(const MateriaSource& obj)
 {
 	if (this == &obj)
 		return ;
+	for (int i = 0; i < 4; i++)
+		this->_memory[i] = NULL;
 	*this = obj;
 }
 
@@ -38,29 +40,34 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& obj)
 {
 	if (this != &obj)
 	{
-		this->_idx = obj._idx;
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->_memory[i] != NULL)
+				delete this->_memory[i];
+			this->_memory[i] = obj._memory[i]->clone();
+		}
+	}
+	return (*this);
+}
+
+void	MateriaSource::learnMateria(AMateria* m)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_memory[i] == NULL)
+		{
+			this->_memory[i] = m;
+			return ;
+		}
 	}
 }
 
-void	MateriaSource::learnMateria(AMateria* obj)
-{}
-
-AMateria*	MateriaSource::createMateria(std::string const & tpye)
-{}
-
-
-AMateria.hpp
-Cure.hpp
-Ice.hpp
--ICharacter.hpp
--IMateriaSource.hpp
-Character.hpp
-MateriaSource.hpp
-
-AMateria.cpp
-Cure.cpp
-Ice.cpp
-Character.cpp
-MateriaSource.cpp
-main.cpp
-Makefile
+AMateria*	MateriaSource::createMateria(std::string const & type)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_memory[i] != NULL && _memory[i]->getType() == type)
+			return (_memory[i]->clone());
+	}
+	return (NULL);
+}

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 11:11:45 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/21 14:37:58 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:56:41 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 int main(void)
 {
-	//system("leaks brain");
-
 	std::string	str;
 
 	const Animal*	j = new Dog();
