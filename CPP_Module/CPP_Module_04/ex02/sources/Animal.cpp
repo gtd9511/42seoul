@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:35:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/21 14:54:44 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 20:57:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ Animal::~Animal(void)
 
 Animal::Animal(const Animal& obj)
 {
-	if (this != &obj)
-		this->_type = obj._type;
+	if (this == &obj)
+		return ;
 	std::cout << "[Animal Class] " << this->_type << " Copy Constructor called" << std::endl;
+	*this = obj;
 }
 
 Animal& Animal::operator=(const Animal&  obj)
 {
 	if (this != &obj)
 		this->_type = obj._type;
-	std::cout << "[Animal Class] " << this->_type << " Operator(=) called" << std::endl;
 	return (*this);
 }
 

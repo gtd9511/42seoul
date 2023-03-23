@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:02:21 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/21 19:51:24 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/23 20:54:21 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Brain::~Brain(void)
 
 Brain::Brain(const Brain& obj)
 {
-	if (this != &obj)
+	if (this == &obj)
 		return ;
 	std::cout << "[Brain Class] Copy Constructor called" << std::endl;
 	*this = obj;
