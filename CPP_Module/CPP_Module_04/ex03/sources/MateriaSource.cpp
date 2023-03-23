@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:58:00 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/22 18:40:18 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/22 19:14:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ AMateria*	MateriaSource::createMateria(std::string const & tpye)
 
 
 AMateria.hpp
-Character.hpp
 Cure.hpp
-ICharacter.hpp
-IMateriaSource.hpp
 Ice.hpp
+-ICharacter.hpp
+-IMateriaSource.hpp
+Character.hpp
 MateriaSource.hpp
 
 AMateria.cpp
-Character.cpp
 Cure.cpp
 Ice.cpp
+Character.cpp
 MateriaSource.cpp
 main.cpp
 Makefile
