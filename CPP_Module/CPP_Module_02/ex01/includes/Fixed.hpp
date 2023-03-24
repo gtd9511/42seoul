@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:23:45 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/14 14:47:53 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/24 14:40:49 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ class Fixed
 		float	toFloat( void ) const;
 };
 
-std::ostream& operator << (std::ostream &out, const Fixed &fixed);
+std::ostream& operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif

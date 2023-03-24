@@ -6,11 +6,11 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 19:46:34 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/23 19:46:48 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/24 21:30:20 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =
+NAME = grade
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
@@ -20,7 +20,7 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS =
+SRCS = main.cpp Bureaucrat.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
