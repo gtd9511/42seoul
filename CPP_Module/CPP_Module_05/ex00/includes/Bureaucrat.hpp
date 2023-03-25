@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:47:00 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/24 21:40:26 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/25 12:02:45 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Bureaucrat
 
 		Bureaucrat(const std::string name, int grade);
 
-		const std::string & getName() const;
+		const std::string & getName(void) const;
 		int	getGrade() const;
 		void	increment(void);
 		void	decrement(void);

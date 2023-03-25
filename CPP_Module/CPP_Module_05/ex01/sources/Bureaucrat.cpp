@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:42:37 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 11:32:36 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/25 15:14:35 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,14 @@ const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("It is rated outside the lowest grade");
+}
+
+void	Bureaucrat::signForm(Form& obj) const
+{
+	try
+	{
+		//obj.beSigned(*this);
+	}
 }
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
