@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 11:37:52 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 14:57:47 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/25 16:12:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Form
 		Form(const Form& obj);
 		Form& operator=(const Form& obj);
 
-		Form(const std::string name, const int& _signGrade, const int& _executeGrade);
+		Form(const std::string name, const int& signGrade, const int& executeGrade);
 
 		const std::string & getName(void) const;
 		const bool&	getSigned(void) const;
@@ -46,7 +46,6 @@ class Form
 		{
 			public:
 				const char* what(void) const throw();
-
 		};
 
 		class GradeTooLowException: public std::exception

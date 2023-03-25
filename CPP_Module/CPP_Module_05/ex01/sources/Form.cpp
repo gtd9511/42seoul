@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 12:49:15 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 15:35:39 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/25 16:40:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,50 @@ Form& Form::operator=(const Form& obj)
 	return (*this);
 }
 
-Form::Form(const std::string name, const int& _signGrade, const int& _executeGrade)
-{}
+Form::Form(const std::string name, const int& signGrade, const int& executeGrade): _name(name), _signed(0), _signGrade(signGrade), _executeGrade(executeGrade)
+{
+	std::cout << "Form Class : " << this->_name << " Constructor called" << std:: endl;
+}
 
 const std::string & Form::getName(void) const
-{}
+{
+	return (this->_name);
+}
 
 const bool&	Form::getSigned(void) const
-{}
+{
+	return (this->_signed);
+}
 
 const int& Form::getSignGrade(void) const
-{}
+{
+	return (this->_signGrade);
+}
 
 const int& Form::getExecuteGrade(void) const
-{}
+{
+	return (this->_executeGrade);
+}
 
 void	Form::beSigned(const Bureaucrat& bureaucrat)
 {}
 
-const char * Form::GradeTooHighException: public std::exception
-{}
+const char* Form::GradeTooHighException::what(void) const throw()
+{
+	return ("It is rated outside the highest grade");
+}
 
-const char * Form::GradeTooLowException: public std::exception
-{}
+const char* Form::GradeTooLowException::what(void) const throw()
+{
+	return ("It is rated outside the lowest grade");
+}
 
-
+std::ostream& operator<<(std::ostream &out, const Form &form)
+{
+	out <<  form.getName()
+		<< ", signed : " << (form.getSigned() ? "signed" : "not signed")
+		<< ", sign grade : " << form.getSignGrade()
+		<< ", execute grade : " << form.getExecuteGrade()
+		<< std::endl;
+	return out;
+}
