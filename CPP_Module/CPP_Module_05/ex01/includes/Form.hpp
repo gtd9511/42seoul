@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 11:37:52 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 16:12:57 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/26 15:51:22 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <string>
 #include <exception>
+
+#include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -45,13 +47,13 @@ class Form
 		class GradeTooHighException: public std::exception
 		{
 			public:
-				const char* what(void) const throw();
+				virtual const char* what(void) const throw();
 		};
 
 		class GradeTooLowException: public std::exception
 		{
 			public:
-				const char* what(void) const throw();
+				virtual const char* what(void) const throw();
 		};
 };
 

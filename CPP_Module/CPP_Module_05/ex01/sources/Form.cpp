@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 12:49:15 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 16:40:11 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/26 14:34:53 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,13 @@ const int& Form::getExecuteGrade(void) const
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat)
-{}
+{
+	if (this->_signGrade >= bureaucrat.getGrade())
+		_signed = true;
+	else
+	 	throw GradeTooLowException();
+
+}
 
 const char* Form::GradeTooHighException::what(void) const throw()
 {
@@ -77,7 +83,7 @@ const char* Form::GradeTooHighException::what(void) const throw()
 
 const char* Form::GradeTooLowException::what(void) const throw()
 {
-	return ("It is rated outside the lowest grade");
+	return ("Too Low Grade...");
 }
 
 std::ostream& operator<<(std::ostream &out, const Form &form)

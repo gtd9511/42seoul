@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:47:00 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/25 16:13:02 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/26 15:51:22 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Bureaucrat
 	private:
 		const std::string	_name;
 		int	_grade;
-		static const int	_maxgrade = 150;
-		static const int	_mingrade = 1;
+		const static int	_maxgrade = 150;
+		const static int	_mingrade = 1;
 
 	public:
 		Bureaucrat(void);
@@ -35,23 +35,23 @@ class Bureaucrat
 
 		Bureaucrat(const std::string name, int grade);
 
-		const std::string & getName() const;
-		int	getGrade() const;
+		const std::string & getName(void) const;
+		int	getGrade(void) const;
 		void	increment(void);
 		void	decrement(void);
 		class GradeTooHighException: public std::exception
 		{
 			public:
-				const char* what(void) const throw();
+				virtual const char* what(void) const throw();
 		};
 
 		class GradeTooLowException: public std::exception
 		{
 			public:
-				const char* what(void) const throw();
+				virtual const char* what(void) const throw();
 		};
 
-		void	signForm(Form& obj) const;
+		void	signForm(Form& form);
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
