@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/28 20:05:02 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/29 08:40:41 by sanghan          ###   ########.fr        #
+#    Created: 2023/03/25 14:51:11 by sanghan           #+#    #+#              #
+#    Updated: 2023/03/28 11:00:02 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME = convert
+NAME = aform
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 RM = rm -rf
 
@@ -22,7 +21,7 @@ SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = main.cpp ScalarConverter.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
@@ -36,7 +35,7 @@ $(NAME) : $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS_PATH)
+	$(RM) $(OBJS_PATH) LEE_shrubbery
 
 fclean: clean
 	$(RM) $(NAME)
