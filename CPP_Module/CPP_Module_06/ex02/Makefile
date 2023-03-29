@@ -6,11 +6,11 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/28 20:05:15 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/29 12:55:01 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/29 17:08:13 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =
+NAME = idnetify
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic

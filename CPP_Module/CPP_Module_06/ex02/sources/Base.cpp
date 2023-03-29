@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 08:40:46 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/29 16:42:39 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/29 17:14:36 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/29 18:25:32 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScalarConverter.hpp"
+#include "../includes/Base.hpp"
 
-ScalarConverter::ScalarConverter()
+Base::~Base()
 {
-
-}
-ScalarConverter::~ScalarConverter()
-{
-
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter& obj)
+Base * generate(void)
 {
-	if (this == &obj)
-		return ;
-	*this = obj;
-}
+	std::time_t time = std::time(nullptr);
+	Base * ret = NULL;
 
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& obj)
-{
-	if (this != &obj)
+	switch(time % 3)
 	{
-		(void)obj;
+		case(0):
+			ret = new A();
+		case(1):
+			ret = new B();
+		case(2):
+			ret = new C();
 	}
-	return (*this);
+	return (ret);
 }
 
-void ScalarConverter::convert(const std::string& input)
+void identify(Base* p)
 {
-
+	
 }
+
+void identify(Base& p)
+{}
+
+std::time_t	currentTime = std::time(nullptr);
 
