@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/25 14:51:11 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/28 15:07:25 by sanghan          ###   ########.fr        #
+#    Updated: 2023/03/29 13:26:44 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME) : $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS_PATH) LEE_shrubbery
+	$(RM) $(OBJS_PATH)
 
 fclean: clean
 	$(RM) $(NAME)

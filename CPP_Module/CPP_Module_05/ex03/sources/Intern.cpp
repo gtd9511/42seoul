@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:51:58 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/28 15:32:39 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:26:10 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ Intern::Intern(void)
 
 Intern::~Intern(void)
 {
-	delete f[0];
-	delete f[1];
-	delete f[2];
+	if (this->f[0])
+		delete f[0];
+	else if (this->f[1])
+		delete f[1];
+	else if (this->f[2])
+		delete f[2];
 }
 
 Intern::Intern(const Intern& obj)
@@ -50,9 +53,10 @@ Intern& Intern::operator=(const Intern& obj)
 			delete f[1];
 		else if (this->f[2])
 			delete f[2];
-		this->f[0] = obj.f[0];
-		this->f[1] = obj.f[1];
-		this->f[2] = obj.f[2];
+
+		this->f[0] = new ShrubberyCreationForm("");
+		this->f[1] = new RobotomyRequestForm("");
+		this->f[2] = new PresidentialPardonForm("");
 	}
 	return (*this);
 }
