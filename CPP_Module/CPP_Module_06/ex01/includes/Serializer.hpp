@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 20:05:05 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/30 16:35:12 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/30 17:21:52 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/30 18:19:17 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScalarConverter.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int	main(int argc, char *argv[])
+#include <iostream>
+#include <string>
+
+struct Data {
+	std::string	name;
+};
+
+class Serializer
 {
-	if (argc != 2)
-	{
-		std::cerr << "Invalid argument. Ex [./convert <str>]" << std::endl;
-		return (1);
-	}
-	ScalarConverter::convert(argv[1]);
-	return (0);
-}
+	public:
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
+};
+
+#endif

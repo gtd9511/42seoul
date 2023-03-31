@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 20:05:05 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/30 16:35:12 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/30 17:31:58 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/30 18:19:14 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScalarConverter.hpp"
+#include "../includes/Serializer.hpp"
 
-int	main(int argc, char *argv[])
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Invalid argument. Ex [./convert <str>]" << std::endl;
-		return (1);
-	}
-	ScalarConverter::convert(argv[1]);
-	return (0);
+	return reinterpret_cast<uintptr_t>(ptr);
 }
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data *>(raw);
+}
+

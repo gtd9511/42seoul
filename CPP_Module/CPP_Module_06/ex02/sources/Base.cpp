@@ -6,40 +6,59 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:14:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/29 18:25:32 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/03/30 20:05:21 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Base.hpp"
 
-Base::~Base()
-{
-}
+Base::~Base() {}
 
 Base * generate(void)
 {
 	std::time_t time = std::time(nullptr);
-	Base * ret = NULL;
-
+	Base * base = NULL;
 	switch(time % 3)
 	{
 		case(0):
-			ret = new A();
+			base = new A();
+			break;
 		case(1):
-			ret = new B();
+			base = new B();
+			break;
 		case(2):
-			ret = new C();
+			base = new C();
 	}
-	return (ret);
+	return (base);
 }
 
 void identify(Base* p)
 {
-	
+	try
+	{
+		if (dynamic_cast<A*>(p))
+			std::cout << "pointer is A" << std::endl;
+		if (dynamic_cast<B*>(p))
+			std::cout << "pointer is B" << std::endl;
+		if (dynamic_cast<C*>(p))
+			std::cout << "pointer is C" << std::endl;
+	}
+	catch (std::exception&){}
+
 }
 
 void identify(Base& p)
-{}
+{
+	try
+	{
+		if (dynamic_cast<A*>(&p))
+			std::cout << "reference is A" << std::endl;
+		if (dynamic_cast<B*>(&p))
+			std::cout << "reference is B" << std::endl;
+		if (dynamic_cast<C*>(&p))
+			std::cout << "reference is C" << std::endl;
+	}
+	catch (std::exception&){}
+}
 
-std::time_t	currentTime = std::time(nullptr);
 
