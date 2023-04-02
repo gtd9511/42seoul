@@ -6,7 +6,18 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:37:50 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/30 21:37:51 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/04/02 21:12:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include "../includes/whatever.hpp"
+
+int	main(void)
+{
+	
+
+
+
+	return (0);
+}

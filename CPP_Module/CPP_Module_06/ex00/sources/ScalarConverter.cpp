@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:40:46 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/31 17:46:16 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/04/02 21:00:46 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void ScalarConverter::convert(const std::string input)
 
 	char *ptr = NULL;
 	dvalue = strtod(input.c_str(), &ptr);
+
 
 
 	std::cout << "char: ";
@@ -37,7 +38,7 @@ void ScalarConverter::convert(const std::string input)
 	 	std::cout << "impossible" << std::endl;
 
 	std::cout << "float: " << std::endl;
-	if 
+
 	std::cout << "double: " << std::endl;
 }
 

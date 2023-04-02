@@ -24,7 +24,7 @@ class ScalarConverter {
 #endif
 
 
-#include "ScalarConverter.hpp"
+//#include "ScalarConverter.hpp"
 
 // inf는 무한대값을 의미
 // nan(Not A Number) 은 숫자가 아님 -> float value
