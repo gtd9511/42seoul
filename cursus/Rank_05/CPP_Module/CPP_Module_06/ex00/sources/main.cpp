@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 08:40:47 by sanghan           #+#    #+#             */
-/*   Updated: 2023/04/11 16:54:38 by sanghan          ###   ########.fr       */
+/*   Created: 2023/03/28 20:05:05 by sanghan           #+#    #+#             */
+/*   Updated: 2023/03/30 16:35:12 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#include "../includes/ScalarConverter.hpp"
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <limits>
-
-class ScalarConverter
+int	main(int argc, char *argv[])
 {
-	private:
-		ScalarConverter();
-		~ ScalarConverter();
-	public:
-		static void convert(const std::string input);
-		static int	checkType(const std::string& input);
-};
-
-#endif
+	if (argc != 2)
+	{
+		std::cerr << "Invalid argument. Ex [./convert <str>]" << std::endl;
+		return (1);
+	}
+	ScalarConverter::convert(argv[1]);
+	return (0);
+}
