@@ -5,31 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/11 01:06:38 by sanghan           #+#    #+#              #
-#    Updated: 2023/04/18 15:35:40 by sanghan          ###   ########.fr        #
+#    Created: 2023/03/17 11:11:48 by sanghan           #+#    #+#              #
+#    Updated: 2023/03/23 17:56:03 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME = animal
 
-CC = cc -g3 -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 RM = rm -rf
 
 SRCS_PATH = ./sources
 OBJS_PATH = ./objects
 INCLUDES = ./includes
 
-SRCS = philo.c init.c philo_utils.c thread.c guard.c
-OBJS_NAME = $(SRCS:.c=.o)
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+OBJS_NAME = $(SRCS:.cpp=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
-$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
+$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJS_PATH)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I $(INCLUDES) -c $< -o $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 all: $(NAME)
 
@@ -43,4 +43,4 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
