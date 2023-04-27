@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:38:13 by sanghan           #+#    #+#             */
-/*   Updated: 2023/04/02 21:16:53 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/04/27 22:36:20 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <string>
 
 template <typename T>
 class Array
@@ -25,28 +26,34 @@ class Array
 	public:
 		Array() :_array(new T), _arraySize(0){}
 		Array(unsigned int n) : _array(new T[n]), _arraySize(n){}
-		Array(const Array &origin)
+		Array(const Array &obj)
 		{
-			this->_array = new T[origin._arraySize];
-			this->_arraySize = origin._arraySize;
+			if (this == obj)
+				return ;
+			this->_array = NULL;
+			this->_arraySize = 0;
+			*this = obj;
+			//this->_array = new T[obj._arraySize];
+			//this->_arraySize = obj._arraySize;
 		}
 
-	Array &operator=(const Array &origin)
+	Array &operator=(const Array &obj)
 	{
-		if (this != &origin)
+		if (this != &obj)
 		{
-			delete this->_array;
-			this->_array = new T[origin._arraySize];
-			this->_arraySize = origin._arraySize;
+			if (this->_array)
+				delete this->_array;
+			this->_array = new T[obj._arraySize];
+			this->_arraySize = obj._arraySize;
 			for (unsigned int i = 0; i < this->_arraySize; i++)
-				this->arr[i] = origin.arr[i];
+				this->arr[i] = obj.arr[i];
 		}
 		return *this;
 	}
 
 	~Array()
 	{
-		  if (this->_arraySize != 0)
+		if (this->_arraySize != 0)
 			delete [] this->_array;
 		this->_array = NULL;
 		this->_arraySize = 0;
@@ -76,7 +83,7 @@ class Array
 		public:
 			const char* what() const throw()
 			{
-				return "Array - Out of range";
+				return "Out of range! Check index";
 			}
 	};
 };
