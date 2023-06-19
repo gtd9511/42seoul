@@ -6,16 +6,19 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/04/13 16:43:43 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/06/15 09:58:31 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/Span.hpp"
 
 Span::Span(unsigned int N)
 {
 	this->_N = N;
+}
+
+Span::~Span()
+{
 }
 
 Span::Span(Span const &span)
@@ -30,15 +33,18 @@ Span &Span::operator=(Span const &span)
 	return (*this);
 }
 
-Span::~Span()
-{
-}
-
 void Span::addNumber(int n)
 {
 	if (this->_V.size() == this->_N)
 		throw Span::FullException();
 	this->_V.push_back(n);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (std::distance(begin, end) > _N)
+		throw Span::NoSpanException();
+	_V.insert(_V.end(), begin, end);
 }
 
 int Span::shortestSpan()
