@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:47 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/15 10:54:36 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/06/20 16:16:26 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ public:
 			std::stack<T>::operator=(other);
 		return (*this);
 	}
-
-	MutantStack(const MutantStack& origin) {
-        *this = origin;
-    }
-
-    MutantStack& operator=(const MutantStack& origin) {
-        *this = origin;
-        return *this;
-    }
 
 	typedef typename MutantStack<T>::stack::container_type::iterator iterator;
 
