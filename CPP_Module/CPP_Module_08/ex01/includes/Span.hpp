@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:31 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/15 09:58:09 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:29:16 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 class Span
 {
 	private:
-		unsigned int _N;
-		std::vector<int> _V;
+		unsigned int N_;
+		std::vector<int> V_;
 		Span();
 	public:
 		Span(unsigned int n);

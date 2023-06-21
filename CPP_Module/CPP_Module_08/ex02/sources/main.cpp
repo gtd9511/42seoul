@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:49 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/20 16:36:29 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:35:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int main()
 	    std::cout << *it << std::endl;
 		++it;
 	}
+	mstack.push(17);
+
 	std::stack<int> s(mstack);
 
 	std::cout << "---------------------" << std::endl;
@@ -74,5 +76,13 @@ int main()
 		std::cout << *lstit << std::endl;
 		++lstit;
 	}
+	lst.push_back(17);
+
+	std::list<int> l(lst);
+
+	std::cout << "---------------------" << std::endl;
+	std::cout << "l.top() : " << l.back() << std::endl;
+	std::cout << "lst.top() : " << lst.back() << std::endl;
+	std::cout << "---------------------" << std::endl;
 	return 0;
 }

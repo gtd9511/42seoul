@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:43:11 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/14 21:34:40 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:18:46 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define EASYFIND_HPP
 
 #include <iostream>
-#include <algorithm>
-#include <stdexcept>
 #include <vector>
 #include <list>
 #include <deque>
