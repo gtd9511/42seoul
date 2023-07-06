@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:34 by sanghan           #+#    #+#             */
-/*   Updated: 2023/07/06 11:24:45 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 20:34:47 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,15 @@ int main(void)
 
 	std::cout << sp4.shortestSpan() << std::endl;
 	std::cout << sp4.longestSpan() << std::endl;
+
+	Span sp5 = Span(11);
+
+	sp5.addNumber(1);
+	sp5.addNumber(5);
+	std::vector<int> vec2;
+	for (int i = 0; i < 10; i++)
+		vec2.push_back(i);
+	sp5.addNumber(vec2.begin(), vec2.end());
+
 	return 0;
 }

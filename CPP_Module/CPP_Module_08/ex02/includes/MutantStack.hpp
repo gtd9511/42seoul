@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:47 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/20 16:16:26 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 20:30:46 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ public:
 	}
 
 	typedef typename MutantStack<T>::stack::container_type::iterator iterator;
-
 	iterator begin(void) {return this->c.begin();}
 	iterator end(void) {return this->c.end();}
 

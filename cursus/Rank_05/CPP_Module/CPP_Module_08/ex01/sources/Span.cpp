@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/07/06 11:24:32 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 20:30:31 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void Span::addNumber(int n)
 
 void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	if (std::distance(begin, end) > N_)
+	if (std::distance(begin, end) + V_.size() > N_)
 		throw Span::NoSpanException();
 	V_.insert(V_.end(), begin, end);
 }
@@ -70,9 +70,7 @@ size_t Span::longestSpan()
 		throw Span::NoSpanException();
 	std::vector<int> v = this->V_;
 	std::sort(v.begin(), v.end());
-	// size_t max = static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]);
 	return(static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]));
-	// return (max);
 }
 
 const char *Span::FullException::what() const throw()
