@@ -6,11 +6,12 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/23 16:59:46 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:24:32 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
+#include <algorithm>
 
 Span::Span(unsigned int N)
 {
@@ -47,30 +48,31 @@ void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterato
 	V_.insert(V_.end(), begin, end);
 }
 
-long Span::shortestSpan()
+size_t Span::shortestSpan()
 {
 	if (this->V_.size() <= 1)
 		throw Span::NoSpanException();
 	std::vector<int> v = this->V_;
 	std::sort(v.begin(), v.end());
-	long min = static_cast<long>(v[1]) - static_cast<long>(v[0]);
+	size_t min = static_cast<size_t>(v[1]) - static_cast<size_t>(v[0]);
 	for (unsigned int i = 2; i < v.size(); i++)
 	{
-		long temp = static_cast<long>(v[i]) - static_cast<long>(v[i - 1]);
+		size_t temp = static_cast<size_t>(v[i]) - static_cast<size_t>(v[i - 1]);
 		if (temp < min)
 			min = temp;
 	}
 	return (min);
 }
 
-long Span::longestSpan()
+size_t Span::longestSpan()
 {
 	if (this->V_.size() <= 1)
 		throw Span::NoSpanException();
 	std::vector<int> v = this->V_;
 	std::sort(v.begin(), v.end());
-	long max = static_cast<long>(v[v.size() - 1]) - static_cast<long>(v[0]);
-	return (max);
+	// size_t max = static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]);
+	return(static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]));
+	// return (max);
 }
 
 const char *Span::FullException::what() const throw()

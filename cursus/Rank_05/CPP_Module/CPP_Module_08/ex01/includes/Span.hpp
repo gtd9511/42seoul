@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:31 by sanghan           #+#    #+#             */
-/*   Updated: 2023/06/22 20:26:47 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:24:42 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class Span
 		~Span();
 		void addNumber(int n);
 		void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-		long shortestSpan();
-		long longestSpan();
+		size_t shortestSpan();
+		size_t longestSpan();
 		class FullException : public std::exception
 		{
 			public:
