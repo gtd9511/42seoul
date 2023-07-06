@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:44:36 by sanghan           #+#    #+#             */
-/*   Updated: 2023/07/06 11:24:32 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:27:56 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ size_t Span::longestSpan()
 		throw Span::NoSpanException();
 	std::vector<int> v = this->V_;
 	std::sort(v.begin(), v.end());
-	// size_t max = static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]);
 	return(static_cast<size_t>(v[v.size() - 1]) - static_cast<size_t>(v[0]));
-	// return (max);
 }
 
 const char *Span::FullException::what() const throw()
