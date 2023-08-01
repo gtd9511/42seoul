@@ -84,12 +84,12 @@ int BitcoinExchange::getData()
 				std::cerr << "Error: data file contains non-numeric value." << std::endl;
 				return(1);
 			}
-			std::cout << "DEBUG 1 : " << value << std::endl;
-			std::cout << "DEBUG 2 : " << std::strtod(value.c_str(), NULL) << std::endl;
+			// std::cout << "DEBUG 1 : " << value << std::endl;
+			// std::cout << "DEBUG 2 : " << std::strtod(value.c_str(), NULL) << std::endl;
 			this->_data[line.substr(0, date_length)] = std::strtod(value.c_str(), NULL);
 			// this->_data[line.substr(0, date_length)] = std::stof(line.substr(date_length + 1));
 			// std::cout << line.substr(0, date_length) << std::endl;
-			std::cout << "HERE : " << this->_data[line.substr(0, date_length)] << std::endl;
+			std::cout << "HERE : " << std::setprecision(8) << this->_data[line.substr(0, date_length)] << std::endl;
 		}
 	}
 	return (0);
