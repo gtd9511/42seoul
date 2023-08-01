@@ -6,129 +6,135 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:39 by sanghan           #+#    #+#             */
-/*   Updated: 2023/04/14 13:07:10 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/01 22:10:34 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/BitcoinExchange.hpp"
+#include <cctype>
+#include <fstream>
+#include <string>
 
-/*
-BitcoinExchange::BitcoinExchange(void)
+BitcoinExchange::BitcoinExchange(){}
+
+BitcoinExchange::~BitcoinExchange(){}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj)
 {
-	this->name = "BitcoinExchange";
-	this->balance = 0;
-	this->bitcoin = 0;
+	if (this == &obj)
+		return ;
+	*this = obj;
 }
 
-BitcoinExchange::BitcoinExchange(std::string name)
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &obj)
 {
-	this->name = name;
-	this->balance = 0;
-	this->bitcoin = 0;
+	if (this != &obj)
+		this->_data = obj._data;
+	return (*this);
 }
 
-BitcoinExchange::BitcoinExchange(BitcoinExchange const &copy)
+bool isNumeric(const std::string& str)
 {
-	*this = copy;
-}
+	bool hasDecimal = false;
+	bool hasDigit = false;
 
-BitcoinExchange::~BitcoinExchange(void)
-{
-}
-
-BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &assign)
-{
-	this->name = assign.name;
-	this->balance = assign.balance;
-	this->bitcoin = assign.bitcoin;
-	return *this;
-}
-
-void BitcoinExchange::addCurrency(std::string currency)
-{
-	this->currencies.push_back(currency);
-}
-
-void BitcoinExchange::addPrice(double price)
-{
-	this->prices.push_back(price);
-}
-
-void BitcoinExchange::printCurrencies()
-{
-	std::cout << "Currencies: ";
-	for (std::vector<std::string>::iterator it = this->currencies.begin(); it != this->currencies.end(); it++)
+	for (size_t i = 0; i < str.length(); i++)
 	{
-		std::cout << *it << " ";
+		char c = str[i];
+		if (std::isdigit(c))
+			hasDigit = true;
+		else if (c == '.')
+		{
+			if (hasDecimal)
+				return (false);
+			hasDecimal = true;
+		}
+		else
+			return (false);
 	}
-	std::cout << std::endl;
+	return (hasDigit);
 }
 
-void BitcoinExchange::printPrices()
+int BitcoinExchange::getData()
 {
-	std::cout << "Prices: ";
-	for (std::list<double>::iterator it = this->prices.begin(); it != this->prices.end(); it++)
+	std::ifstream csv("data.csv");
+	std::string line;
+	size_t date_length;
+
+	if (!csv)
 	{
-		std::cout << *it << " ";
+		std::cerr << "Error: could not open data file." << std::endl;
+		return (1);
 	}
-	std::cout << std::endl;
+	if (getline(csv, line).eof())
+	{
+		std::cerr << "Error: data file is empty." << std::endl;
+		return (1);
+	}
+	while (getline(csv, line))
+	{
+		if (line != "date,exchange_rate")
+		{
+			std::string value;
+			date_length = line.find(',');
+			value = line.substr(date_length + 1);
+			std::cout << "value : " << value << std::endl;
+			if (!isNumeric(value))
+			{
+				std::cerr << "Error: data file contains non-numeric value." << std::endl;
+				return(1);
+			}
+			std::cout << "DEBUG 1 : " << value << std::endl;
+			std::cout << "DEBUG 2 : " << std::strtod(value.c_str(), NULL) << std::endl;
+			this->_data[line.substr(0, date_length)] = std::strtod(value.c_str(), NULL);
+			// this->_data[line.substr(0, date_length)] = std::stof(line.substr(date_length + 1));
+			// std::cout << line.substr(0, date_length) << std::endl;
+			std::cout << "HERE : " << this->_data[line.substr(0, date_length)] << std::endl;
+		}
+	}
+	return (0);
 }
 
-void BitcoinExchange::print()
+int BitcoinExchange::checkInputFile(char *file)
 {
-	std::cout << "Name: " << this->name << std::endl;
-	this->printCurrencies();
-	this->printPrices();
-	std::cout << "Balance: " << this->balance << std::endl;
-	std::cout << "Bitcoin: " << this->bitcoin << std::endl;
+	std::fstream fs;
+	std::string line;
+
+	fs.open(file, std::ifstream::in);
+	if (!fs.is_open())
+	{
+		std::cerr << "Error: could not open input file." << std::endl;
+		return (1);
+	}
+	if (getline(fs, line).eof())
+	{
+		std::cerr << "Error: input file is empty." << std::endl;
+		return (1);
+	}
+	if (line.compare("date | value") != 0)
+	{
+		std::cerr << "Error: input file is not in the correct format." << std::endl;
+		return (1);
+	}
+	line.erase();
+	fs.close();
+	return (0);
 }
 
-std::string BitcoinExchange::getName()
+void BitcoinExchange::setData(char *file)
 {
-	return this->name;
+	std::ifstream inputfile(file);
+	std::string line;
+
+	getline(inputfile, line);
+	while (getline(inputfile, line))
+		// printResult(line);
+		// std::cout << "Debug : " << line << std::endl;
+	return ;
 }
 
-std::vector<std::string> BitcoinExchange::getCurrencies()
-{
-	return this->currencies;
-}
-
-std::list<double> BitcoinExchange::getPrices()
-{
-	return this->prices;
-}
-
-void BitcoinExchange::buy(std::string currency, double amount)
-{
-	std::vector<std::string>::iterator it = std::find(this->currencies.begin(), this->currencies.end(), currency);
-	if (it == this->currencies.end())
-		throw std::exception();
-	std::list<double>::iterator it2 = this->prices.begin();
-	std::advance(it2, std::distance(this->currencies.begin(), it));
-	this->balance -= amount;
-	this->bitcoin += amount / *it2;
-}
-
-void BitcoinExchange::sell(std::string currency, double amount)
-{
-	std::vector<std::string>::iterator it = std::find(this->currencies.begin(), this->currencies.end(), currency);
-	if (it == this->currencies.end())
-		throw std::exception();
-	std::list<double>::iterator it2 = this->prices.begin();
-	std::advance(it2, std::distance(this->currencies.begin(), it));
-	this->balance += amount * *it2;
-	this->bitcoin -= amount;
-}
-
-void BitcoinExchange::printBalance()
-{
-	std::cout << "Balance: " << this->balance << std::endl;
-}
-
-void BitcoinExchange::printBitcoin()
-{
-	std::cout << "Bitcoin: " << this->bitcoin << std::endl;
-}
-
-*/
+// void BitcoinExchange::printResult(std::string line)
+// {
+// 	std:: string date;
+// 	float value;
+// }
