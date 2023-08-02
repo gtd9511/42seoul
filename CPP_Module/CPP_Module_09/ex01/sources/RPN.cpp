@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/RPN.hpp"
-#include <iostream>
 
 RPN::RPN() {}
 
@@ -38,7 +37,6 @@ RPN& RPN::operator=(RPN const &obj)
 
 bool RPN::calculateRPN(char* argv)
 {
-	std::stack<double> stack;
 	int i;
 	double tempA;
 	double tempB;
@@ -47,34 +45,35 @@ bool RPN::calculateRPN(char* argv)
 	while (argv[i] != '\0')
 	{
 		if (isdigit(argv[i]))
-			stack.push(argv[i] - '0');
+			_stack.push(argv[i] - '0');
 		else if (argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/')
 		{
-			if (stack.size() < 2)
-			{
-				std::cout << "B" << std::endl;
+			if (_stack.size() < 2)
 				return (true);
-			}
-			tempB = stack.top();
-			stack.pop();
-			tempA = stack.top();
-			stack.pop();
+			tempB = _stack.top();
+			_stack.pop();
+			tempA = _stack.top();
+			_stack.pop();
 			if (argv[i] == '+')
-				stack.push(tempA + tempB);
+				_stack.push(tempA + tempB);
 			else if (argv[i] == '-')
-				stack.push(tempA - tempB);
+				_stack.push(tempA - tempB);
 			else if (argv[i] == '*')
-				stack.push(tempA * tempB);
+				_stack.push(tempA * tempB);
 			else if (argv[i] == '/')
-				stack.push(tempA / tempB);
+			{
+				if (tempB == 0)
+					return (true);
+				_stack.push(tempA / tempB);
+			}
 		}
 		else if (argv[i] != ' ')
 			return (true);
 		i++;
 	}
-	if (stack.size() == 1)
+	if (_stack.size() == 1)
 	{
-		std::cout << stack.top() << std::endl;
+		std::cout << _stack.top() << std::endl;
 		return (false);
 	}
 	else

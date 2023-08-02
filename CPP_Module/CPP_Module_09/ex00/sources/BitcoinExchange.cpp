@@ -157,7 +157,7 @@ bool BitcoinExchange::checkDate(const std::string& str)
 	year = atoi(str.substr(0, 4).c_str());
 	month = atoi(str.substr(5, 2).c_str());
 	day = atoi(str.substr(8, 2).c_str());
-	if (year < 2009 || year > 2021)
+	if (year < 2009 || year > 2022)
 		return (false);
 	if (month > 12 || month < 1)
 		return (false);
@@ -190,7 +190,16 @@ void BitcoinExchange::printLine(const std::string& date, float value)
 		--iter;
 		total_value = (iter->second) * value;
 	}
-	std::cout << date << " => " << value << " = " << total_value << std::endl;
+	// std::cout << date << " => " << value << " = " << total_value << std::endl;
+
+	// std::streamsize prec = std::cout.precision();
+	if (static_cast<int>(total_value * 100) % 10 == 0)
+		std::cout << date << " => " << value << " = " << total_value << std::endl;
+		// std::cout << date << " => " << value << " = " << std::fixed << std:: setprecision(2) << total_value << std::endl;
+	else
+		std::cout << date << " => " << value << " = " << std::fixed << std:: setprecision(2) << total_value << std::endl;
+	// std::cout.precision(prec);
+	std::cout.unsetf(std::ios::fixed);
 }
 
 bool BitcoinExchange::isNumeric(const std::string& str)

@@ -16,15 +16,14 @@
 #include <iostream>
 #include <stack>
 #include <string>
-#include <stdlib.h>
+// #include <stdlib.h>
 
 class RPN
 {
 	private:
 		std::string _argv;
-	public:
 		std::stack<double> _stack;
-
+	public:
 		RPN();
 		RPN(char* argv);
 		~RPN();
