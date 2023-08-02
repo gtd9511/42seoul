@@ -6,14 +6,11 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:39 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/01 22:10:34 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/02 20:57:07 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/BitcoinExchange.hpp"
-#include <cctype>
-#include <fstream>
-#include <string>
 
 BitcoinExchange::BitcoinExchange(){}
 
@@ -33,11 +30,176 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &obj)
 	return (*this);
 }
 
-bool isNumeric(const std::string& str)
+bool BitcoinExchange::getData()
 {
-	bool hasDecimal = false;
-	bool hasDigit = false;
+	std::ifstream csv("data.csv");
+	std::string line;
+	size_t date_length;
 
+	if (!csv)
+	{
+		std::cerr << "Error: could not open data file." << std::endl;
+		return (true);
+	}
+	if (getline(csv, line).eof())
+	{
+		std::cerr << "Error: data file is empty." << std::endl;
+		return (true);
+	}
+	if (line != "date,exchange_rate")
+	{
+		std::cerr << "Error: data file is not in the correct format." << std::endl;
+		return (true);
+	}
+	while (getline(csv, line))
+	{
+		if (line != "date,exchange_rate")
+		{
+			std::string value;
+			date_length = line.find(',');
+			value = line.substr(date_length + 1);
+			if (!isNumeric(value))
+			{
+				std::cerr << "Error: data file contains non-numeric value." << std::endl;
+				return(true);
+			}
+			this->_data[line.substr(0, date_length)] = std::strtod(value.c_str(), NULL);
+		}
+	}
+	return (false);
+}
+
+bool BitcoinExchange::checkInputFile(char *file)
+{
+	std::fstream fs;
+	std::string line;
+
+	fs.open(file, std::ifstream::in);
+	if (!fs.is_open())
+	{
+		std::cerr << "Error: could not open input file." << std::endl;
+		return (true);
+	}
+	if (getline(fs, line).eof())
+	{
+		std::cerr << "Error: input file is empty." << std::endl;
+		return (true);
+	}
+	if (line.compare("date | value") != 0)
+	{
+		std::cerr << "Error: input file is not in the correct format." << std::endl;
+		return (true);
+	}
+	line.erase();
+	fs.close();
+	return (false);
+}
+
+void BitcoinExchange::setData(char *file)
+{
+	std::ifstream inputfile(file);
+	std::string line;
+
+	getline(inputfile, line);
+	while (getline(inputfile, line))
+		printResult(line);
+	return ;
+}
+
+void BitcoinExchange::printResult(std::string line)
+{
+	std::string date, svalue;
+	float fvalue;
+
+	size_t date_length = line.find(" | ");
+	if (date_length != 10)
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return ;
+	}
+
+	date = line.substr(0, date_length);
+	svalue = line.substr(date_length + 3);
+	if (!checkDate(date))
+	{
+		std::cerr << "Error: invalid date. => " << date << std::endl;
+		return ;
+	}
+	if (!isNumeric(svalue))
+	{
+		std::cerr << "Error: not a positive number. => " << svalue << std::endl;
+		return ;
+	}
+	fvalue = std::strtod(svalue.c_str(), NULL);
+	if (fvalue > 1000)
+	{
+		std::cerr << "Error: too large a number. => " << svalue << std::endl;
+		return ;
+	}
+	printLine(date, fvalue);
+	return ;
+}
+
+bool BitcoinExchange::checkDate(const std::string& str)
+{
+	int year, month, day;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i == 4 || i == 7)
+		{
+			if (str[i] != '-')
+				return (false);
+		}
+		else if (!std::isdigit(str[i]))
+			return (false);
+	}
+	year = atoi(str.substr(0, 4).c_str());
+	month = atoi(str.substr(5, 2).c_str());
+	day = atoi(str.substr(8, 2).c_str());
+	if (year < 2009 || year > 2021)
+		return (false);
+	if (month > 12 || month < 1)
+		return (false);
+	if (day > 31 || day < 1)
+		return (false);
+	if (day == 31 && (month == 4 || month == 6 || month == 9 || month == 11))
+		return (false);
+	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+	{
+		if (day > 29 && month == 2)
+			return (false);
+	}
+	else if (day > 28 && month == 2)
+		return (false);
+	return (true);
+}
+
+void BitcoinExchange::printLine(const std::string& date, float value)
+{
+	std::map<std::string, float>::iterator iter;
+	float total_value;
+
+	total_value = 0;
+	iter = _data.find(date);
+	if (iter != _data.end())
+		total_value = (iter->second) * value;
+	else
+	{
+		iter = _data.lower_bound(date);
+		--iter;
+		total_value = (iter->second) * value;
+	}
+	std::cout << date << " => " << value << " = " << total_value << std::endl;
+}
+
+bool BitcoinExchange::isNumeric(const std::string& str)
+{
+	bool hasDecimal;
+	bool hasDigit;
+
+	hasDecimal = false;
+	hasDigit = false;
 	for (size_t i = 0; i < str.length(); i++)
 	{
 		char c = str[i];
@@ -54,87 +216,3 @@ bool isNumeric(const std::string& str)
 	}
 	return (hasDigit);
 }
-
-int BitcoinExchange::getData()
-{
-	std::ifstream csv("data.csv");
-	std::string line;
-	size_t date_length;
-
-	if (!csv)
-	{
-		std::cerr << "Error: could not open data file." << std::endl;
-		return (1);
-	}
-	if (getline(csv, line).eof())
-	{
-		std::cerr << "Error: data file is empty." << std::endl;
-		return (1);
-	}
-	while (getline(csv, line))
-	{
-		if (line != "date,exchange_rate")
-		{
-			std::string value;
-			date_length = line.find(',');
-			value = line.substr(date_length + 1);
-			std::cout << "value : " << value << std::endl;
-			if (!isNumeric(value))
-			{
-				std::cerr << "Error: data file contains non-numeric value." << std::endl;
-				return(1);
-			}
-			// std::cout << "DEBUG 1 : " << value << std::endl;
-			// std::cout << "DEBUG 2 : " << std::strtod(value.c_str(), NULL) << std::endl;
-			this->_data[line.substr(0, date_length)] = std::strtod(value.c_str(), NULL);
-			// this->_data[line.substr(0, date_length)] = std::stof(line.substr(date_length + 1));
-			// std::cout << line.substr(0, date_length) << std::endl;
-			std::cout << "HERE : " << std::setprecision(8) << this->_data[line.substr(0, date_length)] << std::endl;
-		}
-	}
-	return (0);
-}
-
-int BitcoinExchange::checkInputFile(char *file)
-{
-	std::fstream fs;
-	std::string line;
-
-	fs.open(file, std::ifstream::in);
-	if (!fs.is_open())
-	{
-		std::cerr << "Error: could not open input file." << std::endl;
-		return (1);
-	}
-	if (getline(fs, line).eof())
-	{
-		std::cerr << "Error: input file is empty." << std::endl;
-		return (1);
-	}
-	if (line.compare("date | value") != 0)
-	{
-		std::cerr << "Error: input file is not in the correct format." << std::endl;
-		return (1);
-	}
-	line.erase();
-	fs.close();
-	return (0);
-}
-
-void BitcoinExchange::setData(char *file)
-{
-	std::ifstream inputfile(file);
-	std::string line;
-
-	getline(inputfile, line);
-	while (getline(inputfile, line))
-		// printResult(line);
-		// std::cout << "Debug : " << line << std::endl;
-	return ;
-}
-
-// void BitcoinExchange::printResult(std::string line)
-// {
-// 	std:: string date;
-// 	float value;
-// }

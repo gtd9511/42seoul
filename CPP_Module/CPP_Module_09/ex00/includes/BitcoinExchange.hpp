@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:37 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/01 21:31:06 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/02 16:50:44 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ class BitcoinExchange
 		~BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &);
 		BitcoinExchange &operator=(BitcoinExchange const &);
-		int getData();
-		int checkInputFile(char *file);
+		bool getData();
+		bool checkInputFile(char *file);
 		void setData(char *file);
-		// void printResult(std::string line);
 
+		bool isNumeric(const std::string& str);
+		bool checkDate(const std::string& str);
+		bool checkValue(float value);
+		void printResult(std::string line);
+		void printLine(const std::string& str, float value);
 };
 
 #endif

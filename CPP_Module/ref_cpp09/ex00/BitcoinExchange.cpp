@@ -237,8 +237,10 @@ void	BitcoinExchange::printBit(std::string date, float n)
 		--iter;
 		res = (iter->second) * n;
 	}
+	std::cout << " 1 " << date << " => " << n << " = " << res << std::endl;
+
 	(n == static_cast<int>(n)) ?
-		std::cout << date << " => " << static_cast<int>(n) << " = " << res << std::endl :
-		std::cout << date << " => " << n << " = " << res << std::endl;
+		std::cout << " 2 " << date << " => " << static_cast<int>(n) << " = " << res << std::endl :
+		std::cout << " 2 " << date << " => " << n << " = " << res << std::endl;
 }
 
