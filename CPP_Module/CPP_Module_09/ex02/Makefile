@@ -6,7 +6,42 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:49:11 by sanghan           #+#    #+#              #
-#    Updated: 2023/03/30 21:49:12 by sanghan          ###   ########.fr        #
+#    Updated: 2023/08/03 15:36:36 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = PmergeMe
+
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+
+RM = rm -rf
+
+SRCS_PATH = ./sources
+OBJS_PATH = ./objects
+INCLUDES = ./includes
+
+SRCS = PmergeMe.cpp main.cpp
+OBJS_NAME = $(SRCS:.cpp=.o)
+OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
+
+$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
+	mkdir -p $(OBJS_PATH)
+	$(CXX) $(CXXFLAGS) -I $(INCLUDES) -c $< -o $@
+
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+all: $(NAME)
+
+clean:
+	$(RM) $(OBJS_PATH)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+.PHONY: all clean fclean re

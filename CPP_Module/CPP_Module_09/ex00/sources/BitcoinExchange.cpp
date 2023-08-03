@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:39 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/02 20:57:07 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:05:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,24 +191,18 @@ void BitcoinExchange::printLine(const std::string& date, float value)
 		total_value = (iter->second) * value;
 	}
 	// std::cout << date << " => " << value << " = " << total_value << std::endl;
-
-	// std::streamsize prec = std::cout.precision();
 	if (static_cast<int>(total_value * 100) % 10 == 0)
 		std::cout << date << " => " << value << " = " << total_value << std::endl;
-		// std::cout << date << " => " << value << " = " << std::fixed << std:: setprecision(2) << total_value << std::endl;
 	else
 		std::cout << date << " => " << value << " = " << std::fixed << std:: setprecision(2) << total_value << std::endl;
-	// std::cout.precision(prec);
 	std::cout.unsetf(std::ios::fixed);
 }
 
 bool BitcoinExchange::isNumeric(const std::string& str)
 {
-	bool hasDecimal;
-	bool hasDigit;
+	bool hasDecimal = false;
+	bool hasDigit = false;
 
-	hasDecimal = false;
-	hasDigit = false;
 	for (size_t i = 0; i < str.length(); i++)
 	{
 		char c = str[i];

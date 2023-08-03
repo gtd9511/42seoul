@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:52 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/02 22:04:15 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:14:09 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ RPN& RPN::operator=(RPN const &obj)
 
 bool RPN::calculateRPN(char* argv)
 {
-	int i;
-	double tempA;
-	double tempB;
+	int i = 0;
+	double tempA, tempB;
 
-	i = 0;
 	while (argv[i] != '\0')
 	{
-		if (isdigit(argv[i]))
+		if (isdigit(argv[i]) && (argv[i + 1] == ' '))
 			_stack.push(argv[i] - '0');
-		else if (argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/')
+		else if ((argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/') && (argv[i + 1] == ' ' || argv[i + 1] == '\0'))
 		{
 			if (_stack.size() < 2)
 				return (true);
