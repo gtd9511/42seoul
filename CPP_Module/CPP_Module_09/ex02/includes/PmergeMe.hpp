@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/03 17:00:21 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/07 19:24:56 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@ class PmergeMe
 		std::vector<int> _v;
 		std::list<int>	_l;
 		std::deque<int> _d;
-		clock_t _vStart;
-		clock_t _vEnd;
-		clock_t _lStart;
-		clock_t _lEnd;
-		clock_t _dStart;
-		clock_t _dEnd;
 	public:
 		PmergeMe();
 		~PmergeMe();
 		PmergeMe(const PmergeMe &);
 		PmergeMe &operator=(const PmergeMe &);
-};
 
+		bool getElement(char *argv);
+		std::vector<int> vectorFJ();
+		std::list<int> listFJ();
+		std::deque<int> dequeFJ();
+		void printAfter();
+};
 #endif

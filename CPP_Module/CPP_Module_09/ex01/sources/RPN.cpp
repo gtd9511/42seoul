@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:52 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/03 16:14:09 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/07 17:04:13 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ RPN::RPN(const RPN &obj)
 RPN& RPN::operator=(RPN const &obj)
 {
 	if (this != &obj)
+	{
 		this->_argv = obj._argv;
+		this->_stack = obj._stack;
+	}
 	return (*this);
 }
 
@@ -44,6 +47,13 @@ bool RPN::calculateRPN(char* argv)
 	{
 		if (isdigit(argv[i]) && (argv[i + 1] == ' '))
 			_stack.push(argv[i] - '0');
+		else if (isdigit(argv[i]) && argv[i + 1] == '\0' && _stack.size() == 0)
+			_stack.push(argv[i] - '0');
+		else if ((argv[i] == '-') && (isdigit(argv[i + 1])))
+		{
+			_stack.push(-1 * (argv[i + 1] - '0'));
+			i++;
+		}
 		else if ((argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/') && (argv[i + 1] == ' ' || argv[i + 1] == '\0'))
 		{
 			if (_stack.size() < 2)

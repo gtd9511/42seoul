@@ -6,14 +6,14 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 21:49:11 by sanghan           #+#    #+#              #
-#    Updated: 2023/08/03 15:36:36 by sanghan          ###   ########.fr        #
+#    Updated: 2023/08/07 17:22:11 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -g -Wall -Wextra -Werror -std=c++98 -pedantic
 
 RM = rm -rf
 

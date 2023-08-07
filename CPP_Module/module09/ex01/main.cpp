@@ -3,35 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 21:48:54 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/07 17:05:35 by sanghan          ###   ########.fr       */
+/*   Created: 2023/06/23 01:28:26 by jungeun           #+#    #+#             */
+/*   Updated: 2023/06/23 01:28:26 by jungeun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RPN.hpp"
+#include "RPN.hpp"
 
-// void leaks()
-// {
-// 	system("leaks RPN");
-// }
-
-int main(int argc, char* argv[])
+int main(int argc, char **argv)
 {
-	// atexit(leaks);
-	if (argc != 2)
+	try
 	{
-		std::cerr << "Error" << std::endl;
-		return (0);
+		if (argc != 2)
+			throw RPN::ErrorException();
+		
+		RPN::run(argv[1]);
 	}
-	RPN rpn(argv[1]);
-	if (rpn.calculateRPN(argv[1]))
+	catch(const std::exception& e)
 	{
-		std::cerr << "Error" << std::endl;
-		return (0);
+		std::cout << e.what() << std::endl;
 	}
-	return (0);
+	
+	return 0;
 }
-
-
