@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/09 20:30:24 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/09 21:02:42 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ class PmergeMe
 		void printAfter();
 
 		template <typename T>
-		T	FordJohnson(T container);
+		void	FordJohnson(T container);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/09 20:34:49 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/09 21:02:33 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,24 @@ bool PmergeMe::getElement(int argc, char *argv)
 }
 
 template <typename T>
-T	PmergeMe::FordJohnson(T container)
+void	PmergeMe::FordJohnson(T container)
 {
-	T pairs;
+	T<std::pair<int, int> > pairs;
 	for (size_t i = 0; i < _size; i += 2)
 	{
-		// pairs.push_back(std::make_pair(container[i], container[i + 1]));
 		std::pair <int, int> p;
-		p.first = container[i];
-		p.second = container[i + 1];
+		if (container[i] > container[i + 1])
+			p = std::make_pair(container[i + 1], container[i]);
+		else
+			p = std::make_pair(container[i], container[i + 1]);
+		// if (container[i] > container[i + 1])
+		// 	pairs.push_back(std::make_pair(container[i], container[i + 1]));
+		// else
+		//  	pair.push_back(std::make_pair(container[i + 1], container[i]));
 		pairs.push_back(std::make_pair(p.first, p.second));
 	}
 	for (size_t i = 0; i < pairs.size(); i++)
 		std::cout << pairs[i].first << " " << pairs[i].second << std::endl;
-	return (pairs);
 }
 
 std::vector<int> PmergeMe::vectorFJ()
