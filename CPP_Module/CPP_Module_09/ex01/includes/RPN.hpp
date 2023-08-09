@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:48 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/02 21:57:51 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/09 15:40:17 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <stack>
 #include <string>
-// #include <stdlib.h>
 
 class RPN
 {

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:52 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/07 17:04:13 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/09 15:40:02 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ bool RPN::calculateRPN(char* argv)
 			_stack.push(argv[i] - '0');
 		else if ((argv[i] == '-') && (isdigit(argv[i + 1])))
 		{
+			if (argv[i + 1] == '0')
+				return (true);
 			_stack.push(-1 * (argv[i + 1] - '0'));
 			i++;
 		}
