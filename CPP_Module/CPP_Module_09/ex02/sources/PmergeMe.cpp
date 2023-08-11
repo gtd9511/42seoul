@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/09 21:02:33 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/11 17:44:58 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,37 +67,24 @@ bool PmergeMe::getElement(int argc, char *argv)
 	return (false);
 }
 
-template <typename T>
-void	PmergeMe::FordJohnson(T container)
-{
-	T<std::pair<int, int> > pairs;
-	for (size_t i = 0; i < _size; i += 2)
-	{
-		std::pair <int, int> p;
-		if (container[i] > container[i + 1])
-			p = std::make_pair(container[i + 1], container[i]);
-		else
-			p = std::make_pair(container[i], container[i + 1]);
-		// if (container[i] > container[i + 1])
-		// 	pairs.push_back(std::make_pair(container[i], container[i + 1]));
-		// else
-		//  	pair.push_back(std::make_pair(container[i + 1], container[i]));
-		pairs.push_back(std::make_pair(p.first, p.second));
-	}
-	for (size_t i = 0; i < pairs.size(); i++)
-		std::cout << pairs[i].first << " " << pairs[i].second << std::endl;
-}
-
 std::vector<int> PmergeMe::vectorFJ()
 {
-	// std::vector<std::pair<int, int> > vPair;
-	// std::vector<int> vResult;
+	std::vector<std::pair<int, int> > vPair;
+	std::vector<int> vResult;
 
-	// if (_v.size() == 1)
-		// return (vResult);
-	FordJohnson(_v);
+	if (_v.size() == 1)
+		return (_v);
 
-	// return (vResult);
+	for (size_t i = 0; i < _v.size(); i+= 2)
+	{
+		if (_v[i] > _v[i + 1])
+			vPair.push_back(std::make_pair(_v[i + 1], _v[i]));
+		else
+		 	vPair.push_back(std::make_pair(_v[i], _v[i + 1]));
+	}
+	
+
+	return (vResult);
 }
 
 std::list<int> PmergeMe::listFJ()
