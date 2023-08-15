@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-#include <iterator>
-#include <utility>
 
 PmergeMe::PmergeMe() {}
 
@@ -82,7 +80,7 @@ std::vector<int> PmergeMe::vectorFJ()
 		else
 		 	vPair.push_back(std::make_pair(_v[i], _v[i + 1]));
 	}
-	
+
 
 	return (vResult);
 }
