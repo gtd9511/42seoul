@@ -6,18 +6,18 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:07 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/09 20:29:44 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/15 20:20:40 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-// #include <sys/_types/_size_t.h>
 
 int main(int argc, char* argv[])
 {
 	PmergeMe	PM;
 	time_t 		start, end;
-	double		vec_time, list_time, deque_time;
+	double		vec_time;
+	// double		vec_time, list_time, deque_time;
 	bool		noError = true;
 
 	if (argc < 2)
@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
 		std::cerr << "Error" << std::endl;
 		return (0);
 	}
+	PM.setJacob();
 	int i = 1;
 	while (i < argc)
 	{
@@ -35,7 +36,6 @@ int main(int argc, char* argv[])
 		}
 		i++;
 	}
-
 	if (noError)
 	{
 		std:: cout << "Before:	";
@@ -43,10 +43,10 @@ int main(int argc, char* argv[])
 			std::cout << argv[i] << " ";
 		std::cout << std::endl;
 
-		// start = clock();
+		start = clock();
 		PM.vectorFJ();
-		// end = clock();
-		// vec_time = (double)(end - start) / CLOCKS_PER_SEC;
+		end = clock();
+		vec_time = (double)(end - start) / CLOCKS_PER_SEC;
 
 		// start = clock();
 		// PM.listFJ();
@@ -58,8 +58,8 @@ int main(int argc, char* argv[])
 		// end = clock();
 		// deque_time = (double)(end - start) / CLOCKS_PER_SEC;
 
-		// PM.printAfter();
-		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::[Vector] : " << vec_time << " ms" << std::endl;
+		PM.printAfter();
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::[Vector] : " << vec_time << " ms" << std::endl;
 		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::[List]   : " << list_time << " ms" << std::endl;
 		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::[Deque]  : " << deque_time << " ms" << std::endl;
 	}

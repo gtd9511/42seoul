@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/09 21:02:42 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/15 18:49:36 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &);
 
 		bool getElement(int argc, char *argv);
+		void setJacob();
 		std::vector<int> vectorFJ();
 		std::list<int> listFJ();
 		std::deque<int> dequeFJ();
 		void printAfter();
 
-		template <typename T>
-		void	FordJohnson(T container);
 };
 #endif
