@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/15 20:20:03 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:29:32 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,6 @@ void PmergeMe::setJacob()
 	for (int i = 2; i < 31; i++)
 		jacobsthal[i] = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
 }
-
-// void binary_insertion(std::vector<int> &v)
-// {
-// 	int szie = v.size();
-// 	// for (int i = 0; i < )
-// }
 
 std::vector<int> PmergeMe::vectorFJ()
 {
@@ -137,7 +131,7 @@ std::vector<int> PmergeMe::vectorFJ()
 	}
 	while (bsize > nearJacob)
 		execVec.push_back(bsize--);
-	std::cout << std::endl;
+	// std::cout << std::endl;
 	for (int i = 0; i < static_cast<int>(execVec.size()); i++)
 	{
 		// std::cout << "실행 차례 : " << execVec[i] << std::endl;
@@ -177,10 +171,10 @@ std::vector<int> PmergeMe::vectorFJ()
 		// std::cout << std::endl;
 		// std::cout << std::endl;
 	}
-	std::cout << std::endl;
+	// std::cout << std::endl;
 
 	// std::cout << "*******************" << std::endl;
-
+	_v = vResult;Z
 	return (vResult);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:07 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/15 20:20:40 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:20:21 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
 		// deque_time = (double)(end - start) / CLOCKS_PER_SEC;
 
 		PM.printAfter();
+		std::cout << std::fixed << std::setprecision(10);
 		std::cout << "Time to process a range of " << argc - 1 << " elements with std::[Vector] : " << vec_time << " ms" << std::endl;
 		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::[List]   : " << list_time << " ms" << std::endl;
 		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::[Deque]  : " << deque_time << " ms" << std::endl;
