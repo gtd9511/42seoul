@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/16 10:29:32 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/16 10:33:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ bool PmergeMe::getElement(int argc, char *argv)
 	return (false);
 }
 
-bool compare(std::pair<int, int> a, std::pair<int, int> b)
-{
-	return a.second < b.second;
-}
-
 void PmergeMe::setJacob()
 {
 	jacobsthal[0] = 1;
@@ -75,13 +70,13 @@ std::vector<int> PmergeMe::vectorFJ()
 	std::vector<int> aVec;
 	std::vector<int> bVec;
 	std::vector<int> execVec;
-	int temp = 0;
+	int is_odd = 0;
 
 	if (_v.size() == 1)
 		return (_v);
 	if (_v.size() % 2 != 0)
 	{
-		temp = _v.back();
+		is_odd = _v.back();
 		_v.pop_back();
 	}
 	for (size_t i = 0; i < _v.size(); i+= 2)
@@ -95,29 +90,17 @@ std::vector<int> PmergeMe::vectorFJ()
 	vResult.push_back(vPair[0].second);
 	for (std::vector<std::pair<int, int> >::iterator itr = vPair.begin(); itr != vPair.end(); itr++)
 	{
-		// std::cout << itr->first << " " << itr->second << std::endl;
 		vResult.push_back(itr->first);
 		aVec.push_back(itr->first);
 		bVec.push_back(itr->second);
 	}
-	if (temp)
-		bVec.push_back(temp);
-	// std::cout << "a : ";
-	// for (std::vector<int>::iterator itr = aVec.begin(); itr != aVec.end(); itr++)
-	// 	std::cout << *itr << " ";
-	// std::cout << std::endl << "b : ";
-	// for (std::vector<int>::iterator itr = bVec.begin(); itr != bVec.end(); itr++)
-	// 	std::cout << *itr << " ";
-	// std::cout << std::endl << "result : ";
-	// for (std::vector<int>::iterator itr = vResult.begin(); itr != vResult.end(); itr++)
-	// 	std::cout << *itr << " ";
+	if (is_odd)
+		bVec.push_back(is_odd);
 
-	// std::cout << std::endl << "*******************" << std::endl;
 	int bsize = bVec.size();
-	// std::cout << jacobsthal[1] << "\n";
-	// std::cout << bsize << "\n";
 	int jacobIdx = 0;
 	int nearJacob = 0;
+
 	while (jacobsthal[jacobIdx] <= bsize)
 	{
 		if (jacobIdx > 0)
@@ -129,25 +112,23 @@ std::vector<int> PmergeMe::vectorFJ()
 		}
 		jacobIdx++;
 	}
+
 	while (bsize > nearJacob)
 		execVec.push_back(bsize--);
-	// std::cout << std::endl;
+
 	for (int i = 0; i < static_cast<int>(execVec.size()); i++)
 	{
-		// std::cout << "실행 차례 : " << execVec[i] << std::endl;
-		// std::cout << "처음 묶인 a : " << aVec[execVec[i] - 1] << std::endl;
-		// std::cout << "이번에 들어갈 b : " << bVec[execVec[i] - 1] << std::endl;
 		int maxIdx = 0;
+		int lo = 0;
+		int hi = maxIdx;
+		int mid;
+
 		for (int j = 0; j < static_cast<int>(vResult.size()); j++)
 		{
 			if (aVec[execVec[i] - 1] == vResult[j])
 				maxIdx = j;
 		}
-		// std::cout << "maxIdx : " << vResult[maxIdx] << std::endl;
-		int lo = 0;
-		int hi = maxIdx;
-		int mid;
-		// std::cout << "high : " << hi << std::endl;
+
 		while (lo < hi)
 		{
 			mid = (lo + hi) / 2;
@@ -157,25 +138,16 @@ std::vector<int> PmergeMe::vectorFJ()
 			else
 				lo = mid + 1;
 		}
-		// std::cout << "lo : " << lo << " " << vResult[lo] << std::endl;
-		// std::cout << "mid : " << mid << " " << vResult[mid] << std::endl;
-		// std::cout << "hi : " << hi << " " << vResult[hi] << std::endl;
-		// std::cout << *(vResult.begin() + mid) << std::endl;
+
 		if (lo == mid)
 			vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
 		else
 		 	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
-		// std::cout << "result :";
-		// for (int j = 0; j < static_cast<int>(vResult.size()); j++)
-			// std::cout << vResult[j] << " ";
-		// std::cout << std::endl;
-		// std::cout << std::endl;
 	}
-	// std::cout << std::endl;
 
-	// std::cout << "*******************" << std::endl;
-	_v = vResult;Z
-	return (vResult);
+	_v = vResult;
+
+	return (_v);
 }
 
 std::list<int> PmergeMe::listFJ()
