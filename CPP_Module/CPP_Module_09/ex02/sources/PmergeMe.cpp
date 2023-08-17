@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/17 22:48:53 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/17 23:31:44 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,74 +116,81 @@ std::vector<int> PmergeMe::vectorFJ()
 	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
 	// 	std::cout << execVec[i] << " ";
 	// std::cout << std::endl;
+	//완전 야곱 수인 경우
 	while (jacobsthal[jacobIdx] <= bsize)
 	{
-		if (jacobIdx > 0)
-		{
+		// if (jacobIdx > 0)
+		// {
 			int execIdx = jacobsthal[jacobIdx];
 			nearJacob = jacobsthal[jacobIdx];
 			while (execIdx > jacobsthal[jacobIdx - 1])
 				execVec.push_back(execIdx--);
-		}
+		// }
 		jacobIdx++;
 	}
-	// std::cout << "exec : ";
+	// std::cout << "exec2 : ";
 	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
 	// 	std::cout << execVec[i] << " ";
 	// std::cout << std::endl;
 	// std::cout << "bsize : " << bsize << std::endl;
 	// std::cout << "nearJacob : " << nearJacob << std::endl;
-	if (bsize == 2)
-		execVec.push_back(2);
-	while (bsize > nearJacob && bsize > 2)
+	// if (bsize == 2)
+	// 	execVec.push_back(2);
+	// while (bsize > nearJacob && bsize > 2)
+	//완전 야곱 수가 아닌 경우
+	while (bsize > nearJacob)
 		execVec.push_back(bsize--);
-	int tempA = execVec.size();
-	int tempB = vResult.size();
+	int eVec_Size = execVec.size();
+	int vRes_Size = vResult.size();
 	// std::cout << "exec : ";
-	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
+	// for (int i = 0; i < eVec_Size; i++)
 	// 	std::cout << execVec[i] << " ";
+	// std::cout << std::endl;
 	// std::cout << std::endl << "vR : ";
 	// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
 	// 	std::cout << vResult[i] << " ";
 	// std::cout << std::endl;
-	// std::cout << "A : " << tempB << std::endl;
-	for (int i = 0; i < tempA; i++)
+	// std::cout << "A : " << vRes_Size << std::endl;
+	for (int i = 0; i < eVec_Size; i++)
 	{
 		int maxIdx = 0;
 
 		// for (int j = 0; j < static_cast<int>(vResult.size()); j++)
-		for (int j = 0; j < tempB; j++)
+		if (execVec[i] != 1)
 		{
-			if (aVec[execVec[i] - 1] == vResult[j])
-				maxIdx = j;
-		}
-		// std::cout << "maxIDX : " << maxIdx << std::endl;
-		int lo = 0;
-		int hi = maxIdx;
-		// int mid;
-		while (lo < hi)
-		{
-			int mid = (lo + hi) / 2;
+			for (int j = 0; j < vRes_Size; j++)
+			{
+				if (aVec[execVec[i] - 1] == vResult[j])
+					maxIdx = j;
+			}
+			// std::cout << "maxIDX : " << maxIdx << std::endl;
+			int lo = 0;
+			int hi = maxIdx;
+			// int mid;
+			while (lo < hi)
+			{
+				int mid = (lo + hi) / 2;
 
-			if (bVec[execVec[i] - 1] < vResult[mid])
-				hi = mid;
+				if (bVec[execVec[i] - 1] < vResult[mid])
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			// std::cout << "l : " << lo << " m : " << (lo + hi) / 2 << " h : " << hi << std::endl;
+			// std::cout << mid << std::endl;
+			if (lo == (lo + hi) / 2)
+				vResult.insert(vResult.begin() + (lo + hi) / 2, bVec[execVec[i] - 1]);
 			else
-				lo = mid + 1;
+			 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, bVec[execVec[i] - 1]);
+			// if (lo == mid)
+			// 	vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
+			// else
+			//  	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
+			// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
+			// 	std::cout << vResult[i] << " ";
+			// std::cout << std::endl;
+			// std::cout << "is_odd : " << is_odd	 << std::endl;
 		}
-		// std::cout << "l : " << lo << " m : " << (lo + hi) / 2 << " h : " << hi << std::endl;
-		// std::cout << mid << std::endl;
-		if (lo == (lo + hi) / 2)
-			vResult.insert(vResult.begin() + (lo + hi) / 2, bVec[execVec[i] - 1]);
-		else
-		 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, bVec[execVec[i] - 1]);
-		// if (lo == mid)
-		// 	vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
-		// else
-		//  	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
-		// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
-		// 	std::cout << vResult[i] << " ";
-		// std::cout << std::endl;
-		// std::cout << "is_odd : " << is_odd	 << std::endl;
 	}
 	if (is_odd)
 		{
