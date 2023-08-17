@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/17 22:01:23 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/17 23:46:52 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@
 #include <deque>
 #include <ctime>
 #include <iomanip>
-// #include <iterator>
-// #include <utility>
+
 class PmergeMe
 {
 	private:
 		size_t _size;
 		std::vector<int> _v;
-		std::list<int>	_l;
+		// std::list<int>	_l;
 		std::deque<int> _d;
 		int jacobsthal[31];
-		
+
 	public:
 		PmergeMe();
 		~PmergeMe();

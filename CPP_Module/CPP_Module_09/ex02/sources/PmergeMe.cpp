@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/17 23:31:44 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/18 00:01:03 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &obj)
 	{
 		this->_d = obj._d;
 		this->_v = obj._v;
-		this->_l = obj._l;
+		// this->_l = obj._l;
 	}
 	return (*this);
 }
@@ -49,7 +49,7 @@ bool PmergeMe::getElement(int argc, char *argv)
 
 	_size = argc - 1;
 	_v.push_back(temp);
-	_l.push_back(temp);
+	// _l.push_back(temp);
 	_d.push_back(temp);
 
 	return (false);
@@ -95,78 +95,65 @@ std::vector<int> PmergeMe::vectorFJ()
 		aVec.push_back(itr->first);
 		bVec.push_back(itr->second);
 	}
-	// if (is_odd)
-	// 	bVec.push_back(is_odd);
 
-	// std::cout << "A vec : ";
-	// for (int i = 0; i < static_cast<int>(aVec.size()); i++)
-	// 	std::cout << aVec[i] << " ";
-	// std::cout << std::endl << "B vec : ";
-	// for (int i = 0; i < static_cast<int>(bVec.size()); i++)
-	// 	std::cout << bVec[i] << " ";
-	// std::cout << std::endl << "v Res : ";
-	// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
-	// 	std::cout << vResult[i] << " ";
-	// std::cout << std::endl;
+	int aVecSize = aVec.size();
+	int bVecSize = bVec.size();
+	int vResultSize = vResult.size();
+
+	std::cout << "A vec : ";
+	for (int i = 0; i < aVecSize; i++)
+		std::cout << aVec[i] << " ";
+	std::cout << std::endl;
+
+	std::cout << "B vec : ";
+	for (int i = 0; i < bVecSize; i++)
+		std::cout << bVec[i] << " ";
+	std::cout << std::endl;
+
+	std::cout << "V res : ";
+	for (int i = 0; i < vResultSize; i++)
+		std::cout << vResult[i] << " ";
+	std::cout << std::endl;
 
 	int bsize = bVec.size();
 	int jacobIdx = 0;
 	int nearJacob = 0;
-	// std::cout << "exec : ";
-	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
-	// 	std::cout << execVec[i] << " ";
-	// std::cout << std::endl;
+
 	//완전 야곱 수인 경우
 	while (jacobsthal[jacobIdx] <= bsize)
 	{
-		// if (jacobIdx > 0)
-		// {
 			int execIdx = jacobsthal[jacobIdx];
 			nearJacob = jacobsthal[jacobIdx];
 			while (execIdx > jacobsthal[jacobIdx - 1])
 				execVec.push_back(execIdx--);
-		// }
 		jacobIdx++;
 	}
-	// std::cout << "exec2 : ";
-	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
-	// 	std::cout << execVec[i] << " ";
-	// std::cout << std::endl;
-	// std::cout << "bsize : " << bsize << std::endl;
-	// std::cout << "nearJacob : " << nearJacob << std::endl;
-	// if (bsize == 2)
-	// 	execVec.push_back(2);
-	// while (bsize > nearJacob && bsize > 2)
 	//완전 야곱 수가 아닌 경우
 	while (bsize > nearJacob)
 		execVec.push_back(bsize--);
 	int eVec_Size = execVec.size();
-	int vRes_Size = vResult.size();
-	// std::cout << "exec : ";
-	// for (int i = 0; i < eVec_Size; i++)
-	// 	std::cout << execVec[i] << " ";
-	// std::cout << std::endl;
-	// std::cout << std::endl << "vR : ";
-	// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
-	// 	std::cout << vResult[i] << " ";
-	// std::cout << std::endl;
-	// std::cout << "A : " << vRes_Size << std::endl;
+	// int vRes_Size = vResult.size();
+
+	std::cout << "Exec vec : ";
+	for (int i = 0; i < eVec_Size; i++)
+		std::cout << execVec[i] << " ";
+	std::cout << std::endl;
+
 	for (int i = 0; i < eVec_Size; i++)
 	{
 		int maxIdx = 0;
-
-		// for (int j = 0; j < static_cast<int>(vResult.size()); j++)
+		// if (i == 3)
+			// std::cout << "Exec vec : " << execVec[i] << std::endl;
 		if (execVec[i] != 1)
 		{
-			for (int j = 0; j < vRes_Size; j++)
+			for (int j = 0; j < static_cast<int>(vResult.size()); j++)
 			{
 				if (aVec[execVec[i] - 1] == vResult[j])
 					maxIdx = j;
 			}
-			// std::cout << "maxIDX : " << maxIdx << std::endl;
+			std::cout << "maxIdx : " << maxIdx << std::endl;
 			int lo = 0;
 			int hi = maxIdx;
-			// int mid;
 			while (lo < hi)
 			{
 				int mid = (lo + hi) / 2;
@@ -176,21 +163,15 @@ std::vector<int> PmergeMe::vectorFJ()
 				else
 					lo = mid + 1;
 			}
-			// std::cout << "l : " << lo << " m : " << (lo + hi) / 2 << " h : " << hi << std::endl;
-			// std::cout << mid << std::endl;
 			if (lo == (lo + hi) / 2)
 				vResult.insert(vResult.begin() + (lo + hi) / 2, bVec[execVec[i] - 1]);
 			else
 			 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, bVec[execVec[i] - 1]);
-			// if (lo == mid)
-			// 	vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
-			// else
-			//  	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
-			// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
-			// 	std::cout << vResult[i] << " ";
-			// std::cout << std::endl;
-			// std::cout << "is_odd : " << is_odd	 << std::endl;
 		}
+		std::cout << "V res : ";
+		for (int i = 0; i < static_cast<int>(vResult.size()); i++)
+			std::cout << vResult[i] << " ";
+		std::cout << std::endl;
 	}
 	if (is_odd)
 		{
@@ -214,26 +195,105 @@ std::vector<int> PmergeMe::vectorFJ()
 	return (_v);
 }
 
-std::list<int> PmergeMe::listFJ()
-{
-	std::list<std::pair<int, int> > lPair;
-	std::list<int> lResult;
-
-	if (_l.size() == 1)
-		return (lResult);
-
-	return (lResult);
-}
-
 std::deque<int> PmergeMe::dequeFJ()
 {
 	std::deque<std::pair<int, int> > dPair;
 	std::deque<int> dResult;
+	std::deque<int> aDeq;
+	std::deque<int> bDeq;
+	std::deque<int> execDeq;
+	int is_odd = 0;
 
-	if(_d.size() == 1)
-		return (dResult);
+	if (_d.size() == 1)
+		return (_d);
+	if (_d.size() % 2 != 0)
+	{
+		is_odd = _d.back();
+		_d.pop_back();
+	}
+	for (size_t i = 0; i < _d.size(); i+= 2)
+	{
+		if (_d[i] > _d[i + 1])
+			dPair.push_back(std::make_pair(_d[i], _d[i + 1]));
+		else
+		 	dPair.push_back(std::make_pair(_d[i + 1], _d[i]));
+	}
+	sort(dPair.begin(), dPair.end());
 
-	return (dResult);
+	dResult.push_back(dPair[0].second);
+	for (std::deque<std::pair<int, int> >::iterator itr = dPair.begin(); itr != dPair.end(); itr++)
+	{
+		dResult.push_back(itr->first);
+		aDeq.push_back(itr->first);
+		bDeq.push_back(itr->second);
+	}
+
+	int bsize = bDeq.size();
+	int jacobIdx = 0;
+	int nearJacob = 0;
+
+	//완전 야곱 수인 경우
+	while (jacobsthal[jacobIdx] <= bsize)
+	{
+			int execIdx = jacobsthal[jacobIdx];
+			nearJacob = jacobsthal[jacobIdx];
+			while (execIdx > jacobsthal[jacobIdx - 1])
+				execDeq.push_back(execIdx--);
+		jacobIdx++;
+	}
+	//완전 야곱 수가 아닌 경우
+	while (bsize > nearJacob)
+		execDeq.push_back(bsize--);
+	int eVec_Size = execDeq.size();
+	int vRes_Size = dResult.size();
+	for (int i = 0; i < eVec_Size; i++)
+	{
+		int maxIdx = 0;
+
+		if (execDeq[i] != 1)
+		{
+			for (int j = 0; j < vRes_Size; j++)
+			{
+				if (aDeq[execDeq[i] - 1] == dResult[j])
+					maxIdx = j;
+			}
+			int lo = 0;
+			int hi = maxIdx;
+			while (lo < hi)
+			{
+				int mid = (lo + hi) / 2;
+
+				if (bDeq[execDeq[i] - 1] < dResult[mid])
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			if (lo == (lo + hi) / 2)
+				dResult.insert(dResult.begin() + (lo + hi) / 2, bDeq[execDeq[i] - 1]);
+			else
+			 	dResult.insert(dResult.begin() + (lo + hi) / 2 + 1, bDeq[execDeq[i] - 1]);
+		}
+	}
+	if (is_odd)
+		{
+			int lo = 0;
+			int hi = dResult.size();
+			while (lo < hi)
+			{
+				int mid = (lo + hi) / 2;
+
+				if (is_odd < dResult[mid])
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			if (lo == (lo + hi) / 2)
+				dResult.insert(dResult.begin() + (lo + hi) / 2, is_odd);
+			else
+			 	dResult.insert(dResult.begin() + (lo + hi) / 2 + 1, is_odd);
+		}
+	_d = dResult;
+	return (_d);
 }
 
 template <typename T>
@@ -252,6 +312,6 @@ void PmergeMe::printAfter()
 	printContainer(_v);
 	// std::cout << "After with std::[List]   : ";
 	// printContainer(_l);
-	// std::cout << "After with std::[Deque]  : ";
-	// printContainer(_d);
+	std::cout << "After with std::[Deque]  : ";
+	printContainer(_d);
 }
