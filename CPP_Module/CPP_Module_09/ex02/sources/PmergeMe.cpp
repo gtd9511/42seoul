@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/16 10:33:57 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/17 22:48:53 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ std::vector<int> PmergeMe::vectorFJ()
 		 	vPair.push_back(std::make_pair(_v[i + 1], _v[i]));
 	}
 	sort(vPair.begin(), vPair.end());
+
 	vResult.push_back(vPair[0].second);
 	for (std::vector<std::pair<int, int> >::iterator itr = vPair.begin(); itr != vPair.end(); itr++)
 	{
@@ -94,13 +95,27 @@ std::vector<int> PmergeMe::vectorFJ()
 		aVec.push_back(itr->first);
 		bVec.push_back(itr->second);
 	}
-	if (is_odd)
-		bVec.push_back(is_odd);
+	// if (is_odd)
+	// 	bVec.push_back(is_odd);
+
+	// std::cout << "A vec : ";
+	// for (int i = 0; i < static_cast<int>(aVec.size()); i++)
+	// 	std::cout << aVec[i] << " ";
+	// std::cout << std::endl << "B vec : ";
+	// for (int i = 0; i < static_cast<int>(bVec.size()); i++)
+	// 	std::cout << bVec[i] << " ";
+	// std::cout << std::endl << "v Res : ";
+	// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
+	// 	std::cout << vResult[i] << " ";
+	// std::cout << std::endl;
 
 	int bsize = bVec.size();
 	int jacobIdx = 0;
 	int nearJacob = 0;
-
+	// std::cout << "exec : ";
+	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
+	// 	std::cout << execVec[i] << " ";
+	// std::cout << std::endl;
 	while (jacobsthal[jacobIdx] <= bsize)
 	{
 		if (jacobIdx > 0)
@@ -112,41 +127,83 @@ std::vector<int> PmergeMe::vectorFJ()
 		}
 		jacobIdx++;
 	}
-
-	while (bsize > nearJacob)
+	// std::cout << "exec : ";
+	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
+	// 	std::cout << execVec[i] << " ";
+	// std::cout << std::endl;
+	// std::cout << "bsize : " << bsize << std::endl;
+	// std::cout << "nearJacob : " << nearJacob << std::endl;
+	if (bsize == 2)
+		execVec.push_back(2);
+	while (bsize > nearJacob && bsize > 2)
 		execVec.push_back(bsize--);
-
-	for (int i = 0; i < static_cast<int>(execVec.size()); i++)
+	int tempA = execVec.size();
+	int tempB = vResult.size();
+	// std::cout << "exec : ";
+	// for (int i = 0; i < static_cast<int>(execVec.size()); i++)
+	// 	std::cout << execVec[i] << " ";
+	// std::cout << std::endl << "vR : ";
+	// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
+	// 	std::cout << vResult[i] << " ";
+	// std::cout << std::endl;
+	// std::cout << "A : " << tempB << std::endl;
+	for (int i = 0; i < tempA; i++)
 	{
 		int maxIdx = 0;
-		int lo = 0;
-		int hi = maxIdx;
-		int mid;
 
-		for (int j = 0; j < static_cast<int>(vResult.size()); j++)
+		// for (int j = 0; j < static_cast<int>(vResult.size()); j++)
+		for (int j = 0; j < tempB; j++)
 		{
 			if (aVec[execVec[i] - 1] == vResult[j])
 				maxIdx = j;
 		}
-
+		// std::cout << "maxIDX : " << maxIdx << std::endl;
+		int lo = 0;
+		int hi = maxIdx;
+		// int mid;
 		while (lo < hi)
 		{
-			mid = (lo + hi) / 2;
+			int mid = (lo + hi) / 2;
 
 			if (bVec[execVec[i] - 1] < vResult[mid])
 				hi = mid;
 			else
 				lo = mid + 1;
 		}
-
-		if (lo == mid)
-			vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
+		// std::cout << "l : " << lo << " m : " << (lo + hi) / 2 << " h : " << hi << std::endl;
+		// std::cout << mid << std::endl;
+		if (lo == (lo + hi) / 2)
+			vResult.insert(vResult.begin() + (lo + hi) / 2, bVec[execVec[i] - 1]);
 		else
-		 	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
+		 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, bVec[execVec[i] - 1]);
+		// if (lo == mid)
+		// 	vResult.insert(vResult.begin() + mid, bVec[execVec[i] - 1]);
+		// else
+		//  	vResult.insert(vResult.begin() + mid + 1, bVec[execVec[i] - 1]);
+		// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
+		// 	std::cout << vResult[i] << " ";
+		// std::cout << std::endl;
+		// std::cout << "is_odd : " << is_odd	 << std::endl;
 	}
+	if (is_odd)
+		{
+			int lo = 0;
+			int hi = vResult.size();
+			while (lo < hi)
+			{
+				int mid = (lo + hi) / 2;
 
+				if (is_odd < vResult[mid])
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			if (lo == (lo + hi) / 2)
+				vResult.insert(vResult.begin() + (lo + hi) / 2, is_odd);
+			else
+			 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, is_odd);
+		}
 	_v = vResult;
-
 	return (_v);
 }
 
@@ -186,8 +243,8 @@ void PmergeMe::printAfter()
 {
 	std::cout << "After with std::[Vector] : ";
 	printContainer(_v);
-	std::cout << "After with std::[List]   : ";
-	printContainer(_l);
-	std::cout << "After with std::[Deque]  : ";
-	printContainer(_d);
+	// std::cout << "After with std::[List]   : ";
+	// printContainer(_l);
+	// std::cout << "After with std::[Deque]  : ";
+	// printContainer(_d);
 }

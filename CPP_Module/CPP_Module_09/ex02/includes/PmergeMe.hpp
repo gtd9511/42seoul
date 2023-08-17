@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:04 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/16 10:20:11 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/17 22:01:23 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class PmergeMe
 		std::list<int>	_l;
 		std::deque<int> _d;
 		int jacobsthal[31];
+		
 	public:
 		PmergeMe();
 		~PmergeMe();
