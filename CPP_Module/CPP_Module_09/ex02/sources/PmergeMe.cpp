@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/18 19:10:02 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/18 19:17:32 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ std::vector<int> PmergeMe::vectorFJ()
 		bVec.push_back(itr->second);
 	}
 
+	// 중간 결과 확인
 	// int aVecSize = aVec.size();
 	// int bVecSize = bVec.size();
 	// int vResultSize = vResult.size();
@@ -129,27 +130,23 @@ std::vector<int> PmergeMe::vectorFJ()
 	//완전 야곱 수가 아닌 경우
 	while (bsize > nearJacob)
 		execVec.push_back(bsize--);
-	int eVec_Size = execVec.size();
-	// int vRes_Size = vResult.size();
 
+	// 실행 순서 확인
 	// std::cout << "Exec vec : ";
 	// for (int i = 0; i < eVec_Size; i++)
 	// 	std::cout << execVec[i] << " ";
 	// std::cout << std::endl;
 
-	for (int i = 0; i < eVec_Size; i++)
+	for (size_t i = 0; i < execVec.size(); i++)
 	{
 		int maxIdx = 0;
-		// if (i == 3)
-			// std::cout << "Exec vec : " << execVec[i] << std::endl;
 		if (execVec[i] != 1)
 		{
-			for (int j = 0; j < static_cast<int>(vResult.size()); j++)
+			for (size_t j = 0; j < vResult.size(); j++)
 			{
 				if (aVec[execVec[i] - 1] == vResult[j])
 					maxIdx = j;
 			}
-			// std::cout << "maxIdx : " << maxIdx << std::endl;
 			int lo = 0;
 			int hi = maxIdx;
 			while (lo < hi)
@@ -166,6 +163,7 @@ std::vector<int> PmergeMe::vectorFJ()
 			else
 			 	vResult.insert(vResult.begin() + (lo + hi) / 2 + 1, bVec[execVec[i] - 1]);
 		}
+		// 매 실행마다 결과 확인
 		// std::cout << "V res : ";
 		// for (int i = 0; i < static_cast<int>(vResult.size()); i++)
 		// 	std::cout << vResult[i] << " ";
@@ -242,15 +240,15 @@ std::deque<int> PmergeMe::dequeFJ()
 	//완전 야곱 수가 아닌 경우
 	while (bsize > nearJacob)
 		execDeq.push_back(bsize--);
-	int eVec_Size = execDeq.size();
-	// int vRes_Size = dResult.size();
-	for (int i = 0; i < eVec_Size; i++)
+
+	// int eVec_Size = execDeq.size();
+	for (size_t i = 0; i < execDeq.size(); i++)
 	{
 		int maxIdx = 0;
 
 		if (execDeq[i] != 1)
 		{
-			for (int j = 0; j < static_cast<int>(dResult.size()); j++)
+			for (size_t j = 0; j < dResult.size(); j++)
 			{
 				if (aDeq[execDeq[i] - 1] == dResult[j])
 					maxIdx = j;
