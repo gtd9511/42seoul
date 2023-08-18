@@ -6,14 +6,20 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:07 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/18 19:18:35 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/18 19:45:34 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
 
+// void leaks(void)
+// {
+// 	system("leaks PmergeMe");
+// }
+
 int main(int argc, char* argv[])
 {
+	// atexit(leaks);
 	PmergeMe	PM;
 	time_t 		start, end;
 	double		vec_time, deque_time;
