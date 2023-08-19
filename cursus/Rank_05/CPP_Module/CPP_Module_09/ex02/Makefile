@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/30 21:49:11 by sanghan           #+#    #+#              #
+#    Updated: 2023/08/17 19:46:41 by sanghan          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = PmergeMe
+
+CXX = c++
+CXXFLAGS = -g -Wall -Wextra -Werror -std=c++98 -pedantic
+
+RM = rm -rf
+
+SRCS_PATH = ./sources
+OBJS_PATH = ./objects
+INCLUDES = ./includes
+
+SRCS = PmergeMe.cpp main.cpp
+OBJS_NAME = $(SRCS:.cpp=.o)
+OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
+
+$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
+	mkdir -p $(OBJS_PATH)
+	$(CXX) $(CXXFLAGS) -I $(INCLUDES) -c $< -o $@
+
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+all: $(NAME)
+
+clean:
+	$(RM) $(OBJS_PATH)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+.PHONY: all clean fclean re
