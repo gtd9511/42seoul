@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:49:08 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/18 19:17:32 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/19 12:12:57 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,6 @@ std::deque<int> PmergeMe::dequeFJ()
 	while (bsize > nearJacob)
 		execDeq.push_back(bsize--);
 
-	// int eVec_Size = execDeq.size();
 	for (size_t i = 0; i < execDeq.size(); i++)
 	{
 		int maxIdx = 0;
