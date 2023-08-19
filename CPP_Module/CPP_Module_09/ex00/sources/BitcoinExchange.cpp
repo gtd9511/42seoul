@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 21:48:39 by sanghan           #+#    #+#             */
-/*   Updated: 2023/08/03 16:05:33 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/19 14:22:11 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,8 @@ bool BitcoinExchange::checkDate(const std::string& str)
 	year = atoi(str.substr(0, 4).c_str());
 	month = atoi(str.substr(5, 2).c_str());
 	day = atoi(str.substr(8, 2).c_str());
+	if (year == 2009 && month == 1 && day == 1)
+		return (false);
 	if (year < 2009 || year > 2022)
 		return (false);
 	if (month > 12 || month < 1)
