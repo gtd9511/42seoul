@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:40:46 by sanghan           #+#    #+#             */
-/*   Updated: 2023/04/03 17:20:04 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/22 16:56:15 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void ScalarConverter::convert(const std::string input)
 		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(input[0]) << "f" << std::endl;
 		std::cout << "double: " << std::setprecision(1) << static_cast<double>(input[0]) << std::endl;
-
 	}
 
 	if (checkType(input) == 1)

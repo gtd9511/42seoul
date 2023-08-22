@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 09:12:51 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/14 10:06:40 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/22 16:48:42 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ class Fixed
 		static const Fixed	&max(Fixed const &ref1, Fixed const &ref2);
 };
 
-std::ostream& operator << (std::ostream &out, const Fixed &fixed);
+std::ostream& operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
 

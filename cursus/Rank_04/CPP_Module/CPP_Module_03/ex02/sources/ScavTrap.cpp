@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 20:49:34 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 20:02:52 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/22 16:43:24 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap(void): ClapTrap()
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScavTrap " << this->_name << " is destrcuted" << std::endl;
+	std::cout << "ScavTrap " << this->_name << " is destructed" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)

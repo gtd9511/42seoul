@@ -6,7 +6,7 @@
 /*   By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:06:20 by sanghan           #+#    #+#             */
-/*   Updated: 2023/03/20 20:02:52 by sanghan          ###   ########.fr       */
+/*   Updated: 2023/08/22 16:43:24 by sanghan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ HumanA::HumanA(std::string name, Weapon &weapon): name_(name), weapon_(weapon)
 
 HumanA::~HumanA(void)
 {
-	std::cout << this->name_ << " is destrcuted" << std::endl;
+	std::cout << this->name_ << " is destructed" << std::endl;
 }
 
 void	HumanA::attack(void)
