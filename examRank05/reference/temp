@@ -1,0 +1,267 @@
+Only in cpp_module_02: BrickWall.cpp
+Only in cpp_module_02: BrickWall.hpp
+Only in cpp_module_02: Fireball.cpp
+Only in cpp_module_02: Fireball.hpp
+Only in cpp_module_02: Polymorph.cpp
+Only in cpp_module_02: Polymorph.hpp
+Only in cpp_module_02: SpellBook.cpp
+Only in cpp_module_02: SpellBook.hpp
+Only in cpp_module_02: TargetGenerator.cpp
+Only in cpp_module_02: TargetGenerator.hpp
+diff -r cpp_module_01/Warlock.cpp cpp_module_02/Warlock.cpp
+13,20d12
+<     std::map<std::string, ASpell *>::iterator it_begin = this->arr.begin();
+<     std::map<std::string, ASpell *>::iterator it_end = this->arr.end();
+<     while (it_begin != it_end)
+<     {
+<         delete it_begin->second;
+<         ++it_begin;
+<     }
+<     this->arr.clear();
+30c22
+< void Warlock::learnSpell(ASpell* spell_ptr)
+---
+> void Warlock::learnSpell(ASpell *aspell_ptr)
+32,33c24
+< 	if (spell_ptr)
+< 		arr.insert(std::pair<std::string, ASpell *>(spell_ptr->getName(), spell_ptr->clone()));
+---
+>     book.learnSpell(aspell_ptr);
+36c27
+< void Warlock::forgetSpell(std::string spell_name)
+---
+> void Warlock::forgetSpell(std::string name)
+38,41c29
+< 	std::map<std::string, ASpell *>::iterator it = arr.find(spell_name);
+< 	if (it != arr.end())
+< 		delete it->second;
+< 	arr.erase(spell_name);
+---
+>     book.forgetSpell(name);
+44c32
+< void Warlock::launchSpell(std::string spell_name, ATarget const &target_ref)
+---
+> void Warlock::launchSpell(std::string name, ATarget const &atarget_ref)
+46,48c34,39
+< 	ASpell* spell = arr[spell_name];
+< 	if (spell)
+< 		spell->launch(target_ref);
+---
+>     ATarget const *test = 0;
+>     if (test == &atarget_ref)
+>         return;
+>     ASpell *temp = book.createSpell(name);
+>     if (temp)
+>         temp->launch(atarget_ref);
+diff -r cpp_module_01/Warlock.hpp cpp_module_02/Warlock.hpp
+6c6
+< #include <map>
+---
+> #include "SpellBook.hpp"
+18c18
+<         std::map<std::string, ASpell *> arr;
+---
+>         SpellBook book;
+diff -r cpp_module_01/main.cpp cpp_module_02/main.cpp
+3a4,7
+> #include "BrickWall.hpp"
+> #include "Polymorph.hpp"
+> #include "TargetGenerator.hpp"
+> #include "Fireball.hpp"
+7c11,13
+<   Warlock richard("Richard", "the Titled");
+---
+>   Warlock richard("Richard", "foo");
+>   richard.setTitle("Hello, I'm Richard the Warlock!");
+>   BrickWall model1;
+9,10c15,16
+<   Dummy bob;
+<   Fwoosh* fwoosh = new Fwoosh();
+---
+>   Polymorph* polymorph = new Polymorph();
+>   TargetGenerator tarGen;
+12c18,19
+<   richard.learnSpell(fwoosh);
+---
+>   tarGen.learnTargetType(&model1);
+>   richard.learnSpell(polymorph);
+14,15c21,23
+<   richard.introduce();
+<   richard.launchSpell("Fwoosh", bob);
+---
+>   Fireball* fireball = new Fireball();
+> 
+>   richard.learnSpell(fireball);
+17,19c25,29
+<   richard.forgetSpell("Fwoosh");
+<   richard.launchSpell("Fwoosh", bob);
+<   delete fwoosh;
+---
+>   ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
+> 
+>   richard.introduce();
+>   richard.launchSpell("Polymorph", *wall);
+>   richard.launchSpell("Fireball", *wall);
+diff -r cpp_module_01/subject.en.txt cpp_module_02/subject.en.txt
+1c1
+< Assignment name  : cpp01_02
+---
+> Assignment name  : cpp_module_02
+6a7,11
+> 				   Fireball.hpp Fireball.cpp
+> 				   Polymorph.hpp Polymorph.cpp
+> 				   BrickWall.hpp BrickWall.cpp
+> 				   SpellBook.hpp SpellBook.cpp
+> 				   TargetGenerator.hpp TargetGenerator.cpp
+9,10c14,15
+< In the Warlock class, the switch statement is FORBIDDEN and its use would
+< result in a -42.
+---
+> In the Warlock, SpellBook and TargetGenerator classes, the switch statement is
+> FORBIDDEN and its use would result in a -42.
+12,13c17
+< Create an abstract class called ASpell, in Coplien's form, that has the
+< following protected attributes:
+---
+> Create the following two spells, on the same model as Fwoosh:
+15,16c19,20
+< * name (string)
+< * effects (string)
+---
+> * Fireball (Name: "Fireball", Effects: "burnt to a crisp")
+> * Polymorph (Name: "Polymorph", Effects: "turned into a critter")
+18c22,23
+< Both will have getters (getName and getEffects) that return strings.
+---
+> In addition to this, just so he won't have only dummy to attack, let's make a
+> new target for him, which will be the BrickWall (Type: "Inconspicuous Red-brick Wall").
+20c25,26
+< Also add a clone pure method that returns a pointer to ASpell.
+---
+> Now, make a SpellBook class, in canonical form, that can't be copied or instantiated
+> by copy. It will have the following functions:
+22c28,32
+< All these functions can be called on a constant object.
+---
+> * void learnSpell(ASpell*), that COPIES a spell in the book
+> * void forgetSpell(string const &), that deletes a spell from the book, except
+>   if it isn't there
+> * ASpell* createSpell(string const &), that receives a string corresponding to
+>   the name of a spell, creates it, and returns it.
+24c34,36
+< ASpell has a constructor that takes its name and its effects, in that order.
+---
+> Modify the Warlock, now, make it have a spell book that will be created with
+> him and destroyed with him. Also make his learnSpell and forgetSpell functions
+> call those of the spell book.
+26,28c38,39
+< Now you will create an ATarget abstract class, in Coplien's form. It has a type
+< attribute, which is a string, and its associated getter, getType, that return a
+< reference to constant string.
+---
+> The launchSpell function will have to use the SpellBook to create the spell
+> it's attempting to launch.
+30c41,42
+< In much the same way as ASpell, it has a clone() pure method.
+---
+> Make a TargetGenerator class, in canonical form, and as before,
+> non-copyable.
+32c44
+< All these functions can be called on a constant object.
+---
+> It will have the following functions:
+34c46
+< It has a constructor that takes its type.
+---
+> * void learnTargetType(ATarget*), teaches a target to the generator
+36,37c48,49
+< Now, add to your ATarget a getHitBySpell function that takes a reference to
+< constant ASpell.
+---
+> * void forgetTargetType(string const &), that makes the generator forget a
+>   target type if it's known
+39c51,52
+< It will display :
+---
+> * ATarget* createTarget(string const &), that creates a target of the
+>   specified type
+41c54,55
+< <TYPE> has been <EFFECTS>!
+---
+> Phew, that's done. Now here's a test main. It's not very thorough, so make sure 
+> to use your own aswell.
+43,67c57,61
+< <TYPE> is the ATarget's type, and <EFFECTS> is the return of the ASpell's
+< getEffects function.
+< 
+< Finally, add to your ASpell class a launch function that takes a reference to
+< constant ATarget.
+< 
+< This one will simply call the getHitBySpell of the passed object, passing the
+< current instance as parameter.
+< 
+< When all this is done, create an implementation of ASpell called Fwoosh. Its
+< default constructor will set the name to "Fwoosh" and the effects to
+< "fwooshed". You will, of course, implement the clone() method. In the case of
+< Fwoosh, it will return a pointer to a new Fwoosh object.
+< 
+< In the same way, create a concrete ATarget called Dummy, the type of which
+< is "Target Practice Dummy". You must also implement its clone() method.
+< 
+< Add to the Warlock the following member functions:
+< 
+< * learnSpell, takes a pointer to ASpell, that makes the Warlock learn a spell
+< * forgetSpell, takes a string corresponding a to a spell's name, and makes the
+<   Warlock forget it. If it's not a known spell, does nothing.
+< * launchSpell, takes a string (a spell name) and a reference to ATarget, that
+<   launches the spell on the selected target. If it's not a known spell, does
+<   nothing.
+---
+> int main()
+> {
+>   Warlock richard("Richard", "foo");
+>   richard.setTitle("Hello, I'm Richard the Warlock!");
+>   BrickWall model1;
+69,70c63,64
+< You will need a new attribute to store the spells your Warlock knows. Several
+< types fit the bill, it's up to you to choose the best one.
+---
+>   Polymorph* polymorph = new Polymorph();
+>   TargetGenerator tarGen;
+72c66,67
+< Below is a possible test main and its expected output:
+---
+>   tarGen.learnTargetType(&model1);
+>   richard.learnSpell(polymorph);
+74,76c69
+< int main()
+< {
+<   Warlock richard("Richard", "the Titled");
+---
+>   Fireball* fireball = new Fireball();
+78,79c71
+<   Dummy bob;
+<   Fwoosh* fwoosh = new Fwoosh();
+---
+>   richard.learnSpell(fireball);
+81c73
+<   richard.learnSpell(fwoosh);
+---
+>   ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
+84,87c76,77
+<   richard.launchSpell("Fwoosh", bob);
+< 
+<   richard.forgetSpell("Fwoosh");
+<   richard.launchSpell("Fwoosh", bob);
+---
+>   richard.launchSpell("Polymorph", *wall);
+>   richard.launchSpell("Fireball", *wall);
+92,93c82,84
+< Richard: I am Richard, the Titled!$
+< Target Practice Dummy has been fwooshed!$
+---
+> Richard: I am Richard, Hello, I'm Richard the Warlock!!$
+> Inconspicuous Red-brick Wall has been turned into a critter!$
+> Inconspicuous Red-brick Wall has been burnt to a crisp!$
+94a86
+> ~$
