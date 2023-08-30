@@ -1,25 +1,71 @@
 version: '3'
+
 services:
   mariadb:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: example
+    build: ./requirements/mariadb/
+    container_name: mariadb
+    restart: always
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    networks:
+      - inception_network
+  #   image: mariadb
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: example
 
   wordpress:
+    build: requirements/wordpress
+    container_name: wordpress
+    restart: always
     depends_on:
       - mariadb
-    image: wordpress
-    ports:
-      - "80:80"
-    environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_PASSWORD: example
+    volumes:
+      - wp_volume:/var/www/html/wordpress
+    expose:
+      - "9000"
+    networks:
+      - inception_network
+  #   depends_on:
+  #     - mariadb
+  #   image: wordpress
+  #   ports:
+  #     - "80:80"
+  #   environment:
+  #     WORDPRESS_DB_HOST: mariadb
+  #     WORDPRESS_DB_PASSWORD: example
 
   nginx:
+    build: requirements/nginx
+    container_name: nginx
+    ports:
+      - 443:443
+    restart: always
+    volumes:
+      - wp_volume:/var/www/html/wordpress
     depends_on:
       - wordpress
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - inception_network
+    # image: nginx
+    # ports:
+      # - "80:80"
+    # volumes:
+      # - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  wp_volume:
+    driver: local
+    driver_opts:
+      type: volume
+      device: /Users/sanghan/han/hangit/inception/srcs/requirements/tools/wordpress
+      o: bind
+
+  # nginx:
+  # wordpress:
+  # mariadb:
+
+networks:
+  inception_network:
+    driver: bridge
