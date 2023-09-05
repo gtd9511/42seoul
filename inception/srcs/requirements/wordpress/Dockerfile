@@ -1,17 +1,16 @@
 FROM	debian:buster
 
-RUN		apt-get update -y
-RUN		apt-get upgrade -y
-RUN		apt-get install php7.3-fpm -y
-RUN		apt-get install vim -y
-RUN		apt-get install wget -y
-RUN		apt-get install tar -y
-# RUN		apt-get install mariadb-server -y
-RUN		apt-get install mariadb-client -y
-RUN		apt-get install	php-cli -y
-RUN		apt-get install	php-mysql -y
-RUN		apt-get install	php-mbstring -y
-RUN		apt-get install	sudo -y
+RUN		apt-get update -y && \
+		apt-get upgrade -y && \
+		apt-get -y install php7.3-fpm \
+		vim \
+		wget \
+		tar \
+		mariadb-client \
+		php-cli \
+		php-mysql \
+		php-mbstring \
+		sudo
 
 RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xvzf latest.tar.gz
