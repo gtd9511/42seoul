@@ -1,34 +1,41 @@
-FROM	debian:buster
+FROM	debian:bullseye
 
 RUN		apt-get update -y && \
 		apt-get upgrade -y && \
-		apt-get -y install php7.3-fpm \
+		apt-get -y install php7.4-fpm \
 		vim \
 		wget \
+		curl \
 		tar \
 		mariadb-client \
 		php-cli \
 		php-mysql \
-		php-mbstring \
 		sudo
 
-RUN		wget https://wordpress.org/latest.tar.gz
-RUN		tar -xvzf latest.tar.gz
-RUN		mkdir -p /var/www/html/wordpress
-RUN		mv wordpress/ var/www/html/
+# RUN		wget https://wordpress.org/latest.tar.gz
+# RUN		tar -xvzf latest.tar.gz
+# RUN		mkdir -p /var/www/html/wordpress
+# RUN		mv wordpress/ var/www/html/
 
 COPY	./tools/wordpress_setup.sh /tmp/wordpress_setup.sh
-COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/bin/wp
+RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+		chmod +x wp-cli.phar && \
+		mv wp-cli.phar /usr/local/bin/wp
+
+# RUN mkdir -p /var/www/html && \
+#     chown -R  www-data:www-data /var/www/html
+
+RUN		mkdir -p /var/www/html/wordpress && \
+		chown -R www-data:www-data /var/www/html/wordpress
+
+RUN		mkdir -p /run/php && \
+		chmod +x /run/php
 
 WORKDIR	/var/www/html/wordpress
-RUN		mkdir -p /run/php
-
-# RUN		chown -R www-data:www-data /var/www/html/wordpress
 
 EXPOSE	9000
 
 ENTRYPOINT ["sh", "/tmp/wordpress_setup.sh"]
-# CMD		service php7.3-fpm start && tail -f /dev/null
-# tall-f 지우기
+
