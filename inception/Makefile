@@ -6,7 +6,7 @@
 #    By: sanghan <sanghan@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 19:38:51 by sanghan           #+#    #+#              #
-#    Updated: 2023/09/05 12:20:20 by sanghan          ###   ########.fr        #
+#    Updated: 2023/09/08 17:49:46 by sanghan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ all: $(NAME)
 
 up:
 	@sudo docker-compose -f ./srcs/docker-compose.yml up --build -d
-#	@sudo docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
 	@sudo docker-compose -f ./srcs/docker-compose.yml down
 
 clean:
 	@sudo docker-compose -f ./srcs/docker-compose.yml down --rmi all --volumes
+	@sudo docker system prune -a -f
 
 fclean: clean
 	@sudo rm -rf $(VOLUME_PATH)

@@ -14,6 +14,6 @@ RUN		openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 		-out /etc/ssl/certs/sanghan.42.fr.crt \
 		-keyout /etc/ssl/private/sanghan.42.fr.key
 
-ENTRYPOINT     ["nginx", "-g", "daemon off;"]
-
 EXPOSE 443
+
+ENTRYPOINT     ["nginx", "-g", "daemon off;"]

@@ -2,8 +2,10 @@ version: '3'
 
 services:
   mariadb:
-    build: ./requirements/mariadb
     container_name: mariadb
+    image: mariadb
+    pull_policy: never
+    build: ./requirements/mariadb
     restart: always
     expose:
       - "3306"
@@ -15,8 +17,10 @@ services:
       - inception_network
 
   wordpress:
-    build: requirements/wordpress
     container_name: wordpress
+    image: wordpress
+    pull_policy: never
+    build: requirements/wordpress
     restart: always
     depends_on:
       - mariadb
@@ -30,8 +34,10 @@ services:
       - inception_network
 
   nginx:
-    build: requirements/nginx
     container_name: nginx
+    image: nginx
+    pull_policy: never
+    build: requirements/nginx
     ports:
       - 443:443
     restart: always
@@ -49,7 +55,6 @@ volumes:
     driver: local
     driver_opts:
       type: volume
-      # device: /Users/sanghan/han/hangit/inception
       device: /home/sanghan/data/wordpress
       o: bind
 
@@ -57,7 +62,6 @@ volumes:
     driver: local
     driver_opts:
       type: volume
-      # device: /Users/sanghan/han/hangit/inception/srcs/requirements/tools/mariadb
       device: /home/sanghan/data/mariadb
       o: bind
 
