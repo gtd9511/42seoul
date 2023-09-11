@@ -10,7 +10,8 @@ RUN		apt-get update -y && \
 		mariadb-client \
 		php-cli \
 		php-mysql \
-		sudo
+		sudo \
+		dumb-init
 
 COPY	./tools/wordpress_setup.sh /tmp/wordpress_setup.sh
 COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
@@ -29,5 +30,9 @@ WORKDIR	/var/www/html/wordpress
 
 EXPOSE	9000
 
-ENTRYPOINT ["sh", "/tmp/wordpress_setup.sh"]
+# ENTRYPOINT ["sh", "/tmp/wordpress_setup.sh"]
+ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+
+# CMD [ "/bin/bash", "/tmp/wordpress_setup.sh" ]
+CMD [ "sh", "/tmp/wordpress_setup.sh" ]
 

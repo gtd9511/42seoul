@@ -13,3 +13,7 @@ if [ ! -f "/var/www/html/wordpress/index.php" ]; then
 fi
 
 exec /usr/sbin/php-fpm7.4 -F
+
+
+
+
